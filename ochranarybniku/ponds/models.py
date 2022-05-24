@@ -10,4 +10,13 @@ class Pond(models.Model):
         verbose_name='poloha rybníku (polyogon)'
     )
     
+    def __str__(self):
+        return self.pond_name
+    
+    class Meta:
+        verbose_name='Rybník'
+        verbose_name_plural='Rybníky'
+        
+
+    
     
