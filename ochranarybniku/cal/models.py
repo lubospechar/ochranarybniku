@@ -1,3 +1,32 @@
 from django.db import models
+from django.contrib.auth.models import User
+from ponds.models import Pond
 
-# Create your models here.
+class PondVisit(models.Model):
+    user = models.ForeignKey(
+        User, verbose_name="Uživatel",
+        on_delete=models.CASCADE
+    )
+    
+    pond = models.ForeignKey(
+        Pond, verbose_name="Rybník",
+        on_delete=models.CASCADE
+    )
+    
+    desc = models.CharField(
+        max_length=255, 
+        verbose_name="Stručný popis práce",
+    )
+    
+    dt_start = models.DateTimeField(
+        verbose_name="Začátek"
+    )
+    
+    dt_end = models.DateTimeField(
+        verbose_name="Konec"
+    )
+    
+    class Meta:
+        verbose_name = "Návštěva rybníku"
+        verbose_name_plural = "Návštěvy rybníků"
+
