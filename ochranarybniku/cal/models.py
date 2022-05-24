@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from ponds.models import Pond
 
+#NOTE: zdůrazňovat vícedenní akce?
 class PondVisit(models.Model):
     user = models.ForeignKey(
         User, verbose_name="Uživatel",
