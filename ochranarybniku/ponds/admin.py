@@ -1,3 +1,7 @@
 from django.contrib import admin
+from django.contrib.gis.admin import GISModelAdmin
+from ponds.models import Pond
 
-# Register your models here.
+@admin.register(Pond)
+class PondAdmin(GISModelAdmin):
+    pass
