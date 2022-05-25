@@ -12,7 +12,6 @@ def home(request):
     )
     
     return render(request, 'cal/home.html', {
-        'past_visits': past_visits,
-        'future_visits': future_visits,
+        'visits': (future_visits, past_visits)
     })
     
