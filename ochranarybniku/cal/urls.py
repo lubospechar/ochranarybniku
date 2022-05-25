@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('xls_export', views.pond_visit_to_xls, name='pond_visit_to_xls'),
 ] 
