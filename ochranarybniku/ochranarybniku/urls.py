@@ -19,7 +19,8 @@ from django.utils.html import format_html
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('webapp.urls'))
+    path('', include('webapp.urls')),
+    path('kalendar', include('cal.urls')),
 ]
 
 

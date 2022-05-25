@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from cal.models import PondVisit
 
-# Create your views here.
+def home(request):
+    visits = PondVisit.objects.all()
+    return render(request, 'cal/home.html', {'visits': visits})
+    
