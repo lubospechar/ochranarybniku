@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.utils.html import format_html
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+
+# hlavička v administraci a jejím loginu
+site_header = 'Ochrana rybníků - administrace'
+admin.site.site_header = format_html(site_header)
