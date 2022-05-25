@@ -1,3 +1,4 @@
+{% load mapy_cz_urls %}
 <!DOCTYPE html>
 <html lang="cs">
   <head>
@@ -13,7 +14,7 @@
       <table>
         {% for visit in v %}
           <tr>
-            <td><a href="https://mapy.cz/turisticka?x={{ visit.pond.area.centroid.x|stringformat:"f" }}&y={{ visit.pond.area.centroid.y|stringformat:"f" }}&z=17">{{ visit.pond }}</a></td>
+            <td>{% mapy_cz_turist visit.pond.area.centroid.x visit.pond.area.centroid.y visit.pond 17 %}</td>
             <td>{{ visit.dt_start }}, {{ visit.dt_start|date:'l' }}</td>
             <td>{{ visit.dt_end }}, {{ visit.dt_end|date:'l' }}</td>
             <td>{{ visit.desc }}
