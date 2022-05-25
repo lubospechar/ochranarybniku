@@ -28,6 +28,12 @@ def pond_visit_to_xls(request):
     font.bold = True
     style.font = font
 
+    ws.col(0).width = 256 * 20
+    ws.col(1).width = 256 * 16
+    ws.col(2).width = 256 * 16
+    ws.col(3).width = 256 * 50
+    ws.col(4).width = 256 * 15
+
     headline = ('Jméno rybníku', 'Začátek návštevy', 'Konec návštěvy', 'Popis aktivit', 'Pracovník')
     col = 0
     row = 0
