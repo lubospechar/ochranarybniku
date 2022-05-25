@@ -16,12 +16,21 @@
       {% for v in visits %}
         
         {% if forloop.first %}
-          <h2>Budoucí návštěvy</h2>
+          {% if v %}<h2>Budoucí návštěvy</h2>{% endif %}
         {% else %}
-          <h2>Proběhlé návštěvy</h2>
+          {% if v %}<h2>Proběhlé návštěvy</h2>{% endif %}
         {% endif %}
       
       <table>
+        {% if v %}
+        <tr>
+          <th>Jméno rybníku</th>
+          <th>Začátek návštevy</th>
+          <th>Konec návštěvy</th>
+          <th>Popis aktivit</th>
+          <th>Pracovník</th>
+        </tr>
+        {% endif %}
         {% for visit in v %}
           <tr>
             <td>{% mapy_cz_turist visit.pond.area.centroid.x visit.pond.area.centroid.y visit.pond 17 %}</td>
