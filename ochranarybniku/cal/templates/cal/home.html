@@ -1,16 +1,26 @@
-{% load mapy_cz_urls %}
-<!DOCTYPE html>
+{% load mapy_cz_urls %}<!DOCTYPE html>
 <html lang="cs">
+  
   <head>
     <meta charset="utf-8">
     <title>Ochrana rybníků - Kalendář</title>
   </head>
+  
   <body>
-    <header><h1>Kalendář návštěv rybníků</h1></header>
+    
+    <header>
+      <h1>Kalendář návštěv rybníků</h1>
+    </header>
+    
     <main>
-      
       {% for v in visits %}
-       {% if forloop.first %}<h2>Budoucí návštěvy</h2>{% else %}<h2>Proběhlé návštěvy</h2>{% endif %}
+        
+        {% if forloop.first %}
+          <h2>Budoucí návštěvy</h2>
+        {% else %}
+          <h2>Proběhlé návštěvy</h2>
+        {% endif %}
+      
       <table>
         {% for visit in v %}
           <tr>
@@ -19,13 +29,16 @@
             <td>{{ visit.dt_end }}, {{ visit.dt_end|date:'l' }}</td>
             <td>{{ visit.desc }}
             <td>{{ visit.user.get_full_name }}
-            
           </tr>
-      {% endfor %}
+        {% endfor %}
       </table>
       
       {% endfor %}
     </main>
-    <footer><p>Zde bude logo?</p></footer>
+    
+    <footer>
+      <p>Zde bude logo?</p>
+    </footer>
+  
   </body>
 </html>
