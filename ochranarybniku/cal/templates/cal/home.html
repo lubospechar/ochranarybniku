@@ -26,7 +26,7 @@
       <table>
         {% for visit in past_visits %}
           <tr>
-            <td>{{ visit.pond }}</td>
+            <td><a href="https://mapy.cz/turisticka?x={{ visit.pond.area.centroid.x|stringformat:"f" }}&y={{ visit.pond.area.centroid.y|stringformat:"f" }}&z=19">{{ visit.pond }}</a></td>
             <td>{{ visit.dt_start }}, {{ visit.dt_start|date:'l' }}</td>
             <td>{{ visit.dt_end }}, {{ visit.dt_end|date:'l' }}</td>
             <td>{{ visit.desc }}
