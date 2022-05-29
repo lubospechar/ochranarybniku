@@ -30,6 +30,11 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+MY_APPS = [
+    'ponds',
+    'webapp',
+    'cal',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,13 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'django_extensions',
-    'webapp',
-    'ponds',
-    'cal',
-]
+] + MY_APPS
 
+DJANGO_EXTENSIONS = config('DJANGO_EXTENSIONS', default=False, cast=bool)
 
+if DJANGO_EXTENSIONS:
+    INSTALLED_APPS.append('django_extensions')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
