@@ -19,7 +19,8 @@ class PondVisitAdmin(admin.ModelAdmin):
     # přídání user do list_display pokud je uživatel superuser
     def changelist_view(self, request, extra_content=None):
         if request.user.is_superuser:
-            self.list_display.append("user")
+            if not 'user' in self.list_display:
+                self.list_display.append("user")
         return super(PondVisitAdmin, self).changelist_view(request, extra_content)
 
     # queryset pouze pro přihlášeného uživatele
