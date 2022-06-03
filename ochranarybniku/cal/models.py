@@ -43,3 +43,4 @@ class PondVisit(models.Model):
 
     def ponds_str(self):
         return ', '.join([pond.__str__() for pond in self.ponds.all()])
+    ponds_str.short_description = "Rybníky"

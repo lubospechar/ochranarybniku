@@ -12,7 +12,7 @@ User.add_to_class("__str__", get_full_name)
 
 @admin.register(PondVisit)
 class PondVisitAdmin(admin.ModelAdmin):
-    list_display = ["desc", "dt_start", "dt_end"]
+    list_display = ["desc", "ponds_str", "dt_start", "dt_end"]
     list_filter = ["ponds"]
     exclude = []
 

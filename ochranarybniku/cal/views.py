@@ -8,7 +8,7 @@ from cal.models import PondVisit
 
 
 def home(request):
-    past_visits = PondVisit.objects.filter(dt_end__lte=timezone.now())
+    past_visits = PondVisit.objects.filter(dt_end__lte=timezone.now()).order_by('-dt_end')
 
     future_visits = PondVisit.objects.filter(dt_end__gte=timezone.now())
 
