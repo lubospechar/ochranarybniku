@@ -11,7 +11,7 @@ class PondVisit(models.Model):
         related_name="pond_visitor",
     )
 
-    pond = models.ForeignKey(Pond, verbose_name="Rybník", on_delete=models.CASCADE)
+    ponds = models.ManyToManyField(Pond, verbose_name="Rybníky")
 
     desc = models.CharField(
         max_length=255,
@@ -23,7 +23,7 @@ class PondVisit(models.Model):
     dt_end = models.DateTimeField(verbose_name="Konec")
 
     coworkers = models.ManyToManyField(
-        User, verbose_name="Spolupracovníci", related_name="pond_visitor_coworkers"
+        User, verbose_name="Spolupracovníci", related_name="pond_visitor_coworkers", blank=True
     )
 
     class Meta:
@@ -40,3 +40,6 @@ class PondVisit(models.Model):
             )
         else:
             return self.user.get_full_name()
+
+    def ponds_str(self):
+        return ', '.join([pond.__str__() for pond in self.ponds.all()])

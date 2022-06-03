@@ -12,7 +12,8 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
 - [ ] Kalendář návštev lokalit
     - [x] Základní aplikace
     - [x] Více učastníků návštevy lokality najednou
-    - [ ] Více rybníků v rámci jedné aktivity
+    - [x] Více rybníků v rámci jedné aktivity
+    - [ ] Design kalendáře
 
 
 ## Chyby

@@ -44,7 +44,7 @@ def pond_visit_to_xls(request):
 
     for visit in PondVisit.objects.all():
         row += 1
-        ws.write(row, 0, visit.pond.pond_name)
+        ws.write(row, 0, visit.ponds_str())
         ws.write(row, 1, str(visit.dt_start))
         ws.write(row, 2, str(visit.dt_end))
         ws.write(row, 3, visit.desc)
