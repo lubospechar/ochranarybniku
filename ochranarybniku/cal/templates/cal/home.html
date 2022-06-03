@@ -31,7 +31,7 @@
             <th>Začátek návštevy</th>
             <th>Konec návštěvy</th>
             <th>Popis aktivit</th>
-            <th>Pracovník</th>
+            <th>Účastní se</th>
           </tr>
         </thead>
         {% endif %}
@@ -42,7 +42,7 @@
               <td>{{ visit.dt_start }}, {{ visit.dt_start|date:'l' }}</td>
               <td>{{ visit.dt_end }}, {{ visit.dt_end|date:'l' }}</td>
               <td>{{ visit.desc }}
-              <td>{{ visit.user.get_full_name }}
+              <td>{{ visit.visitors }}
             </tr>
           </tbody>
         {% endfor %}

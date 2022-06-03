@@ -48,7 +48,7 @@ def pond_visit_to_xls(request):
         ws.write(row, 1, str(visit.dt_start))
         ws.write(row, 2, str(visit.dt_end))
         ws.write(row, 3, visit.desc)
-        ws.write(row, 4, visit.user.get_full_name())
+        ws.write(row, 4, visit.visitors())
 
     response = HttpResponse(content_type="application/ms-excel")
     response["Content-Disposition"] = "attachment; filename=navstevy_rybniku.xls"
