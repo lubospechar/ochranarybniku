@@ -2,11 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from ponds.models import Pond
 
-#NOTE: zdůrazňovat vícedenní akce?
 class PondVisit(models.Model):
     user = models.ForeignKey(
         User, verbose_name="Uživatel",
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="pond_visitor"
     )
     
     pond = models.ForeignKey(
@@ -25,6 +25,11 @@ class PondVisit(models.Model):
     
     dt_end = models.DateTimeField(
         verbose_name="Konec"
+    )
+
+    coworkers = models.ManyToManyField(
+        User, verbose_name="Spolupracovníci",
+        related_name="pond_visitor_coworkers"
     )
     
     class Meta:
