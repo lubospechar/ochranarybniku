@@ -8,7 +8,7 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [ ] Admin na fotogalerie
 - [ ] Skladiště dat
 - [ ] Prezentace pro záchrané programy ryb
-- [x] Kalendář návštev lokalit
+- [o] Kalendář návštev lokalit
     - [x] Více učastníků návštevy lokality najednou
     - [ ] Více rybníků v rámci jedné aktivity
 
