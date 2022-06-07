@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 19:22+0200\n"
+"POT-Creation-Date: 2022-06-07 22:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: webapp/templates/webapp/home.html:2
+
+#: webapp/templates/webapp/base.html:8
+msgid "Ochrana rybníků"
+msgstr "Protection of fishponds"
+
+#: webapp/templates/webapp/base.html:10
+msgid ""
+"rybník, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana "
+"rybníků, chráněná území, ochrana přírody, chov ryb"
+msgstr ""
+"fishpond, sustainable management, biodiversity, fish species protection, "
+"fishponds protection, protected areas, nature conservation, fishfarming"
+
+#: webapp/templates/webapp/base.html:11
+msgid ""
+"Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných "
+"rybničních ekosystémů."
+msgstr ""
+"Nature-friendly fisheries management as a tool for protecting valuable"
+"pond ecosystems."
+
+#: webapp/templates/webapp/home.html:4
 msgid "Prezentace se připravuje."
 msgstr "Comming soon."

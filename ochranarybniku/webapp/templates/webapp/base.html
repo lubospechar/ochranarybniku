@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{% translate 'Ochrana rybníků' %}{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta name="keywords" content="{% translate 'rybník, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana rybníků, chráněná území, ochrana přírody, chov ryb' %}">
+    <meta name="description" content="{% translate 'Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.' %}">
+    <meta name="author" content="ENKI o.p.s.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>

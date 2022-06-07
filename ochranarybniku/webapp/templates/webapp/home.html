@@ -1,2 +1,5 @@
+{% extends 'webapp/base.html' %}
 {% load i18n %}
-<html><body><p>{% translate "Prezentace se připravuje." %}</p></body></html>
+{% block body %}
+<h1>{% translate "Prezentace se připravuje." %}</h1>
+{% endblock %}
