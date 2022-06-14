@@ -28,7 +28,7 @@ class Picture(models.Model):
     description = models.CharField(max_length=255, verbose_name="Popis fotografie")
     photo = models.ImageField(upload_to="photos")
     admin_thumbnail = ImageSpecField(
-        source="photos/thumbnails",
+        source="photo",
         processors=[ResizeToFill(100, 50)],
         format="JPEG",
         options={"quality": 60},
