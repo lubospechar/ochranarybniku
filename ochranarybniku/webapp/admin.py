@@ -15,6 +15,9 @@ class PictureInline(admin.TabularInline):
 
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'count_pictures')
+    list_filter = ('created', 'modified')
+    search_fields = ('name', 'description')
     inlines = [
         PictureInline,
     ]

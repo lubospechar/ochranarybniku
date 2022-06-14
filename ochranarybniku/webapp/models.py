@@ -8,8 +8,8 @@ class PhotoGallery(models.Model):
     description = models.TextField(
         verbose_name="Popis fotogalerie", null=True, blank=True
     )
-    modified = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True, verbose_name="poslední úprava")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="vytvořeno")
     slug = models.SlugField()
 
     class Meta:
@@ -19,10 +19,14 @@ class PhotoGallery(models.Model):
     def __str__(self):
         return self.name
 
+    def count_pictures(self):
+        # spočítá kolik obrázků fotogalerie obsahuje
+        return self.pictures.all().count()
+    count_pictures.short_description = "Počet obrázků"
 
 class Picture(models.Model):
     photogallery = models.ForeignKey(
-        PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie"
+        PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie", related_name="pictures"
     )
     description = models.CharField(max_length=255, verbose_name="Popis fotografie")
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Obrázek (soubor)")
