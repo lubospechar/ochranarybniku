@@ -1,7 +1,6 @@
 from django.contrib import admin
 from webapp.models import PhotoGallery, Picture
 from imagekit.admin import AdminThumbnail
-from django.contrib.contenttypes.admin import GenericTabularInline
 
 
 class PictureInline(admin.TabularInline):
@@ -28,6 +27,7 @@ class PhotoGalleryAdmin(admin.ModelAdmin):
 class PictureAdmin(admin.ModelAdmin):
     list_display = ("__str__", "thumbnail")
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
+    thumbnail.short_description = "Náhled"
     prepopulated_fields = {
         "slug": ("description",),
     }

@@ -25,7 +25,7 @@ class Picture(models.Model):
         PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie"
     )
     description = models.CharField(max_length=255, verbose_name="Popis fotografie")
-    photo = models.ImageField(upload_to="photos")
+    photo = models.ImageField(upload_to="photos", verbose_name="Obrázek (soubor)")
     admin_thumbnail = ImageSpecField(
         source="photo",
         processors=[ResizeToFit(300, 300)],
