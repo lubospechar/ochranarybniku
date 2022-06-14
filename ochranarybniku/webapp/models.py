@@ -39,4 +39,4 @@ class Picture(models.Model):
         verbose_name_plural = "Obrázky"
 
     def __str__(self):
-        return self.description
+        return f'{self.photogallery.name} / {self.description}'
