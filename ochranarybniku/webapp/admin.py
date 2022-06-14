@@ -3,8 +3,8 @@ from webapp.models import PhotoGallery, Picture
 
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('name',), }
 
 @admin.register(Picture)
 class PictureAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('description',), }
