@@ -18,7 +18,9 @@ class PhotoGallery(models.Model):
 
 
 class Photo(models.Model):
-    photogallery = models.ForeignKey(PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie")
+    photogallery = models.ForeignKey(
+        PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie"
+    )
     description = models.CharField(max_length=255, verbose_name="Popis fotografie")
     photo = models.ImageField(upload_to="photos")
     admin_thumbnail = ImageSpecField(
@@ -27,3 +29,7 @@ class Photo(models.Model):
         format="JPEG",
         options={"quality": 60},
     )
+
+    class Meta:
+        verbose_name = "Obrázek"
+        verbose_name_plural = "Obrázky"
