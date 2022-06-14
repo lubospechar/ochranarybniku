@@ -14,3 +14,4 @@ def set_language(request, language):
 @login_required
 def home(request):
     return render(request, 'webapp/home.html')
+

@@ -1,7 +1,6 @@
-# vyžaduje balíky django-imagekit a pillow
 from django.db import models
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFit
 
 
 class PhotoGallery(models.Model):
@@ -16,7 +15,7 @@ class PhotoGallery(models.Model):
     class Meta:
         verbose_name = "Fotogalerie"
         verbose_name_plural = "Fotogalerie"
-        
+
     def __str__(self):
         return self.name
 
@@ -29,7 +28,7 @@ class Picture(models.Model):
     photo = models.ImageField(upload_to="photos")
     admin_thumbnail = ImageSpecField(
         source="photo",
-        processors=[ResizeToFill(100, 50)],
+        processors=[ResizeToFit(300, 300)],
         format="JPEG",
         options={"quality": 60},
     )
@@ -38,6 +37,6 @@ class Picture(models.Model):
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
-        
+
     def __str__(self):
         return self.description
