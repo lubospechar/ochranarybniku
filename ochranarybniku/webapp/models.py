@@ -11,6 +11,7 @@ class PhotoGallery(models.Model):
     )
     modified = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField()
 
     class Meta:
         verbose_name = "Fotogalerie"
@@ -29,6 +30,7 @@ class Picture(models.Model):
         format="JPEG",
         options={"quality": 60},
     )
+    slug = models.SlugField()
 
     class Meta:
         verbose_name = "Obrázek"
