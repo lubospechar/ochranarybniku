@@ -22,14 +22,21 @@ class PhotoGallery(models.Model):
     def count_pictures(self):
         # spočítá kolik obrázků fotogalerie obsahuje
         return self.pictures.all().count()
+
     count_pictures.short_description = "Počet obrázků"
+
 
 class Picture(models.Model):
     photogallery = models.ForeignKey(
-        PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie", related_name="pictures"
+        PhotoGallery,
+        on_delete=models.CASCADE,
+        verbose_name="fotogalerie",
+        related_name="pictures",
     )
     description = models.CharField(max_length=255, verbose_name="Popis fotografie")
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Obrázek (soubor)")
+    photo = models.ImageField(
+        upload_to="photos/%Y/%m/%d/", verbose_name="Obrázek (soubor)"
+    )
     admin_thumbnail = ImageSpecField(
         source="photo",
         processors=[ResizeToFit(300, 300)],
@@ -43,4 +50,4 @@ class Picture(models.Model):
         verbose_name_plural = "Obrázky"
 
     def __str__(self):
-        return f'{self.photogallery.name} / {self.description}'
+        return f"{self.photogallery.name} / {self.description}"
