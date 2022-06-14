@@ -16,6 +16,9 @@ class PhotoGallery(models.Model):
     class Meta:
         verbose_name = "Fotogalerie"
         verbose_name_plural = "Fotogalerie"
+        
+    def __str__(self):
+        return self.name
 
 
 class Picture(models.Model):
@@ -35,3 +38,6 @@ class Picture(models.Model):
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
+        
+    def __str__(self):
+        return self.description
