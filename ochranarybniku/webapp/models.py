@@ -17,7 +17,7 @@ class PhotoGallery(models.Model):
         verbose_name_plural = "Fotogalerie"
 
 
-class Photo(models.Model):
+class Picture(models.Model):
     photogallery = models.ForeignKey(
         PhotoGallery, on_delete=models.CASCADE, verbose_name="fotogalerie"
     )
