@@ -36,6 +36,10 @@ MY_APPS = [
     'cal',
 ]
 
+EXTERNAL_APPS = [
+    'imagekit',
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-] + MY_APPS
+] + EXTERNAL_APPS + MY_APPS
 
 DJANGO_EXTENSIONS = config('DJANGO_EXTENSIONS', default=False, cast=bool)
 
