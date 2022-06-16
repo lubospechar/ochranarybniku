@@ -34,4 +34,5 @@ class PictureAdmin(admin.ModelAdmin):
     thumbnail.short_description = "Náhled"
     prepopulated_fields = {
         "slug_cs": ("description_cs",),
+        "slug_en": ("description_en",),
     }
