@@ -37,7 +37,7 @@ class PhotoGalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Picture)
 class PictureAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "thumbnail")
+    list_display = ("__str__", "description_cs", "description_en", "enable", "thumbnail",)
     search_fields = ("description_cs", "description_en", "enable")
     list_filter = ("enable",)
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
