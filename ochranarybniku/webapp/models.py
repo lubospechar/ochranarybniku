@@ -8,9 +8,14 @@ class PhotoGallery(models.Model):
     description_cs = models.TextField(
         verbose_name="Popis fotogalerie (cs)", null=True, blank=True
     )
+    name_en = models.CharField(max_length=255, verbose_name="Název galerie (en)", null=True, blank=True)
+    description_en = models.TextField(
+        verbose_name="Popis fotogalerie (cs)", null=True, blank=True
+    )
     modified = models.DateTimeField(auto_now=True, verbose_name="poslední úprava")
     created = models.DateTimeField(auto_now_add=True, verbose_name="vytvořeno")
     slug_cs = models.SlugField()
+    slug_en = models.SlugField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Fotogalerie"
@@ -34,6 +39,7 @@ class Picture(models.Model):
         related_name="pictures",
     )
     description_cs = models.CharField(max_length=255, verbose_name="Popis fotografie (cs)")
+    description_en = models.CharField(max_length=255, verbose_name="Popis fotografie (en)", null=True, blank=True)
     photo = models.ImageField(
         upload_to="photos/%Y/%m/%d/", verbose_name="Obrázek (soubor)"
     )
@@ -44,6 +50,9 @@ class Picture(models.Model):
         options={"quality": 60},
     )
     slug_cs = models.SlugField()
+    slug_cs = models.SlugField(null=True, blank=True)
+
+    enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
     class Meta:
         verbose_name = "Obrázek"

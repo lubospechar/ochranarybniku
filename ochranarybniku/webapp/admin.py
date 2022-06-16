@@ -23,6 +23,7 @@ class PhotoGalleryAdmin(admin.ModelAdmin):
     ]
     prepopulated_fields = {
         "slug_cs": ("name_cs",),
+        "slug_en": ("name_en",),
     }
 
 
