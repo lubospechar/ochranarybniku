@@ -37,9 +37,15 @@ class PhotoGalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Picture)
 class PictureAdmin(admin.ModelAdmin):
-    list_display = ("__str__", "description_cs", "description_en", "enable", "thumbnail",)
+    list_display = (
+        "__str__",
+        "description_cs",
+        "description_en",
+        "enable",
+        "thumbnail",
+    )
     search_fields = ("description_cs", "description_en", "enable")
-    list_filter = ("enable",)
+    list_filter = ("enable", "photogallery")
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
     thumbnail.short_description = "Náhled"
     prepopulated_fields = {
