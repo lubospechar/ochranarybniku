@@ -17,6 +17,8 @@ class PhotoGallery(models.Model):
     slug_cs = models.SlugField()
     slug_en = models.SlugField(null=True, blank=True)
 
+    enable = models.BooleanField(default=False, verbose_name="Zaponout")
+
     class Meta:
         verbose_name = "Fotogalerie"
         verbose_name_plural = "Fotogalerie"
