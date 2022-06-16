@@ -4,20 +4,20 @@ from imagekit.processors import ResizeToFit
 
 
 class PhotoGallery(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Název galerie")
-    description = models.TextField(
-        verbose_name="Popis fotogalerie", null=True, blank=True
+    name_cs = models.CharField(max_length=255, verbose_name="Název galerie (cs)")
+    description_cs = models.TextField(
+        verbose_name="Popis fotogalerie (cs)", null=True, blank=True
     )
     modified = models.DateTimeField(auto_now=True, verbose_name="poslední úprava")
     created = models.DateTimeField(auto_now_add=True, verbose_name="vytvořeno")
-    slug = models.SlugField()
+    slug_cs = models.SlugField()
 
     class Meta:
         verbose_name = "Fotogalerie"
         verbose_name_plural = "Fotogalerie"
 
     def __str__(self):
-        return self.name
+        return self.name_cs
 
     def count_pictures(self):
         # spočítá kolik obrázků fotogalerie obsahuje
@@ -33,7 +33,7 @@ class Picture(models.Model):
         verbose_name="fotogalerie",
         related_name="pictures",
     )
-    description = models.CharField(max_length=255, verbose_name="Popis fotografie")
+    description_cs = models.CharField(max_length=255, verbose_name="Popis fotografie (cs)")
     photo = models.ImageField(
         upload_to="photos/%Y/%m/%d/", verbose_name="Obrázek (soubor)"
     )
@@ -43,11 +43,11 @@ class Picture(models.Model):
         format="JPEG",
         options={"quality": 60},
     )
-    slug = models.SlugField()
+    slug_cs = models.SlugField()
 
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
 
     def __str__(self):
-        return f"{self.photogallery.name} / {self.description}"
+        return f"{self.photogallery.name_cs} / {self.description_cs}"
