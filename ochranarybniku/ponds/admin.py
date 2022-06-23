@@ -6,6 +6,8 @@ from ponds.models import Pond
 
 @admin.register(Pond)
 class PondAdmin(OSMGeoAdmin):
+    list_display = ("pond_name", "monitored")
+    list_editable = ("monitored",)
     pnt = Point(15.3,50, srid=4326)
     pnt.transform(900913)
     default_lon, default_lat = pnt.coords
