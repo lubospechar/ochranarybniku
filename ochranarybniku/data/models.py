@@ -34,8 +34,12 @@ class PondMeasurement(models.Model):
         verbose_name = "Měření na rybníku"
         verbose_name_plural = "Měření na rybnících"
 
+    def __str__(self):
+        return f'{self.date}, {self.pond.pond_name}'
+
 
 class FloatData(models.Model):
+    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
     float_data = models.FloatField(verbose_name="Hodnota")
     unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
     measurement = models.ForeignKey(
@@ -51,6 +55,7 @@ class FloatData(models.Model):
 
 
 class IntegerData(models.Model):
+    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
     integer_data = models.FloatField(verbose_name="Hodnota")
     unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
     measurement = models.ForeignKey(
@@ -66,8 +71,8 @@ class IntegerData(models.Model):
 
 
 class BooleanData(models.Model):
+    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
     boolean_data = models.BooleanField(verbose_name="Hodnota", default=False)
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
     measurement = models.ForeignKey(
         PondMeasurement, verbose_name="Měření", on_delete=models.CASCADE
     )
@@ -81,6 +86,7 @@ class BooleanData(models.Model):
 
 
 class CharData(models.Model):
+    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
     char_data = models.CharField(verbose_name="Hodnota", max_length=50)
     unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
     measurement = models.ForeignKey(
