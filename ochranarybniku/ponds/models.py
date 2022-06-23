@@ -9,6 +9,11 @@ class Pond(models.Model):
     area = PolygonField(
         verbose_name='poloha rybníku (polyogon)'
     )
+
+    monitored = models.BooleanField(
+        verbose_name="Sledovaný rybník",
+        default=False
+    )
     
     def __str__(self):
         return self.pond_name
