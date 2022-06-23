@@ -7,4 +7,4 @@ class UnitAdmin(admin.ModelAdmin):
 
 @admin.register(PondMeasurement)
 class PondMeasurementAdmin(admin.ModelAdmin):
-    list_display = ('date', 'pond')
+    list_display = ('date', 'pond', 'note')

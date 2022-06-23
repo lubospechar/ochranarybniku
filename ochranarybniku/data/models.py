@@ -28,7 +28,7 @@ class Parameter(models.Model):
 class PondMeasurement(models.Model):
     date = models.DateField(verbose_name="Datum")
     pond = models.ForeignKey(Pond, verbose_name="Rybník", on_delete=models.CASCADE)
-    note = models.TextField(null=True, blank=True)
+    note = models.TextField(null=True, blank=True, verbose_name="Poznámka")
 
     class Meta:
         verbose_name = "Měření na rybníku"
