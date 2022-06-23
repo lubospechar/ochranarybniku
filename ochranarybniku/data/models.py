@@ -53,7 +53,7 @@ class Data(models.Model):
         PondMeasurement, verbose_name="Měření", on_delete=models.CASCADE
     )
     note = models.CharField(
-        verbose_name="Poznánka", max_length=255, null=True, blank=True
+        verbose_name="Poznámka", max_length=255, null=True, blank=True
     )
 
     class Meta:
