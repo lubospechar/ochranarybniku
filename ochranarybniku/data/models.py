@@ -13,6 +13,17 @@ class Unit(models.Model):
     def __str__(self):
         return self.shortcut
 
+class Parameter(models.Model):
+    name = models.CharField(max_length=50, verbose_name="Název parametru")
+    note = models.CharField(max_length=255, verbose_name="Poznámnka", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Parametr"
+        verbose_name_plural = "Parametry"
+
+    def __str__(self):
+        return self.name
+
 
 class PondMeasurement(models.Model):
     date = models.DateField(verbose_name="Datum")
