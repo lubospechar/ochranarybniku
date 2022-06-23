@@ -13,10 +13,16 @@ class Unit(models.Model):
     def __str__(self):
         return self.shortcut
 
+
 class Parameter(models.Model):
     name = models.CharField(max_length=50, verbose_name="Název parametru")
-    note = models.CharField(max_length=255, verbose_name="Poznámnka", null=True, blank=True)
-    datatype = models.PositiveSmallIntegerField(choices=((1, 'Float'), (2, 'Integer'), (3, 'Boolean'), (4, 'Char')), verbose_name="Datový typ")
+    note = models.CharField(
+        max_length=255, verbose_name="Poznámnka", null=True, blank=True
+    )
+    datatype = models.PositiveSmallIntegerField(
+        choices=((1, "Float"), (2, "Integer"), (3, "Boolean"), (4, "Char")),
+        verbose_name="Datový typ",
+    )
 
     class Meta:
         verbose_name = "Parametr"
@@ -36,66 +42,52 @@ class PondMeasurement(models.Model):
         verbose_name_plural = "Měření na rybnících"
 
     def __str__(self):
-        return f'{self.date}, {self.pond.pond_name}'
+        return f"{self.date}, {self.pond.pond_name}"
 
 
-class FloatData(models.Model):
-    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
-    float_data = models.FloatField(verbose_name="Hodnota")
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
+class Data(models.Model):
+    parameter = models.ForeignKey(
+        Parameter, verbose_name="Parametr", on_delete=models.CASCADE
+    )
     measurement = models.ForeignKey(
         PondMeasurement, verbose_name="Měření", on_delete=models.CASCADE
     )
     note = models.CharField(
         verbose_name="Poznánka", max_length=255, null=True, blank=True
     )
+
+    class Meta:
+        abstract = True
+
+
+class FloatData(Data):
+    value = models.FloatField(verbose_name="Hodnota")
+    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Data (desetinné číslo)"
         verbose_name_plural = "Data (desetinná čísla)"
 
 
-class IntegerData(models.Model):
-    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
-    integer_data = models.FloatField(verbose_name="Hodnota")
+class IntegerData(Data):
+    value = models.IntegerField(verbose_name="Hodnota")
     unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
-    measurement = models.ForeignKey(
-        PondMeasurement, verbose_name="Měření", on_delete=models.CASCADE
-    )
-    note = models.CharField(
-        verbose_name="Poznánka", max_length=255, null=True, blank=True
-    )
 
     class Meta:
         verbose_name = "Data (celé číslo)"
         verbose_name_plural = "Data (celá čísla)"
 
 
-class BooleanData(models.Model):
-    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
-    boolean_data = models.BooleanField(verbose_name="Hodnota", default=False)
-    measurement = models.ForeignKey(
-        PondMeasurement, verbose_name="Měření", on_delete=models.CASCADE
-    )
-    note = models.CharField(
-        verbose_name="Poznánka", max_length=255, null=True, blank=True
-    )
+class BooleanData(Data):
+    value = models.BooleanField(verbose_name="Hodnota", default=False)
 
     class Meta:
         verbose_name = "Data (ano/ne)"
         verbose_name_plural = "Data (ano/ne)"
 
 
-class CharData(models.Model):
-    parameter = models.ForeignKey(Parameter, verbose_name="Parametr", on_delete=models.CASCADE)
-    char_data = models.CharField(verbose_name="Hodnota", max_length=50)
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
-    measurement = models.ForeignKey(
-        PondMeasurement, verbose_name="Měření", on_delete=models.CASCADE
-    )
-    note = models.CharField(
-        verbose_name="Poznánka", max_length=255, null=True, blank=True
-    )
+class CharData(Data):
+    value = models.CharField(verbose_name="Hodnota", max_length=50)
 
     class Meta:
         verbose_name = "Data (řetezec)"
