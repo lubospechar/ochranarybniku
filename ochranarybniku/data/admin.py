@@ -55,17 +55,17 @@ class CharDataInline(DataInline):
 
 @admin.register(Parameter)
 class ParameterAdmin(admin.ModelAdmin):
-    list_display = ("name", "datatype", "note")
+    list_display = ("name_cs", "name_en", "datatype", "note_cs", "note_en")
 
 
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
-    list_display = ("shortcut", "description")
+    list_display = ("shortcut", "description_cs", "description_en")
 
 
 @admin.register(PondMeasurement)
 class PondMeasurementAdmin(admin.ModelAdmin):
-    list_display = ("date", "pond", "note")
+    list_display = ("date", "pond", "note_cs", "note_en")
     inlines = [
         FloatDataInline,
         IntegerDataInline,
