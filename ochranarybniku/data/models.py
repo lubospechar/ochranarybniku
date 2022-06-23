@@ -16,6 +16,7 @@ class Unit(models.Model):
 class Parameter(models.Model):
     name = models.CharField(max_length=50, verbose_name="Název parametru")
     note = models.CharField(max_length=255, verbose_name="Poznámnka", null=True, blank=True)
+    datatype = models.PositiveSmallIntegerField(choices=((1, 'Float'), (2, 'Integer'), (3, 'Boolean'), (4, 'Char')), verbose_name="Datový typ")
 
     class Meta:
         verbose_name = "Parametr"

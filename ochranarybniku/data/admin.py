@@ -3,7 +3,7 @@ from data.models import (Unit, PondMeasurement, Parameter, FloatData, IntegerDat
 
 @admin.register(Parameter)
 class ParameterAdmin(admin.ModelAdmin):
-    list_display = ('name', 'note')
+    list_display = ('name', 'datatype', 'note')
 
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
