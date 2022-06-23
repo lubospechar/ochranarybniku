@@ -34,7 +34,7 @@ class Parameter(models.Model):
         verbose_name_plural = "Parametry"
 
     def __str__(self):
-        return self.name
+        return self.name_cs
 
 
 class PondMeasurement(models.Model):
