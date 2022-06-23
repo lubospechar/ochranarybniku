@@ -18,6 +18,10 @@ class PondMeasurement(models.Model):
     date = models.DateField(verbose_name="Datum")
     pond = models.ForeignKey(Pond, verbose_name="Rybník", on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = "Měření na rybníku"
+        verbose_name_plural = "Měření na rybnících"
+
 
 class FloatData(models.Model):
     float_data = models.FloatField(verbose_name="Hodnota")
