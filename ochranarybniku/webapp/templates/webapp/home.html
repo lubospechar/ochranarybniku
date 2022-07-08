@@ -1,5 +1,55 @@
 {% extends 'webapp/base.html' %}
-{% load i18n %}
-{% block body %}
-<h1>{% translate "Prezentace se připravuje." %}</h1>
+{% load i18n %}{% load static %}
+
+{% block title %} Home{% endblock %}
+
+{% block main %}
+
+<header>
+    <div class="header_content">
+        <div class="logo">
+            <img src="{% static 'img/logo_norway_grants.png' %}" />
+        </div>
+        <nav>
+            <ul>
+                <li>O projektu</li>
+                <li>Fotogalerie</li>
+                <li>Partneři</li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="header_slideshow">
+    <img src="{% static 'img/header_slideshow1.jpg' %}" />
+</section>
+
+
+<section class="main_content">
+    <article class="about">
+        <h1>O projektu</h1>
+<p>Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Vestibulum fermentum tortor id mi. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Etiam dictum tincidunt diam. Integer pellentesque quam vel velit. Nullam faucibus mi quis velit. Nullam dapibus fermentum ipsum. Nulla quis diam. Aenean placerat. Aliquam ornare wisi eu metus. Aliquam in lorem sit amet leo accumsan lacinia. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+
+<p>Suspendisse sagittis ultrices augue. Donec vitae arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Quisque porta. Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Duis condimentum augue id magna semper rutrum. Mauris tincidunt sem sed arcu. Nulla est. Fusce tellus. Nulla non lectus sed nisl molestie malesuada. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci.</p>
+
+<p>Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Proin in tellus sit amet nibh dignissim sagittis. Curabitur vitae diam non enim vestibulum interdum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla non arcu lacinia neque faucibus fringilla. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Maecenas aliquet accumsan leo. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus quam ultricies odio, vitae placerat pede sem sit amet enim. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Etiam commodo dui eget wisi. Aenean vel massa quis mauris vehicula lacinia. Nulla est. Pellentesque arcu. Vestibulum fermentum tortor id mi. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est.</p>
+
+<p>Nulla non lectus sed nisl molestie malesuada. Vivamus porttitor turpis ac leo. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec iaculis gravida nulla. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Praesent dapibus. Etiam commodo dui eget wisi. Mauris tincidunt sem sed arcu. Mauris dictum facilisis augue. Nam quis nulla. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Vivamus porttitor turpis ac leo. Vestibulum fermentum tortor id mi. Etiam posuere lacus quis dolor. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Fusce tellus. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Aliquam id dolor. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci.</p>
+
+<p>Proin mattis lacinia justo. Etiam posuere lacus quis dolor. Nulla quis diam. Maecenas libero. Aliquam id dolor. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Etiam neque. Cras elementum. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. In convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis risus. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Aliquam in lorem sit amet leo accumsan lacinia. Praesent vitae arcu tempor neque lacinia pretium. Integer imperdiet lectus quis justo.</p>
+
+<p>Nulla non lectus sed nisl molestie malesuada. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. In enim a arcu imperdiet malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Pellentesque sapien. Mauris dictum facilisis augue. Morbi scelerisque luctus velit. Mauris metus.</p>
+
+    </article>
+
+    <article class="photogallery">
+        <h1>Fotogalerie</h1>
+        
+    </article>
+        <h1>Partneři</h1>
+
+    <article class="partners">
+    </article>
+</section>
+
 {% endblock %}
