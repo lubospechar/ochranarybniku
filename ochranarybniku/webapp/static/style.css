@@ -11,6 +11,7 @@ main {
 }
 
 header {
+  position: fixed;
   width: 100%;
   background: #002c5b;
   padding-top: 10px;
@@ -35,7 +36,7 @@ header {
 nav {
   grid-column: 2;
   color: #ffffff;
-  margin-top: 74px;
+  margin-top: 0px;
   text-align: right;
 }
 
@@ -45,14 +46,29 @@ nav ul {
   margin-bottom: 0px;
 }
 
+nav ul img {
+  width: 50px
+}
+
 nav ul li {
   display: inline;
+  padding-right: 20px;
+}
+
+nav ul.menu li {
+  display: inline;
   font-size: 26px;
-  margin-left: 20px;
+  padding-left: 20px;
   font-family: Arial;
+  border-right: 2px solid white;
+}
+
+nav ul.menu li.last {
+  border-right: none;
 }
 
 .header_slideshow img {
+  margin-top: 144px;
   width: 100%
 }
 
@@ -69,4 +85,3 @@ nav ul li {
 .main_content p {
   font-size: 1.3em
 }
-

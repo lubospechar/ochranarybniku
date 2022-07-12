@@ -5,6 +5,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('set_language/<str:language>/', views.set_language, name="set_language"),
+    path('set-language/<str:language>/', views.set_language, name="set_language"),
 ]
 
