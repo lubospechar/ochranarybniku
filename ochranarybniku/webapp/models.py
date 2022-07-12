@@ -4,6 +4,15 @@ from imagekit.processors import ResizeToFit
 from django.core.exceptions import ValidationError
 
 
+class Page(models.Model):
+    name_cs = models.CharField(max_length=255, verbose_name="Název (cs)")
+    name_en = models.CharField(max_length=255, verbose_name="Název (en)")
+    content_cs = models.TextField()
+    content_en = models.TextField()
+    slug_cs = models.SlugField()
+    slug_en = models.SlugField()
+    enable = models.BooleanField()
+
 class PhotoGallery(models.Model):
     name_cs = models.CharField(max_length=255, verbose_name="Název galerie (cs)")
     description_cs = models.TextField(

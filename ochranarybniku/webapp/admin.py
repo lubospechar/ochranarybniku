@@ -1,5 +1,5 @@
 from django.contrib import admin
-from webapp.models import PhotoGallery, Picture
+from webapp.models import PhotoGallery, Picture, Page
 from imagekit.admin import AdminThumbnail
 
 
@@ -51,4 +51,13 @@ class PictureAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug_cs": ("description_cs",),
         "slug_en": ("description_en",),
+    }
+
+
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    list_display = ('name_cs', 'name_en', "slug_cs", 'slug_en')
+    prepopulated_fields = {
+        "slug_cs": ("name_cs",),
+        "slug_en": ("name_en",),
     }
