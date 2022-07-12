@@ -80,6 +80,7 @@ class Picture(models.Model):
 
     enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
+    title = models.BooleanField(default=False)
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
