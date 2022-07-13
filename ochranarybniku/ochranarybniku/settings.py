@@ -51,9 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 ] + EXTERNAL_APPS + MY_APPS
 
-DJANGO_EXTENSIONS = config('DJANGO_EXTENSIONS', default=False, cast=bool)
-
-if DJANGO_EXTENSIONS:
+if DEBUG:
     INSTALLED_APPS.append('django_extensions')
 
 MIDDLEWARE = [
