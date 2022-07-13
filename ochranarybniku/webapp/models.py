@@ -49,6 +49,15 @@ class PhotoGallery(models.Model):
     def count_pictures(self):
         # spočítá kolik obrázků fotogalerie obsahuje
         return self.pictures.all().count()
+    
+    def get_title(self):
+        try:
+            return self.pictures.get(title=True)
+        except Picture.MultipleObjectsReturned:
+            return self.pictures.filter(title=True)[0]
+        except Picture.DoesNotExist:
+            return self.pictures.all()[0]
+        
 
     count_pictures.short_description = "Počet obrázků"
 
