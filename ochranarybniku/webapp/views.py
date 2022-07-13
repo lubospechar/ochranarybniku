@@ -32,7 +32,6 @@ def photogalleries(request):
 
 @login_required
 def photogallery(request, photogallery_pk, photogallery_slug):
-    print(photogallery_pk)
-    return render(request, 'webapp/photogallery.html', {
-    'aa': 'a'})
+    photogallery = get_object_or_404(PhotoGallery, pk=photogallery_pk)
+    return render(request, 'webapp/photogallery.html', {'photogallery': photogallery})
 
