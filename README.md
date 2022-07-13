@@ -4,7 +4,8 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
 
 ## TODO list
 - [ ] Webová prezentace
-    - [ ] Základní prezentace
+    - [x] Základní prezentace
+    - [ ] Fotogalerie
     - [ ] Katalog rybníků
     - [x] Admin na fotogalerie
 - [x] Skladiště dat
