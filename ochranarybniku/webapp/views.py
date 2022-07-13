@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
-from webapp.models import Page
+from webapp.models import Page, PhotoGallery
 
 def set_language(request, language):
     user_language = language
@@ -16,5 +16,9 @@ def set_language(request, language):
 @login_required
 def home(request):
     about = get_object_or_404(Page, slug_en='about')
-    return render(request, 'webapp/home.html', {'about': about})
+    galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')[:6]
+    return render(request, 'webapp/home.html', {
+        'about': about,
+        'galleries': galleries,
+    })
 
