@@ -1,0 +1,21 @@
+{% extends 'webapp/base.html' %}
+{% load i18n %}{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %} Home{% endblock %}
+
+{% block main %}
+<section class="header_slideshow">
+    <img src="{% static 'img/header_slideshow1.jpg' %}" />
+</section>
+
+
+
+<section class="main_content">
+
+    <article class="photogallery">
+        {% include "webapp/photogalleries_base.html" %}
+    </article>
+</section>
+
+{% endblock %}

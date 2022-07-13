@@ -22,3 +22,17 @@ def home(request):
         'galleries': galleries,
     })
 
+
+@login_required
+def photogalleries(request):
+    galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')
+    return render(request, 'webapp/photogalleries.html', {
+        'galleries': galleries,
+    })
+
+@login_required
+def photogallery(request, photogallery_pk, photogallery_slug):
+    print(photogallery_pk)
+    return render(request, 'webapp/photogallery.html', {
+    'aa': 'a'})
+

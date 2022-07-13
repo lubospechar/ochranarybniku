@@ -44,7 +44,7 @@ msgstr "Home"
 
 #: webapp/templates/webapp/base.html:29
 msgid "Fotogalerie"
-msgstr "Photogallery"
+msgstr "Photogalleries"
 
 #: webapp/templates/webapp/base.html:30
 msgid "Partneři"

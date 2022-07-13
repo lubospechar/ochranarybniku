@@ -25,8 +25,8 @@
                     <li class="last"><a href="{% url 'set_language' 'en' %}"><img src="{% static 'img/enflag.png' %}" /></a>
                 </ul>
                 <ul class="menu">
-                    <li>{% translate 'Úvod' %}</li>
-                    <li>{% translate 'Fotogalerie' %}</li>
+                    <li><a href="{% url 'home' %}">{% translate 'Úvod' %}</a></li>
+                    <li><a href="{% url 'photogalleries' %}">{% translate 'Fotogalerie' %}</a></li>
                     <li class="last">{% translate 'Partneři' %}</li>
                 </ul>
             </nav>
