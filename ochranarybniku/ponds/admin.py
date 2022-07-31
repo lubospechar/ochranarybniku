@@ -14,3 +14,6 @@ class PondAdmin(OSMGeoAdmin):
     default_zoom=7
     map_width = 900 
     map_height = 650
+    prepopulated_fields = {
+        "slug": ("pond_name",),
+    }

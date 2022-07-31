@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from ponds.models import Pond
 
-# Create your views here.
+def ponds(request):
+    return render(request, 'ponds/ponds.html', {
+        'ponds': Pond.objects.filter(monitored=True)
+    })
+
+def pond_card(request, slug):
+    pond = get_object_or_404(Pond, slug=slug)
+    return render(request, 'ponds/pond_card.html', {'pond': pond})

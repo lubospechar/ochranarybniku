@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header><h1>Seznam rybníků</h1></header>
+    <main>
+            <ul>
+                {% for pond in ponds %}
+                <li><a href="{% url 'pond_card' pond.slug %}">{{ pond.pond_name }}</a></li>
+                {% endfor %}
+            </ul>
+    </main>
+    <footer></footer>
+  </body>
+</html>
+ 
