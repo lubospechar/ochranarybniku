@@ -15,6 +15,10 @@ class Pond(models.Model):
         default=False
     )
     
+    slug = models.SlugField()
+    
+    #qr_code = models.ImageField()
+    
     def __str__(self):
         return self.pond_name
     
