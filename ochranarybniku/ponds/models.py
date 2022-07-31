@@ -17,7 +17,7 @@ class Pond(models.Model):
     
     slug = models.SlugField()
     
-    #qr_code = models.ImageField()
+    qr_code = models.ImageField(null=True, blank=True)
     
     def __str__(self):
         return self.pond_name
