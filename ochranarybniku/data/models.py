@@ -68,7 +68,7 @@ class Data(models.Model):
 
 class FloatData(Data):
     value = models.FloatField(verbose_name="Hodnota")
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
+    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Data (desetinné číslo)"
@@ -77,7 +77,7 @@ class FloatData(Data):
 
 class IntegerData(Data):
     value = models.IntegerField(verbose_name="Hodnota")
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE)
+    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Data (celé číslo)"
