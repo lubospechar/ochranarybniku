@@ -30,5 +30,5 @@ python-decouple==3.6
 xlwt==1.3.0
 
 ## Použité balíky pro vývoj
-django-extensions==3.1.5
+django-extensions==3.2.0
 ipython==8.4.0
