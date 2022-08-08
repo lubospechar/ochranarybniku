@@ -6,12 +6,12 @@
     <title></title>
   </head>
   <body>
-    <header><h1>{{ pond.pond_name }}</h1></header>
+    <header>
+      <h1>{{ pond.pond_name }}</h1>
+      {% if pond.title_picture %}<img src="{% get_media_prefix %}{{ pond.title_picture }}" />{% endif %}
+    </header>
     <main>
-      {% if pond.qr_code %}
-        <img src="{% get_media_prefix %}{{ pond.qr_code }}" width="20%"/>
-        <a href="{% get_media_prefix %}{{ pond.qr_code }}">stáhnout</a>
-      {% endif %}
+      <article>{{ pond.main_text|safe }}</article>
     </main>
     <footer></footer>
   </body>

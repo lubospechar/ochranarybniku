@@ -30,7 +30,7 @@ class Pond(models.Model):
     qr_code = models.ImageField(null=True, blank=True, upload_to="qrcodes/", verbose_name="QR Kód karty rybníku")
     
     title_picture = models.ImageField(null=True, blank=True, upload_to="pond_titles/", verbose_name="Titulní obrázek")
-    main_text = models.TextField(verbose_name="Hlavní text", null=True, blank=True)
+    main_text_cs = models.TextField(verbose_name="Hlavní text", null=True, blank=True)
     main_photogallery = models.ManyToManyField(Picture, blank=True)
     
     photogalleries = models.ManyToManyField(PhotoGallery, blank=True)

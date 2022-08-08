@@ -66,6 +66,7 @@ class UnitAdmin(admin.ModelAdmin):
 @admin.register(PondMeasurement)
 class PondMeasurementAdmin(admin.ModelAdmin):
     list_display = ("date", "pond", "note_cs", "note_en")
+    list_filter = ('pond',)
     inlines = [
         FloatDataInline,
         IntegerDataInline,
