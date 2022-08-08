@@ -6,8 +6,8 @@ from ponds.models import Pond
 
 @admin.register(Pond)
 class PondAdmin(OSMGeoAdmin):
-    list_display = ("pond_name", "monitored", "reserve", 'slug', 'area_m2', 'altitude',)
-    list_editable = ("monitored",)
+    list_display = ("pond_name", "monitored", 'reserve', 'slug', 'area_m2', 'altitude',)
+    list_editable = ("monitored", 'reserve')
     filter_horizontal = ('main_photogallery',)
     pnt = Point(15.3,50, srid=4326)
     pnt.transform(900913)
