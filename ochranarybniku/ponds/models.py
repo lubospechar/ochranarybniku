@@ -13,8 +13,15 @@ class Pond(models.Model):
     
     area_m2 = models.PositiveIntegerField(verbose_name="Rozloha rybníku", null=True, blank=True)
 
+    altitude = models.PositiveIntegerField(verbose_name="Nadmořská výška", null=True, blank=True)
+
     monitored = models.BooleanField(
         verbose_name="Sledovaný rybník",
+        default=False
+    )
+    
+    reserve = models.BooleanField(
+        verbose_name="Rezerva",
         default=False
     )
     
