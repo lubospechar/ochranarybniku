@@ -23,9 +23,9 @@ class Pond(models.Model):
     qr_code = models.ImageField(null=True, blank=True, upload_to="qrcodes/", verbose_name="QR Kód karty rybníku")
     
     main_text = models.TextField(verbose_name="Hlavní text", null=True, blank=True)
-    main_photogallery = models.ManyToManyField(Picture)
+    main_photogallery = models.ManyToManyField(Picture, blank=True)
     
-    photogalleries = models.ManyToManyField(PhotoGallery)
+    photogalleries = models.ManyToManyField(PhotoGallery, blank=True)
     
     def __str__(self):
         return self.pond_name
@@ -33,7 +33,3 @@ class Pond(models.Model):
     class Meta:
         verbose_name='Rybník'
         verbose_name_plural='Rybníky'
-        
-
-    
-    
