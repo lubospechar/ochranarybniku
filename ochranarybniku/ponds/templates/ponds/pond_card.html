@@ -1,18 +1,98 @@
 {% load i18n %}{% load static %}
+{% get_current_language as LANGUAGE_CODE %} {% comment %} TOHLE PUJDE ASI PRYC {% endcomment %}
 <!DOCTYPE html>
 <html lang="">
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+    <script type="text/javascript">Loader.load();</script>
+    <link rel="stylesheet" href="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.css">
+    <script src="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.js"></script>
   </head>
   <body>
     <header>
+
       <h1>{{ pond.pond_name }}</h1>
       {% if pond.title_picture %}<img src="{% get_media_prefix %}{{ pond.title_picture }}" />{% endif %}
     </header>
     <main>
-      <article>{{ pond.main_text|safe }}</article>
+      <article>
+          <section class="main_text">
+          <h2>Text</h2>
+          {% if LANGUAGE_CODE == 'cs' %}{{ pond.main_text_cs|safe }} {% endif %}
+          {% if LANGUAGE_CODE == 'en' %}{{ pond.main_text_en|safe }}{% endif %}
+          </section>
+
+          <section class="map">
+          <h2>Mapa</h2>
+            <div id="m" style="height:1000px; width:2000px "></div>
+          </section>
+  
+        <section class="main_photogallery">
+          <h2>Hlavní fotogalerie</h2>
+          <div class="simple-gallery">
+          {% for photo in pond.main_photogallery.all %}
+             <div><a href="{% get_media_prefix %}{{ photo.photo }}"><img src="{% get_media_prefix %}{{ photo.admin_thumbnail }}" alt="" title=""/></a></div>
+          {% endfor %}
+          </div>
+        </section>
+      
+
+        <section class="photogalleries">
+          <h2>Související fotogalerie</h2>
+          {% include "webapp/photogalleries_base.html" %}
+        </section>
+    
+      <section class="visits">
+        <h2>Návštevy na rybnících</h2>
+        {% for visit in pond.pondvisit_set.all %}
+            <p>{{ visit.desc }}, {{ visit.dt_start.date }}, {{ visit.visitors }}</p>
+        {% endfor %}
+      </section>
+
+
+      <section class="data">
+        <h2>Data</h2>
+
+        
+  
+        
+        
+      </section>
+
+
+      
+
     </main>
     <footer></footer>
+    <script>
+      var center = SMap.Coords.fromWGS84({{ pond.area.centroid.x|safe }}, {{ pond.area.centroid.y|safe }});
+      var m = new SMap(JAK.gel("m"), center, 17);
+      m.addDefaultLayer(SMap.DEF_OPHOTO).enable();
+      m.addDefaultControls();
+
+      var layer = new SMap.Layer.Geometry();
+      m.addLayer(layer);
+      layer.enable();
+
+      var coords = [
+        {% for coord in pond.area.tuple.0 %}
+        SMap.Coords.fromWGS84({{ coord.0|safe }}, {{ coord.1|safe }}),
+      {% endfor %}
+      ]
+
+      var options = {
+//         border: "#000000"
+      };
+      
+      var polygon = new SMap.Geometry(SMap.GEOMETRY_POLYGON, null, coords, options);
+      
+      layer.addGeometry(polygon);
+
+
+      var lightbox = new SimpleLightbox('.simple-gallery a', { /* options */ });
+
+    </script>
   </body>
 </html>

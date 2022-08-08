@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.gis.db.models import PolygonField
 from webapp.models import Picture, PhotoGallery
+#from data.models import 
 
 class Pond(models.Model):
     pond_name = models.CharField(
@@ -39,6 +40,11 @@ class Pond(models.Model):
     
     def __str__(self):
         return self.pond_name
+    
+    
+    def get_base_data(self):
+        pass
+        
     
     class Meta:
         verbose_name='Rybník'

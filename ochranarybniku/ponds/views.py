@@ -8,4 +8,7 @@ def ponds(request):
 
 def pond_card(request, slug):
     pond = get_object_or_404(Pond, slug=slug)
-    return render(request, 'ponds/pond_card.html', {'pond': pond})
+    return render(request, 'ponds/pond_card.html', {
+        'pond': pond,
+        'galleries': pond.photogalleries.all()
+    })
