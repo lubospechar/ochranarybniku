@@ -8,13 +8,32 @@ footer {
         padding-bottom: 30px;
     }
     
-    section {
+    section.left, section.right {
         text-align: center;
-    
+    }
+
+    section {
         p {
             padding: 0;
             margin: 5px 0 5px 0;
+
+            ul {
+                margin-top: 0px;
+                padding-top: 0px;
+
+                li {
+                    margin-top: 0px;
+                    padding-top: 0px;
+
+                }
+
+            }
+
+
+
         }
+
+
     }
 }
 

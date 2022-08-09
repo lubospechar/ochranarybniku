@@ -225,12 +225,20 @@ footer div {
   padding-top: 25px;
   padding-bottom: 30px;
 }
-footer section {
+footer section.left, footer section.right {
   text-align: center;
 }
 footer section p {
   padding: 0;
   margin: 5px 0 5px 0;
+}
+footer section p ul {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+footer section p ul li {
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 /*# sourceMappingURL=style.css.map */
