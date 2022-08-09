@@ -21,8 +21,8 @@
             </div>
             <nav>
                 <ul class="language">
-                    <li><a href="{% url 'set_language' 'cs' %}"><img src="{% static 'img/czflag.png' %}" /></a>
-                    <li class="last"><a href="{% url 'set_language' 'en' %}"><img src="{% static 'img/enflag.png' %}" /></a>
+                    <li><a href="{% url 'set_language' 'cs' %}?next={{ request.get_full_path }}"><img src="{% static 'img/czflag.png' %}" /></a>
+                    <li class="last"><a href="{% url 'set_language' 'en' %}?next={{ request.get_full_path }}"><img src="{% static 'img/enflag.png' %}" /></a>
                 </ul>
                 <ul class="menu">
                     <li><a href="{% url 'home' %}">{% translate 'Úvod' %}</a></li>

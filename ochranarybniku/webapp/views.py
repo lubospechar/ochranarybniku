@@ -7,8 +7,9 @@ from webapp.models import Page, PhotoGallery
 
 def set_language(request, language):
     user_language = language
+    redirect_url = request.GET.get('next')
     translation.activate(language)
-    request = redirect('home')
+    request = redirect(redirect_url)
     request.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
     return request
 
