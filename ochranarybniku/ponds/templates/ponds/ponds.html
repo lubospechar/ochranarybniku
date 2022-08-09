@@ -1,20 +1,20 @@
+{% extends 'webapp/base.html' %}
 {% load i18n %}{% load static %}
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <header><h1>Seznam rybníků</h1></header>
-    <main>
-            <ul>
-                {% for pond in ponds %}
-                <li><a href="{% url 'pond_card' pond.slug %}">{{ pond.pond_name }}</a></li>
-                {% endfor %}
-            </ul>
-    </main>
-    <footer></footer>
-  </body>
-</html>
- 
+
+
+{% block main %}
+<div class="main_content">
+    <article class="ponds">
+      <h1>{% translate 'Seznam rybníků' %}</h1>
+        <ul>
+            {% for pond in ponds %}
+            <li>
+                <a href="{% url 'pond_card' pond.slug %}"><img src="{% get_media_prefix %}{{ pond.title_picture }}" />
+                <p>{{ pond.pond_name }}</p>
+              </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+</div>
+{% endblock %}

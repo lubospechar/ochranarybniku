@@ -47,3 +47,45 @@ main {
     height: 600px;
     z-index: 0
 }
+
+.ponds {
+
+    ul {
+        list-style: none;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+
+    ul li {
+        background: #000000;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+
+        &:hover {
+            background: #3f3f3f
+        }
+
+    }
+    ul li a {
+        text-decoration: none;
+    }
+
+    ul li p {
+        font-family: Arial;
+        font-size: 40px;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 3px;
+        text-align: center;
+        color: $gray1
+
+    }
+
+
+    img {
+        width: 100%;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+}
