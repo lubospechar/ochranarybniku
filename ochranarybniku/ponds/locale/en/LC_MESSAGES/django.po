@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 15:54+0200\n"
+"POT-Creation-Date: 2022-08-09 17:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: ponds/templates/ponds/pond_card.html:24
 msgid "Rybník"
 msgstr "Pond"
@@ -31,7 +32,23 @@ msgstr "Main photogallery"
 
 #: ponds/templates/ponds/pond_card.html:40
 msgid "Návštevy v rámci projektu (včetně plánovaných)"
-msgstr "Visits"
+msgstr "Project visits (including future)"
+
+#: ponds/templates/ponds/pond_card.html:43
+msgid "Začátek"
+msgstr "Start"
+
+#: ponds/templates/ponds/pond_card.html:44
+msgid "Konec"
+msgstr "End"
+
+#: ponds/templates/ponds/pond_card.html:45
+msgid "Popis aktivit"
+msgstr "Activities description"
+
+#: ponds/templates/ponds/pond_card.html:46
+msgid "Účastní se"
+msgstr "Workers"
 
 #: ponds/templates/ponds/pond_card.html:61
 msgid "Související fotogalerie"

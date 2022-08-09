@@ -17,6 +17,12 @@ class PondVisit(models.Model):
         max_length=255,
         verbose_name="Stručný popis práce",
     )
+    
+    desc_en = models.CharField(
+        max_length=255,
+        verbose_name="Stručný popis práce (en)",
+        null=True, blank=True,
+    )
 
     dt_start = models.DateTimeField(verbose_name="Začátek")
 
