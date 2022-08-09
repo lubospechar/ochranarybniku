@@ -1,0 +1,22 @@
+{% load i18n %}{% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% if photogallery_detail %}
+    {% if LANGUAGE_CODE == 'cs' %}
+        <h1>Fotogalerie: {{ photogallery.name_cs }}</h1>
+        <p>{{ photogallery.description_cs }}</p>
+    {% endif %}
+    {% if LANGUAGE_CODE == 'en' %}
+        <h1>Photogallery{{ photogallery.name_en }}</h1>
+        <p>{{ photogallery.description_en }}</p>
+    {% endif %}
+{% endif %}
+
+<div class="simple-gallery">
+    {% for photo in pictures %}
+    <div class="photo"><div class="transf"><a href="{% get_media_prefix %}{{ photo.photo }}"><img src="{% get_media_prefix %}{{ photo.admin_thumbnail }}" alt="" title=""/></a></div></div>
+    {% endfor %}
+</div>
+
+
+

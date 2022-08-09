@@ -1,14 +1,86 @@
+{% extends 'webapp/base.html' %}
 {% load i18n %}{% load static %}
 {% get_current_language as LANGUAGE_CODE %} {% comment %} TOHLE PUJDE ASI PRYC {% endcomment %}
+
+{% block title %} - {{ pond.pond_name }}{% endblock %}
+
+{% block extrahead %}
+<script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+<script type="text/javascript">Loader.load();</script>
+<link rel="stylesheet" href="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.css">
+<script src="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.js"></script>
+{% endblock %}
+
+
+{% block main %}
+<div class="header_slideshow">
+  <img src="{% get_media_prefix %}{{ pond.title_picture }}" />
+</div>
+
+<div class="main_content">
+    <article class="pond">
+        <section class="main_text">
+          <h1>{% translate 'Rybník' %} {{ pond.pond_name }}</h1>
+          {% if LANGUAGE_CODE == 'cs' %}{{ pond.main_text_cs|safe }} {% endif %}
+          {% if LANGUAGE_CODE == 'en' %}{{ pond.main_text_en|safe }}{% endif %}
+        </section>
+
+          <section class="map">
+            <h2>{% translate 'Mapa' %}</h2>
+            <div id="map"></div>
+          </section>
+
+          <section class="main_photogallery">
+            <h2>{% translate 'Hlavní fotogalerie' %}</h2>
+            {% include "webapp/photogallery_base.html" %}
+          </section>
+
+          <section class="visits">
+            <h2>{% translate 'Návštevy v rámci projektu (včetně plánovaných)' %}</h2>
+            <table>
+              <tr>
+                <th>Začátek</th>
+                <th>Konec</th>
+                <th>Popis aktivit</th>
+                <th>Účastní se</th>
+              </tr>
+
+              {% for visit in visits %}
+                <tr>
+                  <td>{{ visit.dt_start }}</td>
+                  <td>{{ visit.dt_end }}</td>
+                  <td>{{ visit.desc }}</td>
+                  <td>{{ visit.visitors }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+          </section>
+        
+        <section class="photogallery">
+            <h2>{% translate 'Související fotogalerie' %}</h2>
+            {% include "webapp/photogalleries_base.html" %}
+        </section>
+
+    </article>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  {% include "ponds/js/base_map.js" %}
+  var lightbox = new SimpleLightbox('.simple-gallery a', { /* options */ });
+</script>
+{% endblock %}
+
+
+
+{% comment %}
 <!DOCTYPE html>
 <html lang="">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
-    <script type="text/javascript">Loader.load();</script>
-    <link rel="stylesheet" href="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.css">
-    <script src="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.js"></script>
+
   </head>
   <body>
     <header>
@@ -96,3 +168,4 @@
     </script>
   </body>
 </html>
+{% endcomment %}

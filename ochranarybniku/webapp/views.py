@@ -12,8 +12,6 @@ def set_language(request, language):
     request.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
     return request
 
-
-@login_required
 def home(request):
     about = get_object_or_404(Page, slug_en='about')
     galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')[:6]
@@ -23,16 +21,17 @@ def home(request):
         'is_home': True
     })
 
-
-@login_required
 def photogalleries(request):
     galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')
     return render(request, 'webapp/photogalleries.html', {
         'galleries': galleries,
     })
 
-@login_required
 def photogallery(request, photogallery_pk, photogallery_slug):
     photogallery = get_object_or_404(PhotoGallery, pk=photogallery_pk)
-    return render(request, 'webapp/photogallery.html', {'photogallery': photogallery})
+    return render(request, 'webapp/photogallery.html', {
+        'photogallery': photogallery,
+        'pictures': photogallery.pictures.all(),
+        'photogallery_detail': True,
+    })
 

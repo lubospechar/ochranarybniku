@@ -60,3 +60,30 @@ $border: 1px solid #dddddd;
     }
 
 }
+
+.main_photogallery {
+    
+    .simple-gallery {
+        display: grid;
+        gap: 1px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .photo {
+        z-index: 0;
+        width: 335px;
+        height: 335px;
+        border: $border;
+        border-radius: 7px;
+        background: $gray1;
+        
+        .transf {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%)
+        }
+        
+    }
+}
