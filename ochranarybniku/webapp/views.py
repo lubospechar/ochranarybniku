@@ -20,6 +20,7 @@ def home(request):
     return render(request, 'webapp/home.html', {
         'about': about,
         'galleries': galleries,
+        'is_home': True
     })
 
 

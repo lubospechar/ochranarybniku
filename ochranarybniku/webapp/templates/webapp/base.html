@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <main>
       <header>
         <div class="header_content">
             <div class="logo">
@@ -27,14 +26,15 @@
                 </ul>
                 <ul class="menu">
                     <li><a href="{% url 'home' %}">{% translate 'Úvod' %}</a></li>
+                    <li><a href="{% url 'ponds' %}">{% translate 'Rybníky' %}</a></li>
                     <li><a href="{% url 'photogalleries' %}">{% translate 'Fotogalerie' %}</a></li>
                     <li class="last">{% translate 'Partneři' %}</li>
                 </ul>
             </nav>
         </div>
     </header>
-    {% block main %}
-    {% endblock %}
+    <main>
+      {% block main %}{% endblock %}
     </main>
     {% block script %}{% endblock %}
     </body>

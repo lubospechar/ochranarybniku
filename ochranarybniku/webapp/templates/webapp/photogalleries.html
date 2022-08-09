@@ -5,17 +5,10 @@
 {% block title %} Home{% endblock %}
 
 {% block main %}
-<section class="header_slideshow">
-    <img src="{% static 'img/header_slideshow1.jpg' %}" />
-</section>
-
-
-
-<section class="main_content">
-
-    <article class="photogallery">
-        {% include "webapp/photogalleries_base.html" %}
-    </article>
-</section>
-
+    <div class="main_content">
+        <h1>{% translate 'Fotogalerie' %}</h1>
+        <article class="photogallery">
+            {% include "webapp/photogalleries_base.html" %}
+        </article>
+    </div>
 {% endblock %}

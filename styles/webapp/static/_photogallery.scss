@@ -1,0 +1,62 @@
+$border: 1px solid #dddddd;
+
+.galleries {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+
+    .gallery {
+        z-index: 0;
+        width: 360px;
+        height: 360px;
+        background: #c9ddf5;
+        border-top: $border;
+        border-left:$border;
+        border-right: $border;
+        border-radius: 20px 20px 0px 0px;
+
+        &:hover {
+            background: #86b5e7;
+        }
+
+        .image {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%)
+        }
+    }
+
+    .description {
+        background: #f8f8f8;
+        border-bottom: $border;
+        border-left: $border;
+        border-right: $border;
+        border-radius: 0px 0px 20px 20px;
+        width: 360px;
+        height: 110px;
+        margin-bottom: 25px;
+    }
+
+    p {
+        padding: 15px 0;
+        margin: 0;
+        color: #000000;
+    }
+
+    .name {
+        font-size: 1.4em;
+        font-family: Arial;
+        text-align: center;
+    }
+
+
+    .desc {
+        padding-top: 0px;
+        font-size: 1.3em;
+        font-family: Arial;
+        text-align: center;
+    }
+
+}

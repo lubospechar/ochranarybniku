@@ -4,13 +4,13 @@ body {
 }
 
 main {
-  margin: 50px 0 unset 0;
+  margin-left: 0;
+  margin-right: 0;
   border-left: 1px solid #b6b6b6;
   border-right: 1px solid #b6b6b6;
 }
 
 header {
-  top: 0px;
   position: fixed;
   width: 100%;
   background: #002c5b;
@@ -19,36 +19,44 @@ header {
   padding-left: 0px;
   z-index: 1;
 }
-header .header_content {
+
+.header_content {
   display: grid;
-  grid-template-columns: 20% 60% px;
+  grid-template-columns: 20% 60%px; 
   width: 75%;
   margin-left: auto;
   margin-right: auto;
 }
-header .logo {
+
+
+.logo {
   grid-column: 1;
   margin-left: 50px;
 }
-header nav {
+
+nav {
   grid-column: 2;
   color: #ffffff;
   margin-top: 0px;
   text-align: right;
 }
-header nav ul {
+
+nav ul {
   list-style: none;
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
-header nav ul img {
-  width: 50px;
+
+nav ul img {
+  width: 50px
 }
-header nav ul li {
+
+nav ul li {
   display: inline;
   padding-right: 20px;
 }
-header nav ul.menu li {
+
+nav ul.menu li {
   display: inline;
   font-size: 26px;
   padding-left: 20px;
@@ -56,21 +64,19 @@ header nav ul.menu li {
   border-right: 2px solid white;
   color: #ffffff;
 }
-header nav ul.menu li a {
+
+nav ul.menu li a {
   color: #ffffff;
   text-decoration: none;
 }
-header nav ul.menu li.last {
+
+nav ul.menu li.last {
   border-right: none;
 }
 
-main {
-  margin-top: 144px;
-}
-
 .header_slideshow img {
-  width: 100%;
-  margin-bottom: 0px;
+  margin-top: 144px;
+  width: 100%
 }
 
 .main_content {
@@ -78,12 +84,13 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
+
 .main_content h1 {
-  padding-top: 25px;
   font-size: 3em;
 }
+
 .main_content p {
-  font-size: 1.3em;
+  font-size: 1.3em
 }
 
 .galleries {
@@ -91,6 +98,7 @@ main {
   gap: 1px;
   grid-template-columns: repeat(3, 1fr);
 }
+
 .galleries .gallery {
   z-index: 0;
   width: 360px;
@@ -99,18 +107,21 @@ main {
   border-top: 1px solid #dddddd;
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px 20px 0px 0px; 
 }
-.galleries .gallery:hover {
+
+.gallery:hover {
   background: #86b5e7;
 }
+
 .galleries .gallery .image {
   position: relative;
   top: 50%;
   left: 50%;
   text-align: center;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%)
 }
+
 .galleries .description {
   background: #f8f8f8;
   border-bottom: 1px solid #dddddd;
@@ -121,16 +132,19 @@ main {
   height: 110px;
   margin-bottom: 25px;
 }
+
 .galleries p {
   padding: 15px 0;
   margin: 0;
   color: #000000;
 }
+
 .galleries .name {
   font-size: 1.4em;
   font-family: Arial;
   text-align: center;
 }
+
 .galleries .desc {
   padding-top: 0px;
   font-size: 1.3em;
@@ -138,4 +152,4 @@ main {
   text-align: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+

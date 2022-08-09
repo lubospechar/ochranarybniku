@@ -6,28 +6,29 @@
 
 {% block main %}
 
-<section class="header_slideshow">
+<div class="header_slideshow">
     <img src="{% static 'img/header_slideshow1.jpg' %}" />
-</section>
+</div>
 
+<div class="main_content">
+    <article class="home">
+        <section class="about">
+            <h1>
+                {% if LANGUAGE_CODE == 'cs' %}{{ about.name_cs }}{% endif %}
+                {% if LANGUAGE_CODE == 'en' %}{{ about.name_en }}{% endif %}
+            </h1>
+            {% if LANGUAGE_CODE == 'cs' %}{{ about.content_cs|safe }}{% endif %}
+            {% if LANGUAGE_CODE == 'en' %}{{ about.content_en|safe }}{% endif %}
+        </section>
 
-<section class="main_content">
-    <article class="about">
-        <h1>
-            {% if LANGUAGE_CODE == 'cs' %}{{ about.name_cs }}{% endif %}
-            {% if LANGUAGE_CODE == 'en' %}{{ about.name_en }}{% endif %}
-        </h1>
-        {% if LANGUAGE_CODE == 'cs' %}{{ about.content_cs|safe }}{% endif %}
-        {% if LANGUAGE_CODE == 'en' %}{{ about.content_en|safe }}{% endif %}
+        <section class="photogallery">
+            {% include "webapp/photogalleries_base.html" %}
+        </section>
+
+        <section class="partners">
+            <h1>{% translate 'Partneři' %}</h1>
+        </section>
     </article>
-
-    <article class="photogallery">
-        {% include "webapp/photogalleries_base.html" %}
-    </article>
-
-    <article class="partners">
-        <h1>{% translate 'Partneři' %}</h1>
-    </article>
-</section>
+</div>
 
 {% endblock %}
