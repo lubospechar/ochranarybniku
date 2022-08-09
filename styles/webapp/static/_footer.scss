@@ -1,0 +1,20 @@
+footer { 
+    margin-top: 100px;
+    div {
+        border-top: 20px solid $blue1;
+        display: grid;
+        grid-template-columns: 20% 50% 30%;
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+    
+    section {
+        text-align: center;
+    
+        p {
+            padding: 0;
+            margin: 5px 0 5px 0;
+        }
+    }
+}
+

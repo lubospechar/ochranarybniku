@@ -9,7 +9,7 @@ $border: 1px solid #dddddd;
         z-index: 0;
         width: 360px;
         height: 360px;
-        background: #c9ddf5;
+        background: $blue1;
         border-top: $border;
         border-left:$border;
         border-right: $border;
@@ -24,7 +24,7 @@ $border: 1px solid #dddddd;
             top: 50%;
             left: 50%;
             text-align: center;
-            transform: translate(-50%, -50%)
+            transform: translate(-50%, -50%);
         }
     }
 
@@ -61,7 +61,7 @@ $border: 1px solid #dddddd;
 
 }
 
-.main_photogallery {
+.photos {
     
     .simple-gallery {
         display: grid;
@@ -76,6 +76,7 @@ $border: 1px solid #dddddd;
         border: $border;
         border-radius: 7px;
         background: $gray1;
+        margin-top: 10px;
         
         .transf {
             position: relative;
@@ -84,6 +85,5 @@ $border: 1px solid #dddddd;
             text-align: center;
             transform: translate(-50%, -50%)
         }
-        
     }
 }

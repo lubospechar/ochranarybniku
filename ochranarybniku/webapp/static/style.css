@@ -21,7 +21,7 @@ header {
 }
 header .header_content {
   display: grid;
-  grid-template-columns: 20% 60% px;
+  grid-template-columns: 20% 80%;
   width: 75%;
   margin-left: auto;
   margin-right: auto;
@@ -161,25 +161,44 @@ main {
   text-align: center;
 }
 
-.main_photogallery .simple-gallery {
+.photos .simple-gallery {
   display: grid;
   gap: 1px;
   grid-template-columns: repeat(4, 1fr);
 }
-.main_photogallery .photo {
+.photos .photo {
   z-index: 0;
   width: 335px;
   height: 335px;
   border: 1px solid #dddddd;
   border-radius: 7px;
   background: #f2f2f2;
+  margin-top: 10px;
 }
-.main_photogallery .photo .transf {
+.photos .photo .transf {
   position: relative;
   top: 50%;
   left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
+}
+
+footer {
+  margin-top: 100px;
+}
+footer div {
+  border-top: 20px solid #c9ddf5;
+  display: grid;
+  grid-template-columns: 20% 50% 30%;
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+footer section {
+  text-align: center;
+}
+footer section p {
+  padding: 0;
+  margin: 5px 0 5px 0;
 }
 
 /*# sourceMappingURL=style.css.map */
