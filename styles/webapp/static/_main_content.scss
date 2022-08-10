@@ -26,6 +26,16 @@ main {
         font-size: 1.3em
     }
     
+    a {
+        color: #000000;
+        text-decoration: underline;
+        
+        &:hover {
+            color: #9f0003;
+        }
+    }
+
+    
 }
 
 .visits {
@@ -89,3 +99,5 @@ main {
         padding-bottom: 0px;
     }
 }
+
+

@@ -89,6 +89,13 @@ main {
 .main_content p {
   font-size: 1.3em;
 }
+.main_content a {
+  color: #000000;
+  text-decoration: underline;
+}
+.main_content a:hover {
+  color: #9f0003;
+}
 
 .visits table {
   border-collapse: collapse;
