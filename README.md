@@ -5,9 +5,20 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
 ## TODO list
 - [ ] Webová prezentace
     - [x] Základní prezentace
-    - [ ] Fotogalerie
-    - [ ] Katalog rybníků
+    - [x] Fotogalerie
+    - [x] Katalog rybníků
     - [x] Admin na fotogalerie
+    - [ ] Automatický zoom mapy u katalogu rybníků
+    - [ ] Tabulka s daty u katalogu rybníků
+    - [ ] Blog
+    - [ ] Datum u fotogalerií
+    - [ ] Odkazy v patičce
+    - [ ] Partneři
+    - [ ] Navigace po stránce
+    - [ ] Data z telemetrických stanic
+    - [ ] Doladit design u karty rybníků dle předlohy
+    - [ ] Responzivní design
+    
 - [x] Skladiště dat
 - [ ] Prezentace pro záchrané programy ryb
 - [ ] Kalendář návštev lokalit
