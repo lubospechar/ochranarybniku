@@ -18,6 +18,7 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
 
 
 ## Chyby
+- [ ] Náhled obrázku nevygeneruje stránka, pouze admin
 - [ ] Při exportu kalendáře do XLS je pro datum a čas volí datový typ string místo datetime
 
 
