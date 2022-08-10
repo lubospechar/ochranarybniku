@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
 from webapp.models import Page, PhotoGallery
+from ponds.models import Pond
 
 def set_language(request, language):
     user_language = language
@@ -19,7 +20,8 @@ def home(request):
     return render(request, 'webapp/home.html', {
         'about': about,
         'galleries': galleries,
-        'is_home': True
+        'is_home': True,
+        'ponds': Pond.objects.filter(monitored=True),
     })
 
 def photogalleries(request):
