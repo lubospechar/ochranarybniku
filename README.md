@@ -8,6 +8,7 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [x] Fotogalerie
     - [x] Katalog rybníků
     - [x] Admin na fotogalerie
+    - [ ] Resize a cache obrázků na straně serveru
     - [ ] Automatický zoom mapy u katalogu rybníků
     - [ ] Tabulka s daty u katalogu rybníků
     - [ ] Blog
