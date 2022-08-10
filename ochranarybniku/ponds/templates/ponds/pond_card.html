@@ -49,7 +49,7 @@
                 <tr>
                   <td>{{ visit.dt_start }}</td>
                   <td>{{ visit.dt_end }}</td>
-                  <td>{{ visit.desc }}</td>
+                  <td>{% if LANGUAGE_CODE == 'cs' %}{{ visit.desc }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ visit.desc_en }}{% endif %}</td>
                   <td>{{ visit.visitors }}</td>
                 </tr>
             {% endfor %}

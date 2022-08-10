@@ -12,8 +12,9 @@ User.add_to_class("__str__", get_full_name)
 
 @admin.register(PondVisit)
 class PondVisitAdmin(admin.ModelAdmin):
-    list_display = ["desc", "ponds_str", "dt_start", "dt_end"]
-    list_filter = ["ponds"]
+    list_display = [ "dt_start", "dt_end", "ponds_str", "desc", "desc_en",]
+    list_filter = ["ponds" ,]
+    list_editable = ["desc", "desc_en"]
     exclude = []
 
     # přídání user do list_display pokud je uživatel superuser
