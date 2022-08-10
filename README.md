@@ -13,6 +13,7 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [ ] Blog
     - [ ] Odkazy v patičce
     - [ ] Partneři
+    - [ ] Data z telemetrických stanic
     - [ ] Doladit design u karty rybníků dle předlohy
     - [ ] Responzivní design
 - [x] Skladiště dat
