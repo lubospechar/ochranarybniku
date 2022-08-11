@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-10 22:47+0200\n"
+"POT-Creation-Date: 2022-08-11 12:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Úvod"
 msgstr "Home"
 
-#: webapp/templates/webapp/base.html:29 webapp/templates/webapp/home.html:25
+#: webapp/templates/webapp/base.html:29
 msgid "Rybníky"
 msgstr "Ponds"
 
@@ -94,6 +94,10 @@ msgstr "State-owned forestry in military area"
 #: webapp/templates/webapp/base.html:53
 msgid "Agentura ochrany přírody a krajiny ČR"
 msgstr "Nature Conservation Agency of the Czech Republic"
+
+#: webapp/templates/webapp/home.html:25
+msgid "Lokality (klikněte pro detail)"
+msgstr "Locality (click for detail)"
 
 #: webapp/templates/webapp/home.html:38
 msgid "Nejnovější fotogalerie"
