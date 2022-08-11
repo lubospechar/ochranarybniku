@@ -9,8 +9,9 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [x] Katalog rybníků
     - [x] Admin na fotogalerie
     - [x] Seznam rybníků na titulkní stránce
-    - [ ] Resize a cache obrázků na straně serveru
+    - [x] Resize a cache obrázků na straně serveru
     - [x] Snížit průhlednost pozadí u fotogalerií
+    - [x] Správné náhledy stránek na facebookovém příspěvku
     - [ ] Automatický zoom mapy u katalogu rybníků
     - [ ] Tabulka s daty u katalogu rybníků
     - [ ] Blog
@@ -35,7 +36,8 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
 
 
 ## Chyby
-- [ ] Náhled obrázku nevygeneruje stránka, pouze admin
+- [x] Automatický resize obrázků nefunguje
+- [x] Náhled obrázku nevygeneruje stránka, pouze admin
 - [ ] Při exportu kalendáře do XLS je pro datum a čas volí datový typ string místo datetime
 
 

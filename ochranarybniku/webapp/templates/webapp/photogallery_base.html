@@ -16,10 +16,8 @@
 
 <div class="simple-gallery">
     {% for photo in pictures %}
-    {% generateimage 'image_thumbnail' source=photo.photo as photo_thubnail %}
-    {% generateimage 'image_gallery_resize' source=photo.photo as photo_resized %}
 
-    <div class="photo"><div class="transf"><a href="{% get_media_prefix %}{{ photo_resized }}"><img src="{% get_media_prefix %}{{ photo_thubnail }}" alt="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}" title="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}"/></a></div></div>
+    <div class="photo"><div class="transf"><a href="{{ photo.gallery_resize.url }}"><img src="{{ photo.admin_thumbnail.url }}" alt="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}" title="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}"/></a></div></div>
     {% endfor %}
 </div>
 
