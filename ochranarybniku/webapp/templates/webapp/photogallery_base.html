@@ -1,5 +1,7 @@
 {% load i18n %}{% load static %}
 {% get_current_language as LANGUAGE_CODE %}
+{% load imagekit %}
+
 
 {% if photogallery_detail %}
     {% if LANGUAGE_CODE == 'cs' %}
@@ -14,7 +16,10 @@
 
 <div class="simple-gallery">
     {% for photo in pictures %}
-    <div class="photo"><div class="transf"><a href="{% get_media_prefix %}{{ photo.photo }}"><img src="{% get_media_prefix %}{{ photo.admin_thumbnail }}" alt="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}" title="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}"/></a></div></div>
+    {% generateimage 'image_thumbnail' source=photo.photo as photo_thubnail %}
+    {% generateimage 'image_gallery_resize' source=photo.photo as photo_resized %}
+
+    <div class="photo"><div class="transf"><a href="{% get_media_prefix %}{{ photo_resized }}"><img src="{% get_media_prefix %}{{ photo_thubnail }}" alt="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}" title="{% if LANGUAGE_CODE == 'cs' %}{{ photo.description_cs }}{% endif %}{% if LANGUAGE_CODE == 'en' %}{{ photo.description_en }}{% endif %}"/></a></div></div>
     {% endfor %}
 </div>
 

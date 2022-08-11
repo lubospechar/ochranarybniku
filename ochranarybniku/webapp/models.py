@@ -83,7 +83,17 @@ class Picture(models.Model):
         processors=[ResizeToFit(300, 300)],
         format="JPEG",
         options={"quality": 60},
+        id="image_thumbnail",
     )
+
+    gallery_resize = ImageSpecField(
+        source="photo",
+        processors=[ResizeToFit(1600, 1600)],
+        format="JPEG",
+        options={"quality": 75},
+        id="image_gallery_resize",
+    )
+
     slug_cs = models.SlugField()
     slug_en = models.SlugField(null=True, blank=True)
 

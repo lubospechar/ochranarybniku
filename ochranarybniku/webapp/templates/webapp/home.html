@@ -1,6 +1,7 @@
 {% extends 'webapp/base.html' %}
 {% load i18n %}{% load static %}
 {% get_current_language as LANGUAGE_CODE %}
+{% load imagekit %}
 
 {% block title %} Home{% endblock %}
 
@@ -25,8 +26,9 @@
             <h2>{% translate 'Lokality (klikněte pro detail)' %}</h2>
             <ul>
                 {% for pond in ponds %}
+                {% generateimage 'home_page' source=pond.title_picture as home_page_resize %}
                 <li>
-                    <a href="{% url 'pond_card' pond.slug %}"><img src="{% get_media_prefix %}{{ pond.title_picture }}" />
+                    <a href="{% url 'pond_card' pond.slug %}"><img src="{% get_media_prefix %}{{ home_page_resize }}" />
                     <p>{{ pond.pond_name }}</p>
                 </a>
                 </li>

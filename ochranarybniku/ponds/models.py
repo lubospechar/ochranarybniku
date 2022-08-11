@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.gis.db.models import PolygonField
 from webapp.models import Picture, PhotoGallery
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit
 
 class Pond(models.Model):
     pond_name = models.CharField(
@@ -30,6 +32,24 @@ class Pond(models.Model):
     qr_code = models.ImageField(null=True, blank=True, upload_to="qrcodes/", verbose_name="QR Kód karty rybníku")
     
     title_picture = models.ImageField(null=True, blank=True, upload_to="pond_titles/", verbose_name="Titulní obrázek")
+
+    title_picture_home = ImageSpecField(
+        source="title_picture",
+        processors=[ResizeToFit(800, 271, False)],
+        format="JPEG",
+        options={"quality": 70},
+        id="home_page"
+    )
+
+    title_picture_list = ImageSpecField(
+        source="title_picture",
+        processors=[ResizeToFit(1172, 397, False)],
+        format="JPEG",
+        options={"quality": 70},
+        id="list_page"
+    )
+
+
     main_text_cs = models.TextField(verbose_name="Hlavní text (cs)", null=True, blank=True)
     main_text_en = models.TextField(verbose_name="Hlavní text (en)", null=True, blank=True)
     main_photogallery = models.ManyToManyField(Picture, blank=True)

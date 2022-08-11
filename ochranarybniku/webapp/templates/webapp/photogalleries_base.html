@@ -1,4 +1,6 @@
 {% load i18n %}{% load static %}
+{% load imagekit %}
+
 <div class="galleries">
     {% for gallery in galleries %}
         <a href="{% if LANGUAGE_CODE == 'en' %}{% url 'photogallery' gallery.pk gallery.slug_en %}{% endif %}{% if LANGUAGE_CODE == 'cs' %}{% url 'photogallery' gallery.pk gallery.slug_cs %}{% endif %}">
