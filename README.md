@@ -15,6 +15,7 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [ ] Odkazy v patičce
     - [ ] Partneři
     - [ ] Navigace po stránce
+    - [ ] Přepínače na různé mapové podklady map Seznamu
     - [ ] Data z telemetrických stanic
     - [ ] Doladit design u karty rybníků dle předlohy
     - [ ] Responzivní design
