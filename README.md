@@ -15,9 +15,10 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [ ] Tabulka s daty u katalogu rybníků
     - [ ] Blog
     - [ ] Datum u fotogalerií
-    - [ ] Rybník, pokud se ho to týká
+    - [ ] Relace na rybník ve fotogalerii, pokud se ho to týká
     - [ ] Odkazy v patičce
     - [ ] Partneři
+    - [ ] Navigace na rybníku pod hlavičkou stránky
     - [ ] Navigace po stránce
     - [ ] Přepínače na různé mapové podklady map Seznamu
     - [ ] Data z telemetrických stanic
