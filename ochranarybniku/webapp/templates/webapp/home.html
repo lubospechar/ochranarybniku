@@ -21,6 +21,19 @@
             {% if LANGUAGE_CODE == 'en' %}{{ about.content_en|safe }}{% endif %}
         </section>
 
+        <section class="ponds_home">
+            <h2>{% translate 'Rybníky' %}</h2>
+            <ul>
+                {% for pond in ponds %}
+                <li>
+                    <a href="{% url 'pond_card' pond.slug %}"><img src="{% get_media_prefix %}{{ pond.title_picture }}" />
+                    <p>{{ pond.pond_name }}</p>
+                </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
         <section class="photogallery">
             <h2>{% translate 'Nejnovější fotogalerie' %}</h2>
             {% include "webapp/photogalleries_base.html" %}

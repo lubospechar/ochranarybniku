@@ -68,6 +68,6 @@
 {% block script %}
 <script type="text/javascript">
   {% include "ponds/js/base_map.js" %}
-  var lightbox = new SimpleLightbox('.simple-gallery a', { /* options */ });
+  var lightbox = new SimpleLightbox('.simple-gallery a', { overlayOpacity: 0.95 });
 </script>
 {% endblock %}
