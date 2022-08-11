@@ -3,6 +3,9 @@
 {% get_current_language as LANGUAGE_CODE %} {% comment %} TOHLE PUJDE ASI PRYC {% endcomment %}
 
 {% block title %} - {{ pond.pond_name }}{% endblock %}
+{% block og_title %}Ochrana rybníků - {{ pond.pond_name }}{% endblock %}
+{% block og_image %}{% get_media_prefix %}{{ pond.title_picture }}{% endblock %}
+
 
 {% block extrahead %}
 <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
