@@ -12,6 +12,7 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
     - [x] Resize a cache obrázků na straně serveru
     - [x] Snížit průhlednost pozadí u fotogalerií
     - [x] Správné náhledy stránek na facebookovém příspěvku
+    - [ ] Prozatimní zrušení dvojjazyčné mutace
     - [ ] Automatický zoom mapy u katalogu rybníků
     - [ ] Tabulka s daty u katalogu rybníků
     - [ ] Blog
