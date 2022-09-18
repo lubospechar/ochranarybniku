@@ -1,0 +1,30 @@
+{% extends 'webapp/base.html' %}
+{% load static %}
+
+
+{% block title %} Blog{% endblock %}
+
+{% block extrahead %}
+    {% comment %}
+        https://github.com/andreknieriem/simplelightbox
+        https://simplelightbox.com/
+    {% endcomment %}
+        <link rel="stylesheet" href="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.css">
+        <script src="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.js"></script>
+{% endblock %}
+
+{% block main %}
+
+<div class="main_content">
+  <section class="blog">
+  </section>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+  <script>
+    var lightbox = new SimpleLightbox('.simple-gallery a', { overlayOpacity: 0.95 });
+  </script>
+{% endblock %}

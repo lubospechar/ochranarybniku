@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
-from webapp.models import Page, PhotoGallery
+from webapp.models import Page, PhotoGallery, Blog
 from ponds.models import Pond
 
 def home(request):
@@ -31,7 +31,7 @@ def photogallery(request, photogallery_pk, photogallery_slug):
     })
 
 def blog(request):
-    return render(request, 'blog.html', {
-        'articles': Blog.objects.filter(enable=True).order_by('publish')[:3]
+    return render(request, 'webapp/blog.html', {
+        'articles': Blog.objects.filter(enable=True).order_by('published')[:3]
     })
 
