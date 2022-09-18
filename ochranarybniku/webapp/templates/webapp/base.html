@@ -5,11 +5,11 @@
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
-    <title>{% translate 'Ochrana rybníků' %}{% block title %}{% endblock %}</title>
+    <title>Ochrana rybníků{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% block extrahead %}{% endblock %}
-    <meta name="keywords" content="{% translate 'rybník, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana rybníků, chráněná území, ochrana přírody, chov ryb' %}">
-    <meta name="description" content="{% translate 'Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.' %}">
+    <meta name="keywords" content="rybník, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana rybníků, chráněná území, ochrana přírody, chov ryb">
+    <meta name="description" content='Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.'>
     <meta name="author" content="ENKI o.p.s.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="{% block og_title %}{% endblock %}">
@@ -22,15 +22,12 @@
                 <img src="{% static 'img/logo_norway_grants.png' %}" />
             </div>
             <nav>
-                <ul class="language">
-                    <li><a href="{% url 'set_language' 'cs' %}?next={{ request.get_full_path }}"><img src="{% static 'img/czflag.png' %}" /></a>
-                    <li class="last"><a href="{% url 'set_language' 'en' %}?next={{ request.get_full_path }}"><img src="{% static 'img/enflag.png' %}" /></a>
-                </ul>
                 <ul class="menu">
-                    <li><a href="{% url 'home' %}">{% translate 'Úvod' %}</a></li>
-                    <li><a href="{% url 'ponds' %}">{% translate 'Rybníky' %}</a></li>
-                    <li class="last"><a href="{% url 'photogalleries' %}">{% translate 'Fotogalerie' %}</a></li>
-                    {% comment %}<li class="last">{% translate 'Partneři' %}</li>{% endcomment %}
+                    <li><a href="{% url 'home' %}">Úvod</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="{% url 'ponds' %}">Rybníky</a></li>
+                    <li class="last"><a href="{% url 'photogalleries' %}">Fotogalerie</a></li>
+                    {% comment %}<li class="last">'Partneři'</li>{% endcomment %}
                 </ul>
             </nav>
         </div>
@@ -45,12 +42,11 @@
         <img src="{% static 'img/logo_norway_grants2.png' %}"  style="height: 120px;"/>
       </section>
       <section class="center">
-        <p>{% translate 'Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.' %}</p>
-        <p>{% translate 'Podpořeno Norskem prostřednictvím Norských fondů v programu Životní prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu životního prostředí v ekosystémech' %}</p>
-        {% comment %}<p>{% translate 'Výše uděleného grantu' %}: 10 236 469 Kč</p>{% endcomment %}
-        <p>{% translate 'Příjemce podpory' %}: <a href="https://www.enki.cz">ENKI, o. p. s</a></p>
-        <p><strong>{% translate 'Partneři projektu' %}</strong>: {% translate 'Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB' %}, {% translate 'Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni' %}, Bundesamt für Wasserwirtschaft, Ökologische Station Waldviertel, Schrems, {% translate 'Rakousko' %}</p>
-        <p><strong>{% translate 'Lokality propůjčují' %}</strong>: {% translate 'Vojenské lesy a statky, s. p.' %}, {% translate 'Agentura ochrany přírody a krajiny ČR' %}</p>
+        <p>Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.</p>
+        <p>Podpořeno Norskem prostřednictvím Norských fondů v programu Životní prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu životního prostředí v ekosystémech</p>
+        <p>Příjemce podpory: <a href="https://www.enki.cz">ENKI, o. p. s</a></p>
+        <p><strong>Partneři projektu</strong>Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB, Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni, Bundesamt für Wasserwirtschaft, Ökologische Station Waldviertel, Schrems, Rakousko</p>
+        <p><strong>Lokality propůjčují</strong>: Vojenské lesy a statky, s. p., Agentura ochrany přírody a krajiny ČR</p>
       </section>
       <section class="right">
         <img src="{% static 'img/sfzp.png' %}" style="height: 120px;" />

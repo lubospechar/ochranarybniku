@@ -1,11 +1,11 @@
 {% extends 'webapp/base.html' %}
-{% load i18n %}{% load static %}
+{% load static %}
 {% load imagekit %}
 
 {% block main %}
 <div class="main_content">
     <article class="ponds">
-      <h1>{% translate 'Seznam rybníků' %}</h1>
+      <h1>Seznam rybníků</h1>
         <ul>
             {% for pond in ponds %}
             {% generateimage 'list_page' source=pond.title_picture as list_page_resize %}

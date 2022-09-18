@@ -5,7 +5,7 @@ from ponds.models import Pond
 class Unit(models.Model):
     shortcut = models.CharField(verbose_name="Zkratka", max_length=10)
     description_cs = models.CharField(verbose_name="Popis", max_length=255)
-    description_en = models.CharField(verbose_name="Popis (en)", max_length=255)
+    #description_en = models.CharField(verbose_name="Popis (en)", max_length=255)
 
     class Meta:
         verbose_name = "Jednotka"
@@ -17,12 +17,8 @@ class Unit(models.Model):
 
 class Parameter(models.Model):
     name_cs = models.CharField(max_length=50, verbose_name="Název parametru (cs)")
-    name_en = models.CharField(max_length=50, verbose_name="Název parametru (en)")
     note_cs = models.CharField(
         max_length=255, verbose_name="Poznámnka (cs)", null=True, blank=True
-    )
-    note_en = models.CharField(
-        max_length=255, verbose_name="Poznámnka (en)", null=True, blank=True
     )
     datatype = models.PositiveSmallIntegerField(
         choices=((1, "Float"), (2, "Integer"), (3, "Boolean"), (4, "Char")),
@@ -41,7 +37,6 @@ class PondMeasurement(models.Model):
     date = models.DateField(verbose_name="Datum")
     pond = models.ForeignKey(Pond, verbose_name="Rybník", on_delete=models.CASCADE)
     note_cs = models.TextField(null=True, blank=True, verbose_name="Poznámka (cs)")
-    note_en = models.TextField(null=True, blank=True, verbose_name="Poznámka (en)")
 
     class Meta:
         verbose_name = "Měření na rybníku"

@@ -7,7 +7,6 @@ class PictureInline(admin.TabularInline):
     model = Picture
     prepopulated_fields = {
         "slug_cs": ("description_cs",),
-        "slug_en": ("description_en",),
     }
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
     thumbnail.short_description = "Náhled"
@@ -18,20 +17,17 @@ class PictureInline(admin.TabularInline):
 class PhotoGalleryAdmin(admin.ModelAdmin):
     list_display = (
         "name_cs",
-        "name_en",
         "description_cs",
-        "description_en",
         "count_pictures",
         "enable",
     )
     list_filter = ("enable", "created", "modified")
-    search_fields = ("name_cs", "description_cs", "name_en", "description_en")
+    search_fields = ("name_cs", "description_cs")
     inlines = [
         PictureInline,
     ]
     prepopulated_fields = {
         "slug_cs": ("name_cs",),
-        "slug_en": ("name_en",),
     }
 
 
@@ -40,24 +36,21 @@ class PictureAdmin(admin.ModelAdmin):
     list_display = (
         "__str__",
         "description_cs",
-        "description_en",
         "enable",
         "thumbnail",
     )
-    search_fields = ("description_cs", "description_en", "enable")
+    search_fields = ("description_cs", "enable")
     list_filter = ("enable", "photogallery")
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
     thumbnail.short_description = "Náhled"
     prepopulated_fields = {
         "slug_cs": ("description_cs",),
-        "slug_en": ("description_en",),
     }
 
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('name_cs', 'name_en', "slug_cs", 'slug_en')
+    list_display = ('name_cs', "slug_cs")
     prepopulated_fields = {
         "slug_cs": ("name_cs",),
-        "slug_en": ("name_en",),
     }

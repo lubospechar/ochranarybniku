@@ -17,16 +17,12 @@
 <div class="main_content">
     <article class="home">
         <section class="about">
-            <h1>
-                {% if LANGUAGE_CODE == 'cs' %}{{ about.name_cs }}{% endif %}
-                {% if LANGUAGE_CODE == 'en' %}{{ about.name_en }}{% endif %}
-            </h1>
-            {% if LANGUAGE_CODE == 'cs' %}{{ about.content_cs|safe }}{% endif %}
-            {% if LANGUAGE_CODE == 'en' %}{{ about.content_en|safe }}{% endif %}
+            <h1>{{ about.name_cs }}</h1>
+            {{ about.content_cs|safe }}
         </section>
 
         <section class="ponds_home">
-            <h2>{% translate 'Lokality (klikněte pro detail)' %}</h2>
+            <h2>Lokality (klikněte pro detail)</h2>
             <ul>
                 {% for pond in ponds %}
                 {% generateimage 'home_page' source=pond.title_picture as home_page_resize %}
@@ -40,7 +36,7 @@
         </section>
 
         <section class="photogallery">
-            <h2>{% translate 'Nejnovější fotogalerie' %}</h2>
+            <h2>Nejnovější fotogalerie</h2>
             {% include "webapp/photogalleries_base.html" %}
         </section>
 

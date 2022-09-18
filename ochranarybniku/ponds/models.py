@@ -51,7 +51,6 @@ class Pond(models.Model):
 
 
     main_text_cs = models.TextField(verbose_name="Hlavní text (cs)", null=True, blank=True)
-    main_text_en = models.TextField(verbose_name="Hlavní text (en)", null=True, blank=True)
     main_photogallery = models.ManyToManyField(Picture, blank=True)
     
     
