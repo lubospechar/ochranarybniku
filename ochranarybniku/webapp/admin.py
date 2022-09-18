@@ -56,4 +56,12 @@ class PageAdmin(admin.ModelAdmin):
     }
 
 
-
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ("headline_cs", "author", 'modified', 'published', 'enable')
+    list_filter = ("enable", "published", "modified")
+    search_fields = ("headline_cs",)
+    filter_horizontal = ('photogalleries', 'pictures',)
+    prepopulated_fields = {
+        "slug_cs": ("headline_cs",),
+    }

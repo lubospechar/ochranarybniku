@@ -109,4 +109,7 @@ class Blog(models.Model):
     
     
     enable = models.BooleanField(verbose_name="Zapnout", default=False)
-    
+
+    class Meta:
+        verbose_name = "Blog"
+        verbose_name_plural = "Blogy"
