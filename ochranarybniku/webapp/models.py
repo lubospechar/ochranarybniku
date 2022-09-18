@@ -2,6 +2,7 @@ from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 
 class Page(models.Model):
@@ -88,3 +89,22 @@ class Picture(models.Model):
 
     def __str__(self):
         return f"{self.photogallery.name_cs} / {self.description_cs}"
+
+
+class Blog(models.Model):
+    headline_cs = models.CharField(
+        max_length=255, verbose_name="Nadpis"
+    )
+    
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    modified = models.DateTimeField(auto_now=True, verbose_name="Poslední úprava")
+    published = models.DateTimeField(auto_now_add=True, verbose_name="Publikováno")
+    
+    text=models.TextField(verbose_name="obsah")
+    
+    photogalleries = models.ManyToManyField(PhotoGallery, verbose_name="fotogralerie", blank=True)
+    pictures = models.ManyToManyField(Picture, verbose_name="obrázky", blank=True)
+    
+    
+    enable = models.BooleanField(verbose_name="Zapnout", default=False)
+    

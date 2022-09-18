@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.gis.db.models import PolygonField
-from webapp.models import Picture, PhotoGallery
+from webapp.models import Picture, PhotoGallery, Blog
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
 
@@ -55,6 +55,7 @@ class Pond(models.Model):
     
     
     photogalleries = models.ManyToManyField(PhotoGallery, blank=True)
+    related_blogs = models.ManyToManyField(Blog, blank=True)
     
     def __str__(self):
         return self.pond_name
