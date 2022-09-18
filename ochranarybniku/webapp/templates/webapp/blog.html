@@ -17,6 +17,14 @@
 
 <div class="main_content">
   <section class="blog">
+      {% for article in articles %}
+        <article>
+        <h1><a href="">{{ article.headline_cs }}</a></h1>
+        <p><strong>Autor: </strong>{{ article.author }},   <strong>Publikováno: </strong>{{ article.published }}</p>
+        {{ article.text|safe }}
+        </article>
+        
+      {% endfor %}
   </section>
 </div>
 
