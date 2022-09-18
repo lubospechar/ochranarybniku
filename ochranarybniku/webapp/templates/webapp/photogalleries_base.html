@@ -6,7 +6,7 @@
         <a href="{% url 'photogallery' gallery.pk gallery.slug_cs %}">
         <div class="gallery">
             <div class="image">
-                <img src="{% get_media_prefix %}{{ gallery.get_title.admin_thumbnail }}" />
+                <img src="{{ gallery.get_title.admin_thumbnail.url }}" />
             </div>
         </div>
         <div class="description">

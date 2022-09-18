@@ -8,9 +8,8 @@
       <h1>Seznam rybníků</h1>
         <ul>
             {% for pond in ponds %}
-            {% generateimage 'list_page' source=pond.title_picture as list_page_resize %}
             <li>
-                <a href="{% url 'pond_card' pond.slug %}"><img src="{% get_media_prefix %}{{ list_page_resize }}" />
+                <a href="{% url 'pond_card' pond.slug %}"><img src="{{ pond.title_picture_list.url }}" />
                 <p>{{ pond.pond_name }}</p>
               </a>
             </li>
