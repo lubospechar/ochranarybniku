@@ -30,3 +30,8 @@ def photogallery(request, photogallery_pk, photogallery_slug):
         'photogallery_detail': True,
     })
 
+def blog(request):
+    return render(request, 'blog.html', {
+        'articles': Blog.objects.filter(enable=True).order_by('publish')[:3]
+    })
+
