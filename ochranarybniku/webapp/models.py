@@ -113,3 +113,15 @@ class Blog(models.Model):
     class Meta:
         verbose_name = "Blog"
         verbose_name_plural = "Blogy"
+
+    def get_pictures(self):
+        pictures = list()
+        for picture in self.pictures.all():
+            pictures.append(picture)
+        
+        for photogallery in self.photogalleries.all():
+            for picture in photogallery.pictures.all():
+                pictures.append(picture)
+        
+        return pictures
+            
