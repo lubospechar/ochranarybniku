@@ -96,6 +96,8 @@ class Blog(models.Model):
         max_length=255, verbose_name="Nadpis"
     )
     
+    slug_cs = models.SlugField()
+    
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     modified = models.DateTimeField(auto_now=True, verbose_name="Poslední úprava")
     published = models.DateTimeField(auto_now_add=True, verbose_name="Publikováno")
