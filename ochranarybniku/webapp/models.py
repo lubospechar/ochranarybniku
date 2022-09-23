@@ -16,9 +16,6 @@ class PhotoGallery(models.Model):
     description_cs = models.TextField(
         verbose_name="Popis fotogalerie (cs)", null=True, blank=True
     )
-    description_en = models.TextField(
-        verbose_name="Popis fotogalerie (en)", null=True, blank=True
-    )
     modified = models.DateTimeField(auto_now=True, verbose_name="poslední úprava")
     created = models.DateTimeField(auto_now_add=True, verbose_name="vytvořeno")
     slug_cs = models.SlugField()
