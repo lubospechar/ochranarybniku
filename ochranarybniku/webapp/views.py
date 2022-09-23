@@ -32,6 +32,6 @@ def photogallery(request, photogallery_pk, photogallery_slug):
 
 def blog(request):
     return render(request, 'webapp/blog.html', {
-        'articles': Blog.objects.filter(enable=True).order_by('-published')[:3]
+        'articles': Blog.objects.filter(enable=True).order_by('-published')
     })
 
