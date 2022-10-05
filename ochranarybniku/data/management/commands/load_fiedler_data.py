@@ -2,14 +2,34 @@ from django.core.management.base import BaseCommand, CommandError
 import csv
 import datetime
 
-from data.models import Parameter, Unit
+from data.models import Parameter, PondMeasurement, FiedlerData
+from ponds.models import Pond
+
+
 class Command(BaseCommand):
     help = 'Načte csv z fielderovsky dat'
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--path",
+            dest="path",
+            required=True,
+            help="cesta k souboru",
+        )
+
+
+        parser.add_argument(
+            "--pond_id",
+            dest="pond_id",
+            required=True,
+            help="ID rybníku",
+        )
+
     def handle(self, *args, **options):
-        csv_file = '/var/tmp/vytaznik.csv'
+        csv_file = options['path']
         
-        
+        pond = Pond.objects.get(pk=options['pond_id'])
+    
         
         fields = {
             'pH': Parameter.objects.get(pk=7),
@@ -18,9 +38,6 @@ class Command(BaseCommand):
             'Teplota 2m': Parameter.objects.get(pk=9),
         }
         
-        print(fields)
-        return 
-    
         fields_position = {
             'Datum': 0, 
         }
@@ -64,7 +81,6 @@ class Command(BaseCommand):
                     continue
                 
                 
-                #try:
                 for f in fields_position:
                     position = fields_position[f]
                     try:
@@ -73,7 +89,13 @@ class Command(BaseCommand):
                         continue
                     
                     if position == 0:
-                        data = dt = datetime.datetime.strptime(raw_data, '%d.%m.%Y %H:%M:%S')
+                        dt = datetime.datetime.strptime(raw_data, '%d.%m.%Y %H:%M:%S')
+                        pond_mesurement = PondMeasurement()
+                        pond_mesurement.datetime = dt
+                        pond_mesurement.pond = pond
+                        pond_mesurement.note_cs = 'fiedler'
+                        pond_mesurement.save()
+                        
                     else:
                         raw_data = row[position].strip()
                         if raw_data == 'E11':
@@ -85,16 +107,19 @@ class Command(BaseCommand):
                             continue
                         
                         if raw_data == '':
-                            print('prázdná buňka')
+                            print(f'prázdná buňka pro {f}, {dt}')
                             continue
                         
                         data = float(raw_data.replace(',','.'))
-                    
-                    print(data)
-                #except IndexError: # rozbitý řádek bude vynechán
-                    #continue
-            
+                        
+                        new_data = FiedlerData()
+                        new_data.parameter = fields[f]
+                        new_data.measurement = pond_mesurement
+                        new_data.value = data
+                        new_data.save()
+                        
+                        print(dt, data, fields[f])
         
-            print(fields_position)
+            
             
             
