@@ -34,7 +34,7 @@ class Parameter(models.Model):
 
 
 class PondMeasurement(models.Model):
-    date = models.DateField(verbose_name="Datum")
+    datetime = models.DateTimeField(verbose_name="Datum")
     pond = models.ForeignKey(Pond, verbose_name="Rybník", on_delete=models.CASCADE)
     note_cs = models.TextField(null=True, blank=True, verbose_name="Poznámka (cs)")
 
@@ -43,7 +43,7 @@ class PondMeasurement(models.Model):
         verbose_name_plural = "Měření na rybnících"
 
     def __str__(self):
-        return f"{self.date}, {self.pond.pond_name}"
+        return f"{self.datetime}, {self.pond.pond_name}"
 
 
 class Data(models.Model):
@@ -93,3 +93,13 @@ class CharData(Data):
     class Meta:
         verbose_name = "Data (řetezec)"
         verbose_name_plural = "Data (řetězce)"
+        
+class FiedlerData(Data):
+    value = models.FloatField(verbose_name="Hodnota")
+    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Data ze stanic (desetinné číslo)"
+        verbose_name_plural = "Data ze stanic (desetinná čísla)"
+        unique_together = ['parameter', 'measurement']
+    
