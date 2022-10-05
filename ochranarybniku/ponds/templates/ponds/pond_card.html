@@ -12,6 +12,7 @@
 <script type="text/javascript">Loader.load();</script>
 <link rel="stylesheet" href="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.css">
 <script src="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock %}
 
 
@@ -37,6 +38,14 @@
             {% include "webapp/photogallery_base.html" %}
           </section>
 
+<section class="graphs">         
+     <h2>Graf PH</h2>
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
+</section>
+
+
           <section class="visits">
             <h2>Návštevy v rámci projektu (včetně plánovaných)</h2>
             <table>
@@ -46,8 +55,7 @@
                 <th>Popis aktivit</th>
                 <th>Účastní se</th>
               </tr>
-
-              {% for visit in visits %}
+            {% for visit in visits %}
                 <tr>
                   <td>{{ visit.dt_start }}</td>
                   <td>{{ visit.dt_end }}</td>
@@ -65,11 +73,87 @@
 
     </article>
 </div>
+
+
 {% endblock %}
 
 {% block script %}
 <script type="text/javascript">
   {% include "ponds/js/base_map.js" %}
   var lightbox = new SimpleLightbox('.simple-gallery a', { overlayOpacity: 0.95 });
+
+  
+  async function getData() {
+    const response = await fetch ('{% url "ph" %}');
+    const get_data = await response.json();
+    length = get_data.data.length;
+
+    graph_labels = [];
+    graph_data = [];
+    for (i = 0; i < length; i++) {
+
+       graph_labels.push(get_data.labels[i]);
+       graph_data.push(get_data.data[i]);
+    }
+
+
+    const data = {
+      labels: graph_labels,
+      datasets: [{
+        label: 'pH',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: graph_data,
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+    
+}
+
+    
+
+
+
+
+  
+
+//     const labels = ['1', '2', '3',]
+
+//     const data = {
+//       labels: graph_labels,
+//       datasets: [{
+//         label: 'pH',
+//         backgroundColor: 'rgb(255, 99, 132)',
+//         borderColor: 'rgb(255, 99, 132)',
+//         data: graph_data,
+//       }]
+//     };
+// 
+//     const config = {
+//       type: 'line',
+//       data: data,
+//       options: {}
+//     };
+// 
+// 
+//   
+//     const myChart = new Chart(
+//       document.getElementById('myChart'),
+//       config
+//     );
+//   }
+// 
+getData();
+
 </script>
 {% endblock %}
