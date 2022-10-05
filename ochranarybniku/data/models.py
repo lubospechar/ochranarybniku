@@ -20,11 +20,13 @@ class Parameter(models.Model):
     note_cs = models.CharField(
         max_length=255, verbose_name="Poznámnka (cs)", null=True, blank=True
     )
+    
     datatype = models.PositiveSmallIntegerField(
         choices=((1, "Float"), (2, "Integer"), (3, "Boolean"), (4, "Char")),
         verbose_name="Datový typ",
     )
-
+    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
+    
     class Meta:
         verbose_name = "Parametr"
         verbose_name_plural = "Parametry"
@@ -57,13 +59,15 @@ class Data(models.Model):
         verbose_name="Poznámka", max_length=255, null=True, blank=True
     )
 
+    def unit(self):
+        return self.parameter.unit
+
     class Meta:
         abstract = True
 
 
 class FloatData(Data):
     value = models.FloatField(verbose_name="Hodnota")
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Data (desetinné číslo)"
@@ -72,7 +76,6 @@ class FloatData(Data):
 
 class IntegerData(Data):
     value = models.IntegerField(verbose_name="Hodnota")
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Data (celé číslo)"
@@ -96,7 +99,6 @@ class CharData(Data):
         
 class FiedlerData(Data):
     value = models.FloatField(verbose_name="Hodnota")
-    unit = models.ForeignKey(Unit, verbose_name="Jednotky", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Data ze stanic (desetinné číslo)"

@@ -53,14 +53,15 @@ class CharDataInline(DataInline):
     parameter_datatype = 4
 
 
-@admin.register(Parameter)
-class ParameterAdmin(admin.ModelAdmin):
-    list_display = ("name_cs", "datatype", "note_cs")
 
 
 @admin.register(Unit)
 class UnitAdmin(admin.ModelAdmin):
     list_display = ("shortcut", "description_cs")
+
+@admin.register(Parameter)
+class ParameterAdmin(admin.ModelAdmin):
+    list_display = ("name_cs", "datatype", "note_cs", "unit")
 
 
 @admin.register(PondMeasurement)
@@ -77,13 +78,13 @@ class PondMeasurementAdmin(admin.ModelAdmin):
 
 @admin.register(FloatData)
 class FloatDataAdmin(DataAdmin):
-    list_display = ("measurement", "parameter", "value", "unit")
+    list_display = ("measurement", "parameter", "value", 'unit')
     parameter_datatype = 1
 
 
 @admin.register(IntegerData)
 class IntegerDataAdmin(DataAdmin):
-    list_display = ("measurement", "parameter", "value", "unit")
+    list_display = ("measurement", "parameter", "value", 'unit')
     parameter_datatype = 2
 
 
