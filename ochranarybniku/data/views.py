@@ -4,12 +4,16 @@ from ponds.models import Pond
 from data.models import FiedlerData, Parameter, PondMeasurement
 
 def ph(request):
+    
     pond = Pond.objects.get(pk=2)
 
     data = {
         'data': [1, 2, 3,],
         'labels': ['a','b','c'],
     }
+    
+    if int(request.GET['option'])==5:
+        return JsonResponse(data)
     
     pH = Parameter.objects.get(pk=7)
     
@@ -19,6 +23,7 @@ def ph(request):
     
     labels = []
     data = []
+
     
     for d in data_ph:
         data.append(d.value)
