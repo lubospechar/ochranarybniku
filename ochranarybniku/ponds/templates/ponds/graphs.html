@@ -1,0 +1,26 @@
+<h2>Graf: <span class="graph_desc"></span></h2>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<p>Parametr</p>
+<select class="parameter">
+{% for parameter in parameters %}
+    <option value="{{ parameter.pk }}">{{ parameter.name_cs }}</option>
+{% endfor %}
+</select>
+
+<p>Od: <input name="start_date" type="date" class="datepicker"></p>
+<p>Do: <input name="end_date" type="date" class="datepicker"></p>
+
+<p>Agregace</p>
+<select class="agg">
+    <option value="0">Bez agregace</option>
+    <option selected="selected" value="1">Průměry za hodinu</option>
+    <option value="2">Průměry za den</option>
+    <option value="3">Průměry za týden</option>
+    <option value="4">Průměry za měsíc</option>
+</select>
+
+<button id="graph_button">Načíst data</button>

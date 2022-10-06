@@ -32,8 +32,10 @@ class Parameter(models.Model):
         verbose_name_plural = "Parametry"
 
     def __str__(self):
-        return self.name_cs
-
+        rstr = self.name_cs
+        if self.note_cs: rstr = rstr + f' {self.note_cs}'
+        if self.unit: rstr = rstr + f' [{self.unit.shortcut}]'
+        return rstr
 
 class PondMeasurement(models.Model):
     datetime = models.DateTimeField(verbose_name="Datum")
