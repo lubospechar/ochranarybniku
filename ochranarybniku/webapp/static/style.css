@@ -290,4 +290,20 @@ footer section p ul li {
   padding-top: 0px;
 }
 
+.graph_form {
+  margin-bottom: 0px;
+}
+.graph_form td {
+  padding-right: 15px;
+  font-size: 1.2em;
+}
+
+.graph_form_desc {
+  font-style: italic;
+  font-size: 0.7rem;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 50px;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -60,7 +60,6 @@ def fiedler(request):
         
         agg_period = agg_config[agg][0]
         date_format = agg_config[agg][1]
-        print(agg_period)
         
         fiedler_data = FiedlerData.objects.filter(
             parameter = parameter,

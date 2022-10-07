@@ -15,6 +15,17 @@ var data = {
 var config = {
     type: 'line',
     data: data,
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 18
+                    }
+                }
+            }
+        }
+    }
 };
 
 var myChart = new Chart(document.getElementById('myChart'), config);
