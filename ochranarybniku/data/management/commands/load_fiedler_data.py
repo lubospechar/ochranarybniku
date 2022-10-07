@@ -36,6 +36,11 @@ class Command(BaseCommand):
             'Srážky': Parameter.objects.get(pk=8),
             'Vlhkost 2m': Parameter.objects.get(pk=10),
             'Teplota 2m': Parameter.objects.get(pk=9),
+            'GR dopad': Parameter.objects.get(pk=11),
+            'GR odraz': Parameter.objects.get(pk=15),
+            'Rozp.kyslík': Parameter.objects.get(pk=2),
+            'Tepl.kyslík': Parameter.objects.get(pk=13),
+            'Teplota pH': Parameter.objects.get(pk=14),
         }
         
         fields_position = {
