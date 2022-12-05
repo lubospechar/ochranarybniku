@@ -43,10 +43,10 @@ Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
 
 
 ## Použité balíky
-Django==4.1.2
+Django==4.1.3
 django-imagekit==4.1.0
-Pillow==9.2.0
-psycopg2==2.9.3
+Pillow==9.3.0
+psycopg2==2.9.5
 python-decouple==3.6
 xlwt==1.3.0
 
