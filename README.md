@@ -1,6 +1,6 @@
 # Ochrana rybníků
 
-Online aplikace k projektu Ochrana rybníků včetně úložiště dat.
+Online aplikace a web k projektu Ochrana rybníků včetně úložiště dat.
 
 ## TODO list
 - [ ] Webová prezentace
