@@ -6,7 +6,15 @@ from django.conf import settings
 from webapp.models import Page, PhotoGallery, Blog
 from ponds.models import Pond
 
-def home(request):
+def set_language(request, language):
+    user_language = language
+    redirect_url = language # zatím to hází jen na titulní stránku
+    translation.activate(language)
+    request = redirect('home', lang=user_language)
+    request.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
+    return request
+
+def home(request, lang):
     about = get_object_or_404(Page, slug_cs='o-projektu')
     galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')[:6]
     return render(request, 'webapp/home.html', {

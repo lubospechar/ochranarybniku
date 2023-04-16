@@ -22,8 +22,12 @@
                 <img src="{% static 'img/logo_norway_grants.png' %}" />
             </div>
             <nav>
+                <ul class="language">
+                    <li><a href="{% url 'set_language' 'cs' %}"><img src="{% static 'img/czflag.png' %}" /></a>
+                    <li class="last"><a href="{% url 'set_language' 'en' %}"><img src="{% static 'img/enflag.png' %}" /></a>
+                </ul>
                 <ul class="menu">
-                    <li><a href="{% url 'home' %}">Úvod</a></li>
+                    {% comment %}<li><a href="{% url 'home' %}">Úvod</a></li>{% endcomment %}
                     <li><a href="{% url 'blog' %}">Blog</a></li>
                     <li><a href="{% url 'ponds' %}">Rybníky</a></li>
                     <li class="last"><a href="{% url 'photogalleries' %}">Fotogalerie</a></li>
