@@ -8,8 +8,8 @@
     <title>Ochrana rybníků{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% block extrahead %}{% endblock %}
-    <meta name="keywords" content="{% translate "rybník" %}, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana rybníků, chráněná území, ochrana přírody, chov ryb">
-    <meta name="description" content='Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.'>
+    <meta name="keywords" content="{% translate "rybník" %}, {% translate "setrvalé hospodaření" %}, {% translate "biodiverzita" %}, {% translate "ochrana druhů ryb" %}, {% translate "ochrana rybníků" %}, {% translate "chráněná území" %}, {% translate "ochrana přírody" %}, {% translate "chov ryb" %}">
+    <meta name="description" content='{% translate "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů." %}'>
     <meta name="author" content="ENKI o.p.s.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="{% block og_title %}{% endblock %}">
@@ -27,10 +27,10 @@
                     <li class="last"><a href="{% url 'set_language' 'en' %}"><img src="{% static 'img/enflag.png' %}" /></a>
                 </ul>
                 <ul class="menu">
-                    <li><a href="{% url 'home' LANGUAGE_CODE %}">Úvod</a></li>
+                    <li><a href="{% url 'home' LANGUAGE_CODE %}">{% translate "Úvod" %}</a></li>
                     <li><a href="{% url 'blog' %}">Blog</a></li>
-                    <li><a href="{% url 'ponds' %}">Rybníky</a></li>
-                    <li class="last"><a href="{% url 'photogalleries' %}">Fotogalerie</a></li>
+                    <li><a href="{% url 'ponds' %}">{% translate "Rybníky" %}</a></li>
+                    <li class="last"><a href="{% url 'photogalleries' %}">{% translate "Fotogalerie" %}</a></li>
                     {% comment %}<li class="last">'Partneři'</li>{% endcomment %}
                 </ul>
             </nav>

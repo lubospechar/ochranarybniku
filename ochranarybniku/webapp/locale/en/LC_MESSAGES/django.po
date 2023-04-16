@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-16 15:47+0200\n"
+"POT-Creation-Date: 2023-04-16 16:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,77 +19,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: webapp/templates/webapp/base.html:11
-#, fuzzy
 msgid "rybník"
 msgstr "pond"
 
+#: webapp/templates/webapp/base.html:11
+msgid "setrvalé hospodaření"
+msgstr "sustainable management"
+
+#: webapp/templates/webapp/base.html:11
+msgid "biodiverzita"
+msgstr "biodiversity"
+
+#: webapp/templates/webapp/base.html:11
+msgid "ochrana druhů ryb"
+msgstr "fish species protection"
+
+#: webapp/templates/webapp/base.html:11
+msgid "ochrana rybníků"
+msgstr "fishponds protection"
+
+#: webapp/templates/webapp/base.html:11
+msgid "chráněná území"
+msgstr "protected areas"
+
+#: webapp/templates/webapp/base.html:11
+msgid "ochrana přírody"
+msgstr "nature conservation"
+
+#: webapp/templates/webapp/base.html:11
+msgid "chov ryb"
+msgstr "fishfarming"
+
+#: webapp/templates/webapp/base.html:12
+msgid ""
+"Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných "
+"rybničních ekosystémů."
+msgstr ""
+"Nature-friendly fisheries management as a tool for protecting valuablepond "
+"ecosystems."
+
+#: webapp/templates/webapp/base.html:30
+msgid "Úvod"
+msgstr "About"
+
+#: webapp/templates/webapp/base.html:32
+msgid "Rybníky"
+msgstr "Ponds"
+
+#: webapp/templates/webapp/base.html:33
 #: webapp/templates/webapp/photogalleries.html:8
 msgid "Fotogalerie"
-msgstr "Photogalleries"
+msgstr "Photogallery"
 
-#~ msgid "Ochrana rybníků"
-#~ msgstr "Protection of fishponds"
+#: webapp/templates/webapp/home.html:27
+msgid "Rybníky v projektu"
+msgstr "Ponds in project"
 
-#~ msgid ""
-#~ "rybník, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana "
-#~ "rybníků, chráněná území, ochrana přírody, chov ryb"
-#~ msgstr ""
-#~ "fishpond, sustainable management, biodiversity, fish species protection, "
-#~ "fishponds protection, protected areas, nature conservation, fishfarming"
+#: webapp/templates/webapp/home.html:27
+msgid "klikněte pro detail"
+msgstr "click for more details"
 
-#~ msgid ""
-#~ "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných "
-#~ "rybničních ekosystémů."
-#~ msgstr ""
-#~ "Nature-friendly fisheries management as a tool for protecting "
-#~ "valuablepond ecosystems."
-
-#~ msgid "Úvod"
-#~ msgstr "Home"
-
-#~ msgid ""
-#~ "Podpořeno Norskem prostřednictvím Norských fondů v programu Životní "
-#~ "prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu "
-#~ "životního prostředí v ekosystémech"
-#~ msgstr ""
-#~ "Supported by Norway through the Norwegian Funds in the Environment, "
-#~ "Ecosystems and Climate Change program in the area of support Improving "
-#~ "the state of the environment in ecosystems"
-
-#~ msgid "Příjemce podpory"
-#~ msgstr "Benefitior"
-
-#, fuzzy
-#~ msgid "Partneři projektu"
-#~ msgstr "Project partners"
-
-#~ msgid "Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB"
-#~ msgstr ""
-#~ "Faculty of Fisheries and Protection of Waters, University of South Bohemia"
-
-#~ msgid "Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni"
-#~ msgstr "Jakub Krčín Secondary School of Fishery and Water Management"
-
-#~ msgid "Rakousko"
-#~ msgstr "Austria"
-
-#~ msgid "Lokality propůjčují"
-#~ msgstr "Areas borrowed by"
-
-#~ msgid "Vojenské lesy a statky, s. p."
-#~ msgstr "State-owned forestry in military area"
-
-#~ msgid "Agentura ochrany přírody a krajiny ČR"
-#~ msgstr "Nature Conservation Agency of the Czech Republic"
-
-#~ msgid "Lokality (klikněte pro detail)"
-#~ msgstr "Locality (click for detail)"
-
-#~ msgid "Nejnovější fotogalerie"
-#~ msgstr "Newest photogalleries"
-
-#~ msgid "Všechny fotogalerie"
-#~ msgstr "All photogalleries"
-
-#~ msgid "Výše uděleného grantu"
-#~ msgstr "Allocation"
+#: webapp/templates/webapp/home.html:40
+msgid "Nejnovější fotogalerie"
+msgstr "Latest photogalleries"
