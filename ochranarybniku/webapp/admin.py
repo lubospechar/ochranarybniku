@@ -1,5 +1,5 @@
 from django.contrib import admin
-from webapp.models import PhotoGallery, Picture, Page, Blog, Language
+from webapp.models import PhotoGallery, Picture, Page, Blog, Language, PhotogaleryDescription
 from imagekit.admin import AdminThumbnail
 
 @admin.register(Language)
@@ -15,24 +15,29 @@ class PictureInline(admin.TabularInline):
     thumbnail.short_description = "Náhled"
     readonly_fields = ("thumbnail",)
 
+class PhotogaleryDescriptionInline(admin.TabularInline):
+    model = PhotogaleryDescription
+    prepopulated_fields = {
+        "slug": ("name",),
+    }
+    extra = 2
 
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
     list_display = (
-        "name_cs",
-        "description_cs",
         "count_pictures",
         "enable",
     )
     list_filter = ("enable", "created", "modified")
-    search_fields = ("name_cs", "description_cs")
+    # search_fields = ("name", "description")
     inlines = [
+        PhotogaleryDescriptionInline,
         PictureInline,
     ]
-    prepopulated_fields = {
-        "slug_cs": ("name_cs",),
-    }
 
+@admin.register(PhotogaleryDescription)
+class PhotogaleryDescriptionAdmin(admin.ModelAdmin):
+    pass
 
 @admin.register(Picture)
 class PictureAdmin(admin.ModelAdmin):

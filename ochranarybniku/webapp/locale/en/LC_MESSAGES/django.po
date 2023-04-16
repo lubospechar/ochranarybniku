@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-16 16:07+0200\n"
+"POT-Creation-Date: 2023-04-16 18:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "nature conservation"
 msgid "chov ryb"
 msgstr "fishfarming"
 
-#: webapp/templates/webapp/base.html:12
+#: webapp/templates/webapp/base.html:12 webapp/templates/webapp/base.html:50
 msgid ""
 "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných "
 "rybničních ekosystémů."
@@ -71,6 +71,49 @@ msgstr "Ponds"
 msgid "Fotogalerie"
 msgstr "Photogallery"
 
+#: webapp/templates/webapp/base.html:51
+msgid ""
+"Podpořeno Norskem prostřednictvím Norských fondů v programu Životní "
+"prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu "
+"životního prostředí v ekosystémech"
+msgstr ""
+"Supported by Norway through the Norwegian Funds in the Environment, "
+"Ecosystems and Climate Change program in the area of support Improving the "
+"state of the environment in ecosystems"
+
+#: webapp/templates/webapp/base.html:52
+msgid "Příjemce podpory"
+msgstr "Benefitior"
+
+#: webapp/templates/webapp/base.html:53
+msgid "Partneři projektu"
+msgstr "Project partners"
+
+#: webapp/templates/webapp/base.html:53
+msgid "Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB"
+msgstr ""
+"Faculty of Fisheries and Protection of Waters, University of South Bohemia"
+
+#: webapp/templates/webapp/base.html:53
+msgid "Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni"
+msgstr "Jakub Krčín Secondary School of Fishery and Water Management"
+
+#: webapp/templates/webapp/base.html:53
+msgid "Rakousko"
+msgstr "Austria"
+
+#: webapp/templates/webapp/base.html:54
+msgid "Lokality propůjčují"
+msgstr "Areas borrowed by"
+
+#: webapp/templates/webapp/base.html:54
+msgid "Vojenské lesy a statky, s. p.:"
+msgstr "State-owned forestry in military area"
+
+#: webapp/templates/webapp/base.html:54
+msgid "Agentura ochrany přírody a krajiny ČR"
+msgstr "Nature Conservation Agency of the Czech Republic"
+
 #: webapp/templates/webapp/home.html:27
 msgid "Rybníky v projektu"
 msgstr "Ponds in project"
@@ -82,3 +125,7 @@ msgstr "click for more details"
 #: webapp/templates/webapp/home.html:40
 msgid "Nejnovější fotogalerie"
 msgstr "Latest photogalleries"
+
+#: webapp/templates/webapp/photogalleries_base.html:23
+msgid "Všechny fotogalerie"
+msgstr "All photogalleries"

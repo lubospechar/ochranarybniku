@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
-from webapp.models import Page, PhotoGallery, Blog, Language
+from webapp.models import Page, PhotoGallery, Blog, Language, PhotogaleryDescription
 from ponds.models import Pond
 
 def set_language(request, language):
@@ -17,7 +17,12 @@ def set_language(request, language):
 def home(request, lang):
     language = Language.objects.get(lang=lang)
     title_pages = Page.objects.filter(add_to_title=True, enable=True, lang=language)
-    galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')[:6]
+    galleries = PhotogaleryDescription.objects.filter(
+        photogallery__in=PhotoGallery.objects.filter(
+            enable=True
+        ),
+        lang = language
+    ).order_by('-photogallery__pk')[:6]
     return render(request, 'webapp/home.html', {
         'title_pages': title_pages,
         'galleries': galleries,

@@ -28,13 +28,9 @@ class Page(models.Model):
         verbose_name_plural="Stránky"
 
 class PhotoGallery(models.Model):
-    name_cs = models.CharField(max_length=255, verbose_name="Název galerie (cs)")
-    description_cs = models.TextField(
-        verbose_name="Popis fotogalerie (cs)", null=True, blank=True
-    )
     modified = models.DateTimeField(auto_now=True, verbose_name="poslední úprava")
     created = models.DateTimeField(auto_now_add=True, verbose_name="vytvořeno")
-    slug_cs = models.SlugField()
+    slug = models.SlugField()
 
     enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
@@ -43,7 +39,7 @@ class PhotoGallery(models.Model):
         verbose_name_plural = "Fotogalerie"
 
     def __str__(self):
-        return self.name_cs
+        return self.name
 
     def count_pictures(self):
         # spočítá kolik obrázků fotogalerie obsahuje
@@ -60,6 +56,14 @@ class PhotoGallery(models.Model):
 
     count_pictures.short_description = "Počet obrázků"
 
+class PhotogaleryDescription(models.Model):
+    photogallery = models.ForeignKey(PhotoGallery, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, verbose_name="Název galerie")
+    description = models.TextField(
+        verbose_name="Popis fotogalerie", null=True, blank=True
+    )
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Jazyk")
+    slug = models.SlugField()
 
 class Picture(models.Model):
     photogallery = models.ForeignKey(
@@ -99,9 +103,9 @@ class Picture(models.Model):
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
-
-    def __str__(self):
-        return f"{self.photogallery.name_cs} / {self.description_cs}"
+    #
+    # def __str__(self):
+    #     self.description_cs
 
 
 class Blog(models.Model):
