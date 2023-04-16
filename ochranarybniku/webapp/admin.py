@@ -1,7 +1,10 @@
 from django.contrib import admin
-from webapp.models import PhotoGallery, Picture, Page, Blog
+from webapp.models import PhotoGallery, Picture, Page, Blog, Language
 from imagekit.admin import AdminThumbnail
 
+@admin.register(Language)
+class LanguageAdmin(admin.ModelAdmin):
+    list_display = ("lang", )
 
 class PictureInline(admin.TabularInline):
     model = Picture
@@ -50,9 +53,10 @@ class PictureAdmin(admin.ModelAdmin):
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('name_cs', "slug_cs")
+    list_display = ('name', "slug", 'lang', 'enable', 'add_to_title',)
+    list_filter = ('lang', 'add_to_title',)
     prepopulated_fields = {
-        "slug_cs": ("name_cs",),
+        "slug": ("name",),
     }
 
 

@@ -15,7 +15,7 @@ def set_language(request, language):
     return request
 
 def home(request, lang):
-    about = get_object_or_404(Page, slug_cs='o-projektu')
+    about = get_object_or_404(Page, slug='o-projektu')
     galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')[:6]
     return render(request, 'webapp/home.html', {
         'about': about,

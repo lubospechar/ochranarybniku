@@ -5,11 +5,27 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 
+class Language(models.Model):
+    lang =  models.CharField(max_length=2)
+
+    class Meta:
+        verbose_name="Zapnutý jazyk"
+        verbose_name_plural="Zapnuté jazyky"
+
+    def __str__(self):
+        return self.lang
+
 class Page(models.Model):
-    name_cs = models.CharField(max_length=255, verbose_name="Název (cs)")
-    content_cs = models.TextField()
-    slug_cs = models.SlugField()
-    enable = models.BooleanField()
+    name = models.CharField(max_length=255, verbose_name="Název")
+    content = models.TextField(verbose_name="Obash (html)")
+    slug = models.SlugField()
+    enable = models.BooleanField(verbose_name="Zapnuto")
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Jazyk")
+    add_to_title = models.BooleanField(verbose_name="Přidat na titulní stránku", default=False)
+
+    class Meta:
+        verbose_name="Stránka"
+        verbose_name_plural="Stránky"
 
 class PhotoGallery(models.Model):
     name_cs = models.CharField(max_length=255, verbose_name="Název galerie (cs)")
