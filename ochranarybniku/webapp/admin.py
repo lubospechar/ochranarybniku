@@ -1,7 +1,8 @@
 from django.contrib import admin
 from webapp.models import (
     PhotoGallery, Picture, Page, Blog,
-    Language, PhotogaleryDescription, PictureDescription
+    Language, PhotogaleryDescription, PictureDescription,
+    BlogTranslation
 )
 from imagekit.admin import AdminThumbnail
 
@@ -71,6 +72,12 @@ class PageAdmin(admin.ModelAdmin):
         "slug": ("name",),
     }
 
+class BlogTranslationInline(admin.TabularInline):
+    model = BlogTranslation
+    extra = 2
+    prepopulated_fields = {
+        "slug": ("headline",),
+    }
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
@@ -78,9 +85,12 @@ class BlogAdmin(admin.ModelAdmin):
     list_filter = ("enable", "published", "modified")
     search_fields = ("headline_cs",)
     filter_horizontal = ('photogalleries', 'pictures',)
-    prepopulated_fields = {
-        "slug_cs": ("headline_cs",),
-    }
+
+    inlines = [
+        BlogTranslationInline,
+    ]
+
+
 
 # @admin.register(PictureDescription)
 # class PictureDescriptionAdmin(admin.ModelAdmin):

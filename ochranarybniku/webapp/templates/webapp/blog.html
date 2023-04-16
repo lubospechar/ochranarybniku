@@ -1,5 +1,6 @@
 {% extends 'webapp/base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block title %} Blog{% endblock %}
@@ -20,7 +21,7 @@
       {% for article in articles %}
         <article>
         <h1><a href="">{{ article.headline_cs }}</a></h1>
-        <p><strong>Autor: </strong>{{ article.author }},   <strong>Publikováno: </strong>{{ article.published }}</p>
+        <p><strong>{% translate "Autor" %}: </strong>{{ article.blog.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.blog.published }}</p>
         {{ article.text|safe }}
         <div class="photos">
           <div class="simple-gallery">

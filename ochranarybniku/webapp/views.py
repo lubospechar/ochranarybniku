@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
-from webapp.models import Page, PhotoGallery, Blog, Language, PhotogaleryDescription, PictureDescription, Picture
+from webapp.models import Page, PhotoGallery, Blog, Language, PhotogaleryDescription, PictureDescription, Picture, BlogTranslation
 from ponds.models import Pond
 
 def set_language(request, language):
@@ -50,8 +50,10 @@ def photogallery(request, photogallery_pk, photogallery_slug, lang):
         'photogallery_detail': True,
     })
 
-def blog(request):
+def blog(request, lang):
+    language = get_object_or_404(Language, lang=lang)
+    articles = BlogTranslation.objects.filter(language=language, blog__in=Blog.objects.filter(enable=True)).order_by('-blog__published')
     return render(request, 'webapp/blog.html', {
-        'articles': Blog.objects.filter(enable=True).order_by('-published')
+        'articles': articles
     })
 

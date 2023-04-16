@@ -14,7 +14,7 @@ urlpatterns = [
 
     path('photogalleries/', views.photogalleries, name="photogalleries"),
     path('<str:lang>/photogallery/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="photogallery"),
-    path('blog/', views.blog, name="blog"),
+    path('<str:lang>/blog/', views.blog, name="blog"),
     
 ]
 

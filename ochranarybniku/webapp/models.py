@@ -111,8 +111,6 @@ class Blog(models.Model):
         max_length=255, verbose_name="Nadpis"
     )
     
-    slug_cs = models.SlugField()
-    
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     modified = models.DateTimeField(auto_now=True, verbose_name="Poslední úprava")
     published = models.DateTimeField(auto_now_add=True, verbose_name="Publikováno")
@@ -124,6 +122,7 @@ class Blog(models.Model):
     
     
     enable = models.BooleanField(verbose_name="Zapnout", default=False)
+
 
     class Meta:
         verbose_name = "Blog"
@@ -140,3 +139,9 @@ class Blog(models.Model):
         
         return pictures
             
+class BlogTranslation(models.Model):
+    headline = models.CharField(max_length=255)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    text = models.TextField()
+    language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    slug = models.SlugField()
