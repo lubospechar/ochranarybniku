@@ -5,10 +5,10 @@
 <div class="galleries">
     {% for gallery in galleries %}
 {% if LANGUAGE_CODE == 'cs' %}
-            <a href="{% url 'fotogalerie' gallery.pk gallery.slug %}">
+            <a href="{% url 'fotogalerie' LANGUAGE_CODE gallery.pk gallery.slug %}">
         {% endif %}
         {% if LANGUAGE_CODE == 'en' %}
-            <a href="{% url 'photogallery' gallery.pk gallery.slug %}">
+            <a href="{% url 'photogallery' LANGUAGE_CODE gallery.pk gallery.slug %}">
         {% endif %}
         <div class="gallery">
             <div class="image">

@@ -1,18 +1,19 @@
 {% load static %}
 {% load imagekit %}
+{% load i18n %}
 
 
 {% if photogallery_detail %}
 
-        <h1>Fotogalerie: {{ photogallery.name_cs }}</h1>
-        <p>{{ photogallery.description_cs }}</p>
+        <h1>{% translate "Fotogalerie" %}: {{ photogallery.name }}</h1>
+        <p>{{ photogallery.description }}</p>
 
 
 {% endif %}
 
 <div class="simple-gallery">
     {% for photo in pictures %}
-    <div class="photo"><div class="transf"><a href="{{ photo.gallery_resize.url }}"><img src="{{ photo.admin_thumbnail.url }}" alt="{{ photo.description_cs }}" title="{{ photo.description_cs }}"/></a></div></div>
+    <div class="photo"><div class="transf"><a href="{{ photo.picture.gallery_resize.url }}"><img src="{{ photo.picture.admin_thumbnail.url }}" alt="{{ photo.description }}" title="{{ photo.description }}"/></a></div></div>
     {% endfor %}
 </div>
 

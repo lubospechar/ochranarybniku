@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
-from webapp.models import Page, PhotoGallery, Blog, Language, PhotogaleryDescription
+from webapp.models import Page, PhotoGallery, Blog, Language, PhotogaleryDescription, PictureDescription, Picture
 from ponds.models import Pond
 
 def set_language(request, language):
@@ -38,10 +38,15 @@ def photogalleries(request):
 
 def photogallery(request, photogallery_pk, photogallery_slug, lang):
     language = get_object_or_404(Language, lang=lang)
-    photogallery = get_object_or_404(PhotoGalleryDescription, pk_pgd=pk)
+    photogallery_desc = get_object_or_404(PhotogaleryDescription, pk=photogallery_pk)
     return render(request, 'webapp/photogallery.html', {
-        'photogallery': photogallery,
-        'pictures': photogallery.pictures.all(),
+        'photogallery': photogallery_desc,
+        'pictures': PictureDescription.objects.filter(
+            picture__in=Picture.objects.filter(
+                photogallery=photogallery_desc.photogallery
+            ),
+            lang=language
+        ),
         'photogallery_detail': True,
     })
 

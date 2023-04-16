@@ -10,10 +10,10 @@ urlpatterns = [
 
     path('<str:lang>/', views.home, name='home'),
 
-    path('cs/fotogalerie/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="fotogalerie"),
+    path('<str:lang>/fotogalerie/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="fotogalerie"),
 
     path('photogalleries/', views.photogalleries, name="photogalleries"),
-    path('en/photogallery/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="photogallery"),
+    path('<str:lang>/photogallery/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="photogallery"),
     path('blog/', views.blog, name="blog"),
     
 ]
