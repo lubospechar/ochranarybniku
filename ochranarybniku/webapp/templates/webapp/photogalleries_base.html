@@ -4,7 +4,12 @@
 
 <div class="galleries">
     {% for gallery in galleries %}
-<a href="">
+{% if LANGUAGE_CODE == 'cs' %}
+            <a href="{% url 'fotogalerie' gallery.pk gallery.slug %}">
+        {% endif %}
+        {% if LANGUAGE_CODE == 'en' %}
+            <a href="{% url 'photogallery' gallery.pk gallery.slug %}">
+        {% endif %}
         <div class="gallery">
             <div class="image">
                 <img src="{{ gallery.photogallery.get_title.admin_thumbnail.url }}" />
@@ -15,10 +20,9 @@
                 <p class="name">{{ gallery.name }}</p>
 
 
-        
+
         </div>
         </a>
     {% endfor %}
 </div>
 {% if is_home %}<a href="{% url 'photogalleries' %}">{% translate "Všechny fotogalerie" %}</a>{% endif %}
-

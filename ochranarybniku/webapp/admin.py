@@ -1,5 +1,8 @@
 from django.contrib import admin
-from webapp.models import PhotoGallery, Picture, Page, Blog, Language, PhotogaleryDescription
+from webapp.models import (
+    PhotoGallery, Picture, Page, Blog,
+    Language, PhotogaleryDescription, PictureDescription
+)
 from imagekit.admin import AdminThumbnail
 
 @admin.register(Language)
@@ -8,9 +11,6 @@ class LanguageAdmin(admin.ModelAdmin):
 
 class PictureInline(admin.TabularInline):
     model = Picture
-    prepopulated_fields = {
-        "slug_cs": ("description_cs",),
-    }
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
     thumbnail.short_description = "Náhled"
     readonly_fields = ("thumbnail",)
@@ -39,11 +39,17 @@ class PhotoGalleryAdmin(admin.ModelAdmin):
 class PhotogaleryDescriptionAdmin(admin.ModelAdmin):
     pass
 
+class PictureDescriptionInline(admin.TabularInline):
+    model = PictureDescription
+    prepopulated_fields = {
+        "slug": ("description",),
+    }
+    extra = 2
+
 @admin.register(Picture)
 class PictureAdmin(admin.ModelAdmin):
     list_display = (
         "__str__",
-        "description_cs",
         "enable",
         "thumbnail",
     )
@@ -51,9 +57,10 @@ class PictureAdmin(admin.ModelAdmin):
     list_filter = ("enable", "photogallery")
     thumbnail = AdminThumbnail(image_field="admin_thumbnail")
     thumbnail.short_description = "Náhled"
-    prepopulated_fields = {
-        "slug_cs": ("description_cs",),
-    }
+
+    inlines = [
+        PictureDescriptionInline,
+    ]
 
 
 @admin.register(Page)
@@ -74,3 +81,7 @@ class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug_cs": ("headline_cs",),
     }
+
+# @admin.register(PictureDescription)
+# class PictureDescriptionAdmin(admin.ModelAdmin):
+#     list_filter

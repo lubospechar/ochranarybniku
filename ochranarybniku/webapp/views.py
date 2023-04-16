@@ -15,7 +15,7 @@ def set_language(request, language):
     return request
 
 def home(request, lang):
-    language = Language.objects.get(lang=lang)
+    language = get_object_or_404(Language, lang=lang)
     title_pages = Page.objects.filter(add_to_title=True, enable=True, lang=language)
     galleries = PhotogaleryDescription.objects.filter(
         photogallery__in=PhotoGallery.objects.filter(
@@ -36,8 +36,9 @@ def photogalleries(request):
         'galleries': galleries,
     })
 
-def photogallery(request, photogallery_pk, photogallery_slug):
-    photogallery = get_object_or_404(PhotoGallery, pk=photogallery_pk)
+def photogallery(request, photogallery_pk, photogallery_slug, lang):
+    language = get_object_or_404(Language, lang=lang)
+    photogallery = get_object_or_404(PhotoGalleryDescription, pk_pgd=pk)
     return render(request, 'webapp/photogallery.html', {
         'photogallery': photogallery,
         'pictures': photogallery.pictures.all(),

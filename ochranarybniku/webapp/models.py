@@ -38,9 +38,6 @@ class PhotoGallery(models.Model):
         verbose_name = "Fotogalerie"
         verbose_name_plural = "Fotogalerie"
 
-    def __str__(self):
-        return self.name
-
     def count_pictures(self):
         # spočítá kolik obrázků fotogalerie obsahuje
         return self.pictures.all().count()
@@ -72,9 +69,6 @@ class Picture(models.Model):
         verbose_name="fotogalerie",
         related_name="pictures",
     )
-    description_cs = models.CharField(
-        max_length=255, verbose_name="Popis fotografie (cs)"
-    )
 
     photo = models.ImageField(
         upload_to="photos/%Y/%m/%d/", verbose_name="Obrázek (soubor)"
@@ -95,18 +89,22 @@ class Picture(models.Model):
         id="image_gallery_resize",
     )
 
-    slug_cs = models.SlugField()
-
     enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
     title = models.BooleanField(default=False)
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
-    #
-    # def __str__(self):
-    #     self.description_cs
 
+
+class PictureDescription(models.Model):
+    picture = models.ForeignKey(Picture, on_delete=models.CASCADE)
+    description = models.CharField(
+        max_length=255,
+        verbose_name="Popis obrázku"
+    )
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Jazyk")
+    slug = models.SlugField()
 
 class Blog(models.Model):
     headline_cs = models.CharField(
