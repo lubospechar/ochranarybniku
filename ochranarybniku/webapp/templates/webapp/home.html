@@ -17,8 +17,10 @@
 <div class="main_content">
     <article class="home">
         <section class="about">
-            <h1>{{ about.name }}</h1>
-            {{ about.content|safe }}
+            {% for page in title_pages %}
+                <h1>{{ page.name }}</h1>
+                {{ page.content|safe }}
+            {% endfor %}
         </section>
 
         <section class="ponds_home">

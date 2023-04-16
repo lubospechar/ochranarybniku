@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.utils import translation
 from django.conf import settings
-from webapp.models import Page, PhotoGallery, Blog
+from webapp.models import Page, PhotoGallery, Blog, Language
 from ponds.models import Pond
 
 def set_language(request, language):
@@ -15,10 +15,11 @@ def set_language(request, language):
     return request
 
 def home(request, lang):
-    about = get_object_or_404(Page, slug='o-projektu')
+    language = Language.objects.get(lang=lang)
+    title_pages = Page.objects.filter(add_to_title=True, enable=True, lang=language)
     galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')[:6]
     return render(request, 'webapp/home.html', {
-        'about': about,
+        'title_pages': title_pages,
         'galleries': galleries,
         'is_home': True,
         'ponds': Pond.objects.filter(monitored=True),
