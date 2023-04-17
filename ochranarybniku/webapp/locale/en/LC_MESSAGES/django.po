@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-17 09:12+0200\n"
+"POT-Creation-Date: 2023-04-17 10:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "nature conservation"
 msgid "chov ryb"
 msgstr "fishfarming"
 
-#: webapp/templates/webapp/base.html:12 webapp/templates/webapp/base.html:50
+#: webapp/templates/webapp/base.html:12 webapp/templates/webapp/base.html:66
 msgid ""
 "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných "
 "rybničních ekosystémů."
@@ -58,21 +58,20 @@ msgstr ""
 "Nature-friendly fisheries management as a tool for protecting valuablepond "
 "ecosystems."
 
-#: webapp/templates/webapp/base.html:30
+#: webapp/templates/webapp/base.html:31
 msgid "Úvod"
 msgstr "About"
 
-#: webapp/templates/webapp/base.html:32
+#: webapp/templates/webapp/base.html:33
 msgid "Rybníky"
 msgstr "Ponds"
 
-#: webapp/templates/webapp/base.html:33
+#: webapp/templates/webapp/base.html:46
 #: webapp/templates/webapp/photogalleries.html:8
-#: webapp/templates/webapp/photogallery_base.html:8
-msgid "Fotogalerie"
-msgstr "Photogallery"
+msgid "Galerie"
+msgstr "Photogalleries"
 
-#: webapp/templates/webapp/base.html:51
+#: webapp/templates/webapp/base.html:67
 msgid ""
 "Podpořeno Norskem prostřednictvím Norských fondů v programu Životní "
 "prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu "
@@ -82,36 +81,36 @@ msgstr ""
 "Ecosystems and Climate Change program in the area of support Improving the "
 "state of the environment in ecosystems"
 
-#: webapp/templates/webapp/base.html:52
+#: webapp/templates/webapp/base.html:68
 msgid "Příjemce podpory"
 msgstr "Benefitior"
 
-#: webapp/templates/webapp/base.html:53
+#: webapp/templates/webapp/base.html:69
 msgid "Partneři projektu"
 msgstr "Project partners"
 
-#: webapp/templates/webapp/base.html:53
+#: webapp/templates/webapp/base.html:69
 msgid "Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB"
 msgstr ""
 "Faculty of Fisheries and Protection of Waters, University of South Bohemia"
 
-#: webapp/templates/webapp/base.html:53
+#: webapp/templates/webapp/base.html:69
 msgid "Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni"
 msgstr "Jakub Krčín Secondary School of Fishery and Water Management"
 
-#: webapp/templates/webapp/base.html:53
+#: webapp/templates/webapp/base.html:69
 msgid "Rakousko"
 msgstr "Austria"
 
-#: webapp/templates/webapp/base.html:54
+#: webapp/templates/webapp/base.html:70
 msgid "Lokality propůjčují"
 msgstr "Areas borrowed by"
 
-#: webapp/templates/webapp/base.html:54
+#: webapp/templates/webapp/base.html:70
 msgid "Vojenské lesy a statky, s. p.:"
 msgstr "State-owned forestry in military area"
 
-#: webapp/templates/webapp/base.html:54
+#: webapp/templates/webapp/base.html:70
 msgid "Agentura ochrany přírody a krajiny ČR"
 msgstr "Nature Conservation Agency of the Czech Republic"
 
@@ -138,3 +137,7 @@ msgstr "Latest photogalleries"
 #: webapp/templates/webapp/photogalleries_base.html:28
 msgid "Všechny fotogalerie"
 msgstr "All photogalleries"
+
+#: webapp/templates/webapp/photogallery_base.html:8
+msgid "Fotogalerie"
+msgstr "Photogallery"

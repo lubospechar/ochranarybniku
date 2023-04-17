@@ -13,7 +13,7 @@ urlpatterns = [
 
 
     path("admin/", admin.site.urls),
-    path("", include("webapp.urls")),
+    path("<str:lang>/", include("webapp.urls")),
     path("data/", include("data.urls")),
     path("kalendar/", include("cal.urls")),
     path("rybniky/", include("ponds.urls")),

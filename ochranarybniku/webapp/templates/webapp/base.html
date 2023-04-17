@@ -27,10 +27,26 @@
                     <li class="last"><a href="{% url 'set_language' 'en' %}"><img src="{% static 'img/enflag.png' %}" /></a>
                 </ul>
                 <ul class="menu">
-                    <li><a href="{% url 'home' LANGUAGE_CODE %}">{% translate "Úvod" %}</a></li>
+                    <li>
+                        <a href="{% url 'home' LANGUAGE_CODE %}">{% translate "Úvod" %}</a></li>
                     <li><a href="{% url 'blog' LANGUAGE_CODE %}">Blog</a></li>
                     <li><a href="{% url 'ponds' %}">{% translate "Rybníky" %}</a></li>
-                    <li class="last"><a href="{% url 'photogalleries' %}">{% translate "Fotogalerie" %}</a></li>
+
+
+
+                    <li class="last"><a href="
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'galerie' 'cs' %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'photogalleries' 'en' %}
+                      {% endif %}
+
+                    ">{% translate "Galerie" %}</a></li>
+
+
+
                     {% comment %}<li class="last">'Partneři'</li>{% endcomment %}
                 </ul>
             </nav>

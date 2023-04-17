@@ -5,13 +5,14 @@ from . import views
 
 urlpatterns = [
 
-    path('<str:lang>/', views.home, name='home'),
+    path('', views.home, name='home'),
 
-    path('<str:lang>/fotogalerie/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="fotogalerie"),
+    path('fotogalerie/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="fotogalerie"),
 
     path('photogalleries/', views.photogalleries, name="photogalleries"),
-    path('<str:lang>/photogallery/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="photogallery"),
-    path('<str:lang>/blog/', views.blog, name="blog"),
+    path('galerie/', views.photogalleries, name="galerie"),
+    path('photogallery/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="photogallery"),
+    path('blog/', views.blog, name="blog"),
     
 ]
 

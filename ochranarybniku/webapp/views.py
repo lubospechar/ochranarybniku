@@ -30,8 +30,14 @@ def home(request, lang):
         'ponds': Pond.objects.filter(monitored=True),
     })
 
-def photogalleries(request):
-    galleries = PhotoGallery.objects.filter(enable=True).order_by('-pk')
+def photogalleries(request, lang):
+    language = get_object_or_404(Language, lang=lang)
+    galleries = PhotogaleryDescription.objects.filter(
+        lang=language,
+        photogallery__in=PhotoGallery.objects.filter(
+            enable=True
+        )
+    ).order_by('-photogallery__pk')
     return render(request, 'webapp/photogalleries.html', {
         'galleries': galleries,
     })
@@ -39,12 +45,12 @@ def photogalleries(request):
 def photogallery(request, photogallery_pk, photogallery_slug, lang):
     language = get_object_or_404(Language, lang=lang)
     photogallery_desc = get_object_or_404(PhotogaleryDescription, pk=photogallery_pk)
-    picures = PictureDescription.objects.filter(
+    pictures = PictureDescription.objects.filter(
         picture__in=Picture.objects.filter(
             photogallery=photogallery_desc.photogallery
         ),
         lang=language
-    ),
+    )
     return render(request, 'webapp/photogallery.html', {
         'photogallery': photogallery_desc,
         'pictures': pictures,
