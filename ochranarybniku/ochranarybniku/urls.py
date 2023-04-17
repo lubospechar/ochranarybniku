@@ -2,10 +2,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.utils.html import format_html
 from django.contrib.auth import views as auth_views
+from webapp.views import set_language
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('set-language/<str:language>/', set_language, name="set_language"),
+    path("", RedirectView.as_view(url='cs/')), # tady by měla být autodetekce od prohlížeče
+
+
     path("admin/", admin.site.urls),
     path("", include("webapp.urls")),
     path("data/", include("data.urls")),
