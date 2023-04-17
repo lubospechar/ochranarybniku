@@ -28,7 +28,19 @@
             <ul>
                 {% for pond in ponds %}
                 <li>
-                    <a href="{% url 'pond_card' pond.slug %}"><img src="{{ pond.title_picture_home.url }}" />
+                    <a href="
+
+
+
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'karta_rybniku' 'cs' pond.slug %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'pond_card' 'en' pond.slug %}
+                      {% endif %}
+
+                    "><img src="{{ pond.title_picture_home.url }}" />
                     <p>{{ pond.pond_name }}</p>
                 </a>
                 </li>

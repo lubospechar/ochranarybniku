@@ -4,7 +4,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.ponds, name='ponds'),
-    path('<str:slug>', views.pond_card, name="pond_card"),
+    path('ponds', views.ponds, name='ponds'),
+    path('rybniky', views.ponds, name='rybniky'),
+    path('rybnik/<str:slug>', views.pond_card, name="karta_rybniku"),
+    path('pond/<str:slug>', views.pond_card, name="pond_card"),
     
 ] 

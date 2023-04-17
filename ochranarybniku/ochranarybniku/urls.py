@@ -16,7 +16,8 @@ urlpatterns = [
     path("<str:lang>/", include("webapp.urls")),
     path("data/", include("data.urls")),
     path("kalendar/", include("cal.urls")),
-    path("rybniky/", include("ponds.urls")),
+    path("<str:lang>/", include("ponds.urls")),
+    path("<str:lang>/", include("ponds.urls")),
     path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
 ]
 

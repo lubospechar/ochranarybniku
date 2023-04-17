@@ -30,7 +30,17 @@
                     <li>
                         <a href="{% url 'home' LANGUAGE_CODE %}">{% translate "Úvod" %}</a></li>
                     <li><a href="{% url 'blog' LANGUAGE_CODE %}">Blog</a></li>
-                    <li><a href="{% url 'ponds' %}">{% translate "Rybníky" %}</a></li>
+                    <li><a href="
+
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'rybniky' 'cs' %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'ponds' 'en' %}
+                      {% endif %}
+
+                    ">{% translate "Rybníky" %}</a></li>
 
 
 

@@ -1,15 +1,26 @@
 {% extends 'webapp/base.html' %}
 {% load static %}
 {% load imagekit %}
+{% load i18n %}
 
 {% block main %}
 <div class="main_content">
     <article class="ponds">
-      <h1>Seznam rybníků</h1>
+      <h1>{% translate 'Seznam rybníků' %}</h1>
         <ul>
             {% for pond in ponds %}
             <li>
-                <a href="{% url 'pond_card' pond.slug %}"><img src="{{ pond.title_picture_list.url }}" />
+                <a href="
+
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'karta_rybniku' 'cs' pond.slug %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'pond_card' 'en' pond.slug %}
+                      {% endif %}
+
+                "><img src="{{ pond.title_picture_list.url }}" />
                 <p>{{ pond.pond_name }}</p>
               </a>
             </li>

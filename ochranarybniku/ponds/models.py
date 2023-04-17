@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.gis.db.models import PolygonField
-from webapp.models import Picture, PhotoGallery, Blog
+from webapp.models import Picture, PhotoGallery, Blog, PhotogaleryDescription, PictureDescription
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
 
@@ -60,7 +60,13 @@ class Pond(models.Model):
     def __str__(self):
         return self.pond_name
     
-        
+    def get_main_photogallery(self, lang):
+        mpg = self.main_photogallery.all()
+        return PictureDescription.objects.filter(
+            picture__in=mpg,
+            lang=lang
+        )
+
     
     class Meta:
         verbose_name='Rybník'

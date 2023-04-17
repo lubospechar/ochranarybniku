@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 17:26+0200\n"
+"POT-Creation-Date: 2023-04-17 11:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ponds/templates/ponds/pond_card.html:24
+#: ponds/templates/ponds/graphs.html:9
+msgid "Parametr"
+msgstr "Parameter"
+
+#: ponds/templates/ponds/graphs.html:18
+msgid "*Od"
+msgstr "*From date"
+
+#: ponds/templates/ponds/graphs.html:19
+msgid "*Do"
+msgstr "*To date"
+
+#: ponds/templates/ponds/graphs.html:21
+msgid "Agregace"
+msgstr "Aggregation"
+
+#: ponds/templates/ponds/graphs.html:23
+msgid "Bez agregace"
+msgstr "without agggregation"
+
+#: ponds/templates/ponds/graphs.html:24
+msgid "Průměry za hodinu"
+msgstr "Averages per hour"
+
+#: ponds/templates/ponds/graphs.html:25
+msgid "Průměry za den"
+msgstr "Averages per day"
+
+#: ponds/templates/ponds/graphs.html:26
+msgid "Průměry za týden"
+msgstr "Averages per week"
+
+#: ponds/templates/ponds/graphs.html:27
+msgid "Průměry za měsíc"
+msgstr "Averages per month"
+
+#: ponds/templates/ponds/pond_card.html:29
 msgid "Rybník"
 msgstr "Pond"
 
-#: ponds/templates/ponds/pond_card.html:30
+#: ponds/templates/ponds/pond_card.html:34
 msgid "Mapa"
 msgstr "Map"
 
-#: ponds/templates/ponds/pond_card.html:35
+#: ponds/templates/ponds/pond_card.html:39
 msgid "Hlavní fotogalerie"
 msgstr "Main photogallery"
 
-#: ponds/templates/ponds/pond_card.html:40
+#: ponds/templates/ponds/pond_card.html:52
 msgid "Návštevy v rámci projektu (včetně plánovaných)"
 msgstr "Project visits (including future)"
 
-#: ponds/templates/ponds/pond_card.html:43
+#: ponds/templates/ponds/pond_card.html:55
 msgid "Začátek"
 msgstr "Start"
 
-#: ponds/templates/ponds/pond_card.html:44
+#: ponds/templates/ponds/pond_card.html:56
 msgid "Konec"
 msgstr "End"
 
-#: ponds/templates/ponds/pond_card.html:45
+#: ponds/templates/ponds/pond_card.html:57
 msgid "Popis aktivit"
 msgstr "Activities description"
 
-#: ponds/templates/ponds/pond_card.html:46
+#: ponds/templates/ponds/pond_card.html:58
 msgid "Účastní se"
 msgstr "Workers"
 
-#: ponds/templates/ponds/pond_card.html:61
+#: ponds/templates/ponds/pond_card.html:72
 msgid "Související fotogalerie"
 msgstr "Related photogaleries"
 
-#: ponds/templates/ponds/ponds.html:8
+#: ponds/templates/ponds/ponds.html:9
 msgid "Seznam rybníků"
 msgstr "List of ponds"
