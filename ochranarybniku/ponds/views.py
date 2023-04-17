@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from ponds.models import Pond
 from data.models import FiedlerData, Parameter, PondMeasurement
 from webapp.models import Language
+from django.utils import translation
+from django.conf import settings
 
 def ponds(request, lang):
     language = get_object_or_404(Language, lang=lang)
@@ -21,12 +23,12 @@ def pond_card(request, lang, slug):
     ).order_by('name_cs')
     
 
-    
+
+
     return render(request, 'ponds/pond_card.html', {
         'pond': pond,
-        'galleries': pond.photogalleries.all(),
-        'pictures': pond.get_main_photogallery(lang=language),
+        'galleries': pond.get_related_photogalleries(),
+        'pictures': pond.get_main_photogallery(),
         'visits': pond.pondvisit_set.all().order_by('-dt_end'),
         'parameters': parameters,
-        
     })

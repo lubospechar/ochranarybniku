@@ -27,7 +27,7 @@
     <article class="pond">
         <section class="main_text">
           <h1>{% translate 'Rybník' %}: {{ pond.pond_name }}</h1>
-          {{ pond.main_text_cs|safe }}
+          {{ pond.get_text|safe }}
         </section>
 
           <section class="map">

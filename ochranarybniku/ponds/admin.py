@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.contrib.gis.geos import Point
-from ponds.models import Pond
+from ponds.models import Pond, PondTextTranslation
+
+class PondTextTranslationInline(admin.TabularInline):
+    model = PondTextTranslation
+
 
 
 @admin.register(Pond)
@@ -18,3 +22,4 @@ class PondAdmin(OSMGeoAdmin):
     prepopulated_fields = {
         "slug": ("pond_name",),
     }
+    inlines = [PondTextTranslationInline, ]
