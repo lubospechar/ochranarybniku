@@ -20,13 +20,13 @@
   <section class="blog">
       {% for article in articles %}
         <article>
-        <h1><a href="">{{ article.headline_cs }}</a></h1>
+        <h1><a href="">{{ article.headline }}</a></h1>
         <p><strong>{% translate "Autor" %}: </strong>{{ article.blog.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.blog.published }}</p>
         {{ article.text|safe }}
         <div class="photos">
           <div class="simple-gallery">
-            {% for photo in article.get_pictures %}
-    <div class="photo"><div class="transf"><a href="{{ photo.gallery_resize.url }}"><img src="{{ photo.admin_thumbnail.url }}" alt="{{ photo.description_cs }}" title="{{ photo.description_cs }}"/></a></div></div>
+            {% for photo_desc in article.get_pictures %}
+    <div class="photo"><div class="transf"><a href="{{ photo_desc.picture.gallery_resize.url }}"><img src="{{ photo_desc.picture.admin_thumbnail.url }}" alt="{{ photo_desc.description }}" title="{{ photo_desc.description }}"/></a></div></div>
             {% endfor %}
           </div>
         </div>

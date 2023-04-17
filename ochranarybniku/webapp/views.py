@@ -39,20 +39,21 @@ def photogalleries(request):
 def photogallery(request, photogallery_pk, photogallery_slug, lang):
     language = get_object_or_404(Language, lang=lang)
     photogallery_desc = get_object_or_404(PhotogaleryDescription, pk=photogallery_pk)
+    picures = PictureDescription.objects.filter(
+        picture__in=Picture.objects.filter(
+            photogallery=photogallery_desc.photogallery
+        ),
+        lang=language
+    ),
     return render(request, 'webapp/photogallery.html', {
         'photogallery': photogallery_desc,
-        'pictures': PictureDescription.objects.filter(
-            picture__in=Picture.objects.filter(
-                photogallery=photogallery_desc.photogallery
-            ),
-            lang=language
-        ),
+        'pictures': pictures,
         'photogallery_detail': True,
     })
 
 def blog(request, lang):
     language = get_object_or_404(Language, lang=lang)
-    articles = BlogTranslation.objects.filter(language=language, blog__in=Blog.objects.filter(enable=True)).order_by('-blog__published')
+    articles = BlogTranslation.objects.filter(lang=language, blog__in=Blog.objects.filter(enable=True)).order_by('-blog__published')
     return render(request, 'webapp/blog.html', {
         'articles': articles
     })

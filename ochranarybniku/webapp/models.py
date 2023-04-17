@@ -143,5 +143,16 @@ class BlogTranslation(models.Model):
     headline = models.CharField(max_length=255)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     text = models.TextField()
-    language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE)
     slug = models.SlugField()
+
+    def get_pictures(self):
+        pictures = PictureDescription.objects.filter(
+            lang=self.lang,
+            picture__in=Picture.objects.filter(
+                photogallery__in=self.blog.photogalleries.all()
+            )
+        )
+
+        return pictures
+
