@@ -9,7 +9,7 @@
         <td>{% translate 'Parametr' %}:
             <select class="parameter">
             {% for parameter in parameters %}
-                <option value="{{ parameter.pk }}">{{ parameter.name_cs }}</option>
+                <option value="{{ parameter.pk }}">{{ parameter.get_name }}</option>
             {% endfor %}
             </select>
         </td>
@@ -28,10 +28,10 @@
             </select>
         </td>
 
-        <td><button id="graph_button">Načíst data</button></td> 
+        <td><button id="graph_button">{% translate 'Načíst data' %}</button></td>
     </tr>
 </table>
-<p class="graph_form_desc">* pokud není vyplněno datum, jsou automaticky načteny poslední 3 dny dostupných dat</p>
+<p class="graph_form_desc">* {% translate 'Pokud není vyplněno datum, jsou automaticky načteny poslední 3 dny dostupných dat' %}</p>
 
 
 <div>

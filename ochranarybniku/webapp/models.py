@@ -4,7 +4,6 @@ from imagekit.processors import ResizeToFit
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
-
 class Language(models.Model):
     lang =  models.CharField(max_length=2)
 
@@ -14,6 +13,10 @@ class Language(models.Model):
 
     def __str__(self):
         return self.lang
+
+    @staticmethod
+    def cs():
+        return Language.objects.get(lang='cs')
 
 class Page(models.Model):
     name = models.CharField(max_length=255, verbose_name="Název")
@@ -50,6 +53,14 @@ class PhotoGallery(models.Model):
         except Picture.DoesNotExist:
             return self.pictures.all()[0]
         
+    def __str__(self):
+        try:
+            return PhotogaleryDescription.objects.get(photogallery=self, lang=Language.cs()).name
+        except PhotogaleryDescription.DoesNotExist:
+            return 'Nepojmenováno'
+
+
+
 
     count_pictures.short_description = "Počet obrázků"
 
@@ -92,6 +103,13 @@ class Picture(models.Model):
     enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
     title = models.BooleanField(default=False)
+
+    def __str__(self):
+        try:
+            return PictureDescription.objects.get(picture=self, lang=Language.cs()).description
+        except PictureDescription.DoesNotExist:
+            return 'Nepojmenováno'
+
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"

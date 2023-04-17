@@ -7,6 +7,7 @@ from data.models import (
     IntegerData,
     BooleanData,
     CharData,
+    ParameterTranslation,
 )
 
 
@@ -53,6 +54,8 @@ class CharDataInline(DataInline):
     parameter_datatype = 4
 
 
+class ParameterTranslationInline(admin.TabularInline):
+    model = ParameterTranslation
 
 
 @admin.register(Unit)
@@ -62,6 +65,7 @@ class UnitAdmin(admin.ModelAdmin):
 @admin.register(Parameter)
 class ParameterAdmin(admin.ModelAdmin):
     list_display = ("name_cs", "datatype", "note_cs", "unit")
+    inlines = [ParameterTranslationInline, ]
 
 
 @admin.register(PondMeasurement)

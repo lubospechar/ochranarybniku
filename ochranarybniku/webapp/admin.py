@@ -26,6 +26,7 @@ class PhotogaleryDescriptionInline(admin.TabularInline):
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
     list_display = (
+        "__str__",
         "count_pictures",
         "enable",
     )

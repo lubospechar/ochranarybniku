@@ -9,7 +9,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('set-language/<str:language>/', set_language, name="set_language"),
-    path("", RedirectView.as_view(url='cs/')), # tady by měla být autodetekce od prohlížeče
+    path("", RedirectView.as_view(url='set-language/cs/')), # tady by měla být autodetekce od prohlížeče
 
 
     path("admin/", admin.site.urls),
