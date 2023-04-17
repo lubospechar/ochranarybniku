@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-17 11:31+0200\n"
+"POT-Creation-Date: 2023-04-17 17:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,18 @@ msgstr "Averages per week"
 #: ponds/templates/ponds/graphs.html:27
 msgid "Průměry za měsíc"
 msgstr "Averages per month"
+
+#: ponds/templates/ponds/graphs.html:31
+msgid "Načíst data"
+msgstr "Load data"
+
+#: ponds/templates/ponds/graphs.html:34
+msgid ""
+"Pokud není vyplněno datum, jsou automaticky načteny poslední 3 dny "
+"dostupných dat"
+msgstr
+"If no date is filled in, the data is automatically loaded"
+"for the last 3 days"
 
 #: ponds/templates/ponds/pond_card.html:29
 msgid "Rybník"
