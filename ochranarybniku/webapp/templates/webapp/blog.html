@@ -1,5 +1,6 @@
 {% extends 'webapp/base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block title %} Blog{% endblock %}
@@ -19,16 +20,38 @@
   <section class="blog">
       {% for article in articles %}
         <article>
-        <h1><a href="">{{ article.headline_cs }}</a></h1>
-        <p><strong>Autor: </strong>{{ article.author }},   <strong>Publikováno: </strong>{{ article.published }}</p>
+        <h1><a href="">{{ article.headline }}</a></h1>
+        <p><strong>{% translate "Autor" %}: </strong>{{ article.blog.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.blog.published }}</p>
         {{ article.text|safe }}
         <div class="photos">
           <div class="simple-gallery">
-            {% for photo in article.get_pictures %}
-    <div class="photo"><div class="transf"><a href="{{ photo.gallery_resize.url }}"><img src="{{ photo.admin_thumbnail.url }}" alt="{{ photo.description_cs }}" title="{{ photo.description_cs }}"/></a></div></div>
+            {% for photo_desc in article.get_pictures %}
+              <div class="photo">
+                <div class="transf">
+                  <a href="{{ photo_desc.picture.gallery_resize.url }}">
+                    <img src="{{ photo_desc.picture.admin_thumbnail.url }}" alt="{{ photo_desc.description }}" title="{{ photo_desc.description }}"/>
+                  </a>
+                </div>
+              </div>
             {% endfor %}
           </div>
         </div>
+
+
+      {% if article.blog.youtube %}
+      <h2>Video</h2>
+        <div class="video">
+          <iframe
+            class="center"
+            width="1120"
+            height="630"
+            src="https://www.youtube.com/embed/{{ article.blog.youtube }}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen
+          ></iframe>
+        </div>
+      {% endif %}
 
         </article>
         

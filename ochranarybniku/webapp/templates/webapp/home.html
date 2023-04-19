@@ -17,16 +17,27 @@
 <div class="main_content">
     <article class="home">
         <section class="about">
-            <h1>{{ about.name_cs }}</h1>
-            {{ about.content_cs|safe }}
+            {% for page in title_pages %}
+                <h1>{{ page.name }}</h1>
+                {{ page.content|safe }}
+            {% endfor %}
         </section>
 
         <section class="ponds_home">
-            <h2>Lokality (klikněte pro detail)</h2>
+            <h2>{% translate "Rybníky v projektu" %} ({% translate "klikněte pro detail" %})</h2>
             <ul>
                 {% for pond in ponds %}
                 <li>
-                    <a href="{% url 'pond_card' pond.slug %}"><img src="{{ pond.title_picture_home.url }}" />
+                    <a href="
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'karta_rybniku' 'cs' pond.slug %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'pond_card' 'en' pond.slug %}
+                      {% endif %}
+
+                    "><img src="{{ pond.title_picture_home.url }}" />
                     <p>{{ pond.pond_name }}</p>
                 </a>
                 </li>
@@ -35,7 +46,7 @@
         </section>
 
         <section class="photogallery">
-            <h2>Nejnovější fotogalerie</h2>
+            <h2>{% translate "Nejnovější fotogalerie" %}</h2>
             {% include "webapp/photogalleries_base.html" %}
         </section>
 

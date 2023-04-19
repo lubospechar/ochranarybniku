@@ -12,7 +12,7 @@ Online aplikace a web k projektu Ochrana rybníků včetně úložiště dat.
     - [x] Resize a cache obrázků na straně serveru
     - [x] Snížit průhlednost pozadí u fotogalerií
     - [x] Správné náhledy stránek na facebookovém příspěvku
-    - [ ] Prozatimní zrušení dvojjazyčné mutace
+    - [ ] Obnovení zrušení dvojjazyčné mutace
     - [ ] Automatický zoom mapy u katalogu rybníků
     - [ ] Tabulka s daty u katalogu rybníků
     - [ ] Blog
@@ -43,13 +43,13 @@ Online aplikace a web k projektu Ochrana rybníků včetně úložiště dat.
 
 
 ## Použité balíky
-Django==4.1.3
+Django==4.2
 django-imagekit==4.1.0
-Pillow==9.3.0
-psycopg2==2.9.5
-python-decouple==3.6
+Pillow==9.5.0
+psycopg2==2.9.6
+python-decouple==3.8
 xlwt==1.3.0
 
 ## Použité balíky pro vývoj
 django-extensions==3.2.1
-ipython==8.5.0
+ipython==8.12.0

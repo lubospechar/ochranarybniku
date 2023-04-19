@@ -1,5 +1,12 @@
 from django.db import models
 from ponds.models import Pond
+from webapp.models import Language
+from django.utils import translation
+
+def get_lang():
+    return Language.objects.get(
+        lang = translation.get_language()
+    )
 
 
 class Unit(models.Model):
@@ -36,6 +43,23 @@ class Parameter(models.Model):
         if self.note_cs: rstr = rstr + f' {self.note_cs}'
         if self.unit: rstr = rstr + f' [{self.unit.shortcut}]'
         return rstr
+
+
+    def get_name(self):
+        try:
+            return ParameterTranslation.objects.get(
+                parameter=self,
+                lang=get_lang()
+            ).name
+        except ParameterTranslation.DoesNotExist:
+            return None
+
+class ParameterTranslation(models.Model):
+    parameter = models.ForeignKey(Parameter, on_delete=models.CASCADE)
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    note = models.CharField(max_length=255, null=True, blank=True)
+
 
 class PondMeasurement(models.Model):
     datetime = models.DateTimeField(verbose_name="Datum")

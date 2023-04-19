@@ -8,8 +8,8 @@
     <title>Ochrana rybníků{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% block extrahead %}{% endblock %}
-    <meta name="keywords" content="rybník, setrvalé hospodaření, biodiverzita, ochrana druhů ryb, ochrana rybníků, chráněná území, ochrana přírody, chov ryb">
-    <meta name="description" content='Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.'>
+    <meta name="keywords" content="{% translate "rybník" %}, {% translate "setrvalé hospodaření" %}, {% translate "biodiverzita" %}, {% translate "ochrana druhů ryb" %}, {% translate "ochrana rybníků" %}, {% translate "chráněná území" %}, {% translate "ochrana přírody" %}, {% translate "chov ryb" %}">
+    <meta name="description" content='{% translate "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů." %}'>
     <meta name="author" content="ENKI o.p.s.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="{% block og_title %}{% endblock %}">
@@ -19,14 +19,46 @@
       <header>
         <div class="header_content">
             <div class="logo">
-                <img src="{% static 'img/logo_norway_grants.png' %}" />
+                <a href="https://www.sfzp.cz/{% if LANGUAGE_CODE == "cs" %}dotace-a-pujcky/norske-fondy/{% endif %}{% if LANGUAGE_CODE == "en" %}norway-grants/{% endif %}">
+                  ><img src="{% static 'img/logo_norway_grants.png' %}" />
+                </a>
             </div>
             <nav>
+                <ul class="language">
+                    <li><a href="{% url 'set_language' 'cs' %}"><img src="{% static 'img/czflag.png' %}" /></a>
+                    <li class="last"><a href="{% url 'set_language' 'en' %}"><img src="{% static 'img/enflag.png' %}" /></a>
+                </ul>
                 <ul class="menu">
-                    <li><a href="{% url 'home' %}">Úvod</a></li>
-                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                    <li><a href="{% url 'ponds' %}">Rybníky</a></li>
-                    <li class="last"><a href="{% url 'photogalleries' %}">Fotogalerie</a></li>
+                    <li>
+                        <a href="{% url 'home' LANGUAGE_CODE %}">{% translate "Úvod" %}</a></li>
+                    <li><a href="{% url 'blog' LANGUAGE_CODE %}">Blog</a></li>
+                    <li><a href="
+
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'rybniky' 'cs' %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'ponds' 'en' %}
+                      {% endif %}
+
+                    ">{% translate "Rybníky" %}</a></li>
+
+
+
+                    <li class="last"><a href="
+                      {% if LANGUAGE_CODE == 'cs' %}
+                        {% url 'galerie' 'cs' %}
+                      {% endif %}
+
+                      {% if LANGUAGE_CODE == 'en' %}
+                        {% url 'photogalleries' 'en' %}
+                      {% endif %}
+
+                    ">{% translate "Galerie" %}</a></li>
+
+
+
                     {% comment %}<li class="last">'Partneři'</li>{% endcomment %}
                 </ul>
             </nav>
@@ -39,17 +71,21 @@
     <footer>
       <div>
       <section class="left">
-        <img src="{% static 'img/logo_norway_grants2.png' %}"  style="height: 120px;"/>
+        <a href="https://www.sfzp.cz/{% if LANGUAGE_CODE == "cs" %}dotace-a-pujcky/norske-fondy/{% endif %}{% if LANGUAGE_CODE == "en" %}norway-grants/{% endif %}">
+          <img src="{% static 'img/logo_norway_grants2.png' %}"  style="height: 120px;"/>
+        </a>
       </section>
       <section class="center">
-        <p>Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů.</p>
-        <p>Podpořeno Norskem prostřednictvím Norských fondů v programu Životní prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu životního prostředí v ekosystémech</p>
-        <p>Příjemce podpory: <a href="https://www.enki.cz">ENKI, o. p. s</a></p>
-        <p><strong>Partneři projektu</strong>Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB, Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni, Bundesamt für Wasserwirtschaft, Ökologische Station Waldviertel, Schrems, Rakousko</p>
-        <p><strong>Lokality propůjčují</strong>: Vojenské lesy a statky, s. p., Agentura ochrany přírody a krajiny ČR</p>
+        <p>{% translate "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů." %}</p>
+        <p>{% translate "Podpořeno Norskem prostřednictvím Norských fondů v programu Životní prostředí, ekosystémy a změna klimatu v oblasti podpory Zlepšování stavu životního prostředí v ekosystémech" %}</p>
+        <p>{% translate "Příjemce podpory" %}: <a href="https://www.enki.cz">ENKI, o. p. s</a></p>
+        <p><strong>{% translate "Partneři projektu" %}</strong>{% translate "Fakulta rybářství a ochrany vod Jihočeské Univerzity v ČB" %}, {% translate "Střední škola rybářská a vodohospodářská Jakuba Krčína v Třeboni" %}, Bundesamt für Wasserwirtschaft, Ökologische Station Waldviertel, Schrems, {% translate "Rakousko" %}</p>
+        <p><strong>{% translate "Lokality propůjčují" %}</strong>: {% translate "Vojenské lesy a statky, s. p.:" %}, {% translate "Agentura ochrany přírody a krajiny ČR" %}</p>
       </section>
       <section class="right">
-        <img src="{% static 'img/sfzp.png' %}" style="height: 120px;" />
+        <a href="https://www.sfzp.cz/{% if LANGUAGE_CODE == "en" %}en/{% endif %}">
+          <img src="{% static 'img/sfzp.png' %}" style="height: 120px;" />
+        </a>
         
       </section>
       </div>

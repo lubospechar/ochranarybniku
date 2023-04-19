@@ -4,30 +4,42 @@ from imagekit.processors import ResizeToFit
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
+class Language(models.Model):
+    lang =  models.CharField(max_length=2)
+
+    class Meta:
+        verbose_name="Zapnutý jazyk"
+        verbose_name_plural="Zapnuté jazyky"
+
+    def __str__(self):
+        return self.lang
+
+    @staticmethod
+    def cs():
+        return Language.objects.get(lang='cs')
 
 class Page(models.Model):
-    name_cs = models.CharField(max_length=255, verbose_name="Název (cs)")
-    content_cs = models.TextField()
-    slug_cs = models.SlugField()
-    enable = models.BooleanField()
+    name = models.CharField(max_length=255, verbose_name="Název")
+    content = models.TextField(verbose_name="Obash (html)")
+    slug = models.SlugField()
+    enable = models.BooleanField(verbose_name="Zapnuto")
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Jazyk")
+    add_to_title = models.BooleanField(verbose_name="Přidat na titulní stránku", default=False)
+
+    class Meta:
+        verbose_name="Stránka"
+        verbose_name_plural="Stránky"
 
 class PhotoGallery(models.Model):
-    name_cs = models.CharField(max_length=255, verbose_name="Název galerie (cs)")
-    description_cs = models.TextField(
-        verbose_name="Popis fotogalerie (cs)", null=True, blank=True
-    )
     modified = models.DateTimeField(auto_now=True, verbose_name="poslední úprava")
     created = models.DateTimeField(auto_now_add=True, verbose_name="vytvořeno")
-    slug_cs = models.SlugField()
+    slug = models.SlugField()
 
     enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
     class Meta:
         verbose_name = "Fotogalerie"
         verbose_name_plural = "Fotogalerie"
-
-    def __str__(self):
-        return self.name_cs
 
     def count_pictures(self):
         # spočítá kolik obrázků fotogalerie obsahuje
@@ -41,9 +53,25 @@ class PhotoGallery(models.Model):
         except Picture.DoesNotExist:
             return self.pictures.all()[0]
         
+    def __str__(self):
+        try:
+            return PhotogaleryDescription.objects.get(photogallery=self, lang=Language.cs()).name
+        except PhotogaleryDescription.DoesNotExist:
+            return 'Nepojmenováno'
+
+
+
 
     count_pictures.short_description = "Počet obrázků"
 
+class PhotogaleryDescription(models.Model):
+    photogallery = models.ForeignKey(PhotoGallery, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, verbose_name="Název galerie")
+    description = models.TextField(
+        verbose_name="Popis fotogalerie", null=True, blank=True
+    )
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Jazyk")
+    slug = models.SlugField()
 
 class Picture(models.Model):
     photogallery = models.ForeignKey(
@@ -51,9 +79,6 @@ class Picture(models.Model):
         on_delete=models.CASCADE,
         verbose_name="fotogalerie",
         related_name="pictures",
-    )
-    description_cs = models.CharField(
-        max_length=255, verbose_name="Popis fotografie (cs)"
     )
 
     photo = models.ImageField(
@@ -75,25 +100,34 @@ class Picture(models.Model):
         id="image_gallery_resize",
     )
 
-    slug_cs = models.SlugField()
-
     enable = models.BooleanField(default=False, verbose_name="Zaponout")
 
     title = models.BooleanField(default=False)
+
+    def __str__(self):
+        try:
+            return PictureDescription.objects.get(picture=self, lang=Language.cs()).description
+        except PictureDescription.DoesNotExist:
+            return 'Nepojmenováno'
+
     class Meta:
         verbose_name = "Obrázek"
         verbose_name_plural = "Obrázky"
 
-    def __str__(self):
-        return f"{self.photogallery.name_cs} / {self.description_cs}"
 
+class PictureDescription(models.Model):
+    picture = models.ForeignKey(Picture, on_delete=models.CASCADE)
+    description = models.CharField(
+        max_length=255,
+        verbose_name="Popis obrázku"
+    )
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Jazyk")
+    slug = models.SlugField()
 
 class Blog(models.Model):
     headline_cs = models.CharField(
         max_length=255, verbose_name="Nadpis"
     )
-    
-    slug_cs = models.SlugField()
     
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     modified = models.DateTimeField(auto_now=True, verbose_name="Poslední úprava")
@@ -103,9 +137,10 @@ class Blog(models.Model):
     
     photogalleries = models.ManyToManyField(PhotoGallery, verbose_name="fotogralerie", blank=True)
     pictures = models.ManyToManyField(Picture, verbose_name="obrázky", blank=True)
-    
+    youtube = models.CharField(verbose_name="YouTube ID", null=True, blank=True, max_length=30)
     
     enable = models.BooleanField(verbose_name="Zapnout", default=False)
+
 
     class Meta:
         verbose_name = "Blog"
@@ -122,3 +157,20 @@ class Blog(models.Model):
         
         return pictures
             
+class BlogTranslation(models.Model):
+    headline = models.CharField(max_length=255)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    text = models.TextField()
+    lang = models.ForeignKey(Language, on_delete=models.CASCADE)
+    slug = models.SlugField()
+
+    def get_pictures(self):
+        pictures = PictureDescription.objects.filter(
+            lang=self.lang,
+            picture__in=Picture.objects.filter(
+                photogallery__in=self.blog.photogalleries.all()
+            )
+        )
+
+        return pictures
+

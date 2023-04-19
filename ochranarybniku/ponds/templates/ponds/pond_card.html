@@ -1,5 +1,6 @@
 {% extends 'webapp/base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block title %} - {{ pond.pond_name }}{% endblock %}
@@ -25,17 +26,17 @@
 <div class="main_content">
     <article class="pond">
         <section class="main_text">
-          <h1>Rybník: {{ pond.pond_name }}</h1>
-          {{ pond.main_text_cs|safe }}
+          <h1>{% translate 'Rybník' %}: {{ pond.pond_name }}</h1>
+          {{ pond.get_text|safe }}
         </section>
 
           <section class="map">
-            <h2>Mapa</h2>
+            <h2>{% translate 'Mapa' %}</h2>
             <div id="map"></div>
           </section>
 
           <section class="photos">
-            <h2>Hlavní fotogalerie</h2>
+            <h2>{% translate 'Hlavní fotogalerie' %}</h2>
             {% include "webapp/photogallery_base.html" %}
           </section>
 
@@ -48,19 +49,19 @@
 
 
           <section class="visits">
-            <h2>Návštevy v rámci projektu (včetně plánovaných)</h2>
+            <h2>{% translate 'Návštevy v rámci projektu (včetně plánovaných)' %}</h2>
             <table>
               <tr>
-                <th>Začátek</th>
-                <th>Konec</th>
-                <th>Popis aktivit</th>
-                <th>Účastní se</th>
+                <th>{% translate 'Začátek' %}</th>
+                <th>{% translate 'Konec' %}</th>
+                <th>{% translate 'Popis aktivit' %}</th>
+                <th>{% translate 'Účastní se' %}</th>
               </tr>
             {% for visit in visits %}
                 <tr>
                   <td>{{ visit.dt_start }}</td>
                   <td>{{ visit.dt_end }}</td>
-                  <td>{{ visit.desc }}</td>
+                  <td>{{ visit.get_desc }}</td>
                   <td>{{ visit.visitors }}</td>
                 </tr>
             {% endfor %}
@@ -68,7 +69,7 @@
           </section>
         
         <section class="photogallery">
-            <h2>Související fotogalerie</h2>
+            <h2>{% translate 'Související fotogalerie' %}</h2>
             {% include "webapp/photogalleries_base.html" %}
         </section>
 
