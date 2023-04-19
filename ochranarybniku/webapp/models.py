@@ -137,7 +137,7 @@ class Blog(models.Model):
     
     photogalleries = models.ManyToManyField(PhotoGallery, verbose_name="fotogralerie", blank=True)
     pictures = models.ManyToManyField(Picture, verbose_name="obrázky", blank=True)
-    
+    youtube = models.CharField(verbose_name="YouTube ID", null=True, blank=True, max_length=30)
     
     enable = models.BooleanField(verbose_name="Zapnout", default=False)
 
