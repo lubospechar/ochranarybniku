@@ -19,7 +19,10 @@
       <header>
         <div class="header_content">
             <div class="logo">
-                <img src="{% static 'img/logo_norway_grants.png' %}" />
+                <a href="
+                {% if LANGUAGE_CODE == "cs" %}https://www.sfzp.cz/dotace-a-pujcky/norske-fondy/{% endif %}
+                {% if LANGUAGE_CODE == "en" %}https://www.sfzp.cz/en/norway-grants/{% endif %}
+              "><img src="{% static 'img/logo_norway_grants.png' %}" /></a>
             </div>
             <nav>
                 <ul class="language">
@@ -69,7 +72,11 @@
     <footer>
       <div>
       <section class="left">
-        <img src="{% static 'img/logo_norway_grants2.png' %}"  style="height: 120px;"/>
+        <a href="
+        {% if LANGUAGE_CODE == "cs" %}https://www.sfzp.cz/dotace-a-pujcky/norske-fondy/{% endif %}
+        {% if LANGUAGE_CODE == "en" %}https://www.sfzp.cz/en/norway-grants/{% endif %}
+        "
+        ><img src="{% static 'img/logo_norway_grants2.png' %}"  style="height: 120px;"/></a>
       </section>
       <section class="center">
         <p>{% translate "Přírodě blízké rybářské hospodaření jako nástroj pro ochranu cenných rybničních ekosystémů." %}</p>
@@ -79,7 +86,11 @@
         <p><strong>{% translate "Lokality propůjčují" %}</strong>: {% translate "Vojenské lesy a statky, s. p.:" %}, {% translate "Agentura ochrany přírody a krajiny ČR" %}</p>
       </section>
       <section class="right">
-        <img src="{% static 'img/sfzp.png' %}" style="height: 120px;" />
+        <a href="
+          {% if LANGUAGE_CODE == "cs" %}https://www.sfzp.cz/{% endif %}
+          {% if LANGUAGE_CODE == "en" %}https://www.sfzp.cz/en/{% endif %}
+        "><img src="{% static 'img/sfzp.png' %}" style="height: 120px;" /><
+        a>
         
       </section>
       </div>
