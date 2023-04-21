@@ -60,7 +60,7 @@ def photogallery(request, photogallery_pk, photogallery_slug, lang):
 def blog(request, lang):
     language = get_object_or_404(Language, lang=lang)
     articles = BlogTranslation.objects.filter(lang=language, blog__in=Blog.objects.filter(enable=True)).order_by('-blog__published')
-    return render(request, 'webapp/blog.html', {
+    return render(request, 'webapp/blogs.html', {
         'articles': articles
     })
 

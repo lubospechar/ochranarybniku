@@ -12,7 +12,8 @@ urlpatterns = [
     path('photogalleries/', views.photogalleries, name="photogalleries"),
     path('galerie/', views.photogalleries, name="galerie"),
     path('photogallery/<int:photogallery_pk>-<str:photogallery_slug>', views.photogallery, name="photogallery"),
-    path('blog/', views.blog, name="blog"),
+    path('blogs/', views.blog, name="blogs"),
+    path('blogy/', views.blog, name="blogy"),
     
 ]
 

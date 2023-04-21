@@ -1,0 +1,69 @@
+{% extends 'webapp/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %} Blog{% endblock %}
+
+{% block extrahead %}
+    {% comment %}
+        https://github.com/andreknieriem/simplelightbox
+        https://simplelightbox.com/
+    {% endcomment %}
+        <link rel="stylesheet" href="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.css">
+        <script src="https://extrastatic.ochranarybniku.cz/simplelightbox/dist/simple-lightbox.min.js"></script>
+{% endblock %}
+
+{% block main %}
+
+<div class="main_content">
+  <section class="blog">
+      {% for article in articles %}
+        <article>
+        <h1><a href="">{{ article.headline }}</a></h1>
+        <p><strong>{% translate "Autor" %}: </strong>{{ article.blog.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.blog.published }}</p>
+        {{ article.text|safe }}
+        <div class="photos">
+          <div class="simple-gallery">
+            {% for photo_desc in article.get_pictures %}
+              <div class="photo">
+                <div class="transf">
+                  <a href="{{ photo_desc.picture.gallery_resize.url }}">
+                    <img src="{{ photo_desc.picture.admin_thumbnail.url }}" alt="{{ photo_desc.description }}" title="{{ photo_desc.description }}"/>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+
+      {% if article.blog.youtube %}
+      <h2>Video</h2>
+        <div class="video">
+          <iframe
+            class="center"
+            width="1120"
+            height="630"
+            src="https://www.youtube.com/embed/{{ article.blog.youtube }}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen
+          ></iframe>
+        </div>
+      {% endif %}
+
+        </article>
+        
+      {% endfor %}
+  </section>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+  <script>
+    var lightbox = new SimpleLightbox('.simple-gallery a', { overlayOpacity: 0.95 });
+  </script>
+{% endblock %}
