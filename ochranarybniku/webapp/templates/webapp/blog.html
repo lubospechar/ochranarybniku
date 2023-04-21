@@ -1,7 +1,7 @@
 {% extends 'webapp/base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %} Blog{% endblock %}
 
@@ -18,11 +18,11 @@
 
 <div class="main_content">
   <section class="blog">
-      {% for article in articles %}
+
         <article>
-        <h1><a href="">{{ article.headline }}</a></h1>
-        <p><strong>{% translate "Autor" %}: </strong>{{ article.blog.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.blog.published }}</p>
-        {{ article.text|safe }}
+        <h1>{{ article.get_headline }}</a></h1>
+        <p><strong>{% translate "Autor" %}: </strong>{{ article.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.published }}</p>
+        {{ article.get_text|safe }}
         <div class="photos">
           <div class="simple-gallery">
             {% for photo_desc in article.get_pictures %}
@@ -33,7 +33,7 @@
                   </a>
                 </div>
               </div>
-            {% endfor %}
+             {% endfor %}
           </div>
         </div>
 
@@ -55,7 +55,7 @@
 
         </article>
         
-      {% endfor %}
+
   </section>
 </div>
 

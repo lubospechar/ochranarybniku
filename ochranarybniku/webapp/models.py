@@ -3,6 +3,7 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.utils import translation
 
 class Language(models.Model):
     lang =  models.CharField(max_length=2)
@@ -17,6 +18,11 @@ class Language(models.Model):
     @staticmethod
     def cs():
         return Language.objects.get(lang='cs')
+
+def get_lang():
+    return Language.objects.get(
+        lang = translation.get_language()
+    )
 
 class Page(models.Model):
     name = models.CharField(max_length=255, verbose_name="Název")
@@ -156,6 +162,32 @@ class Blog(models.Model):
                 pictures.append(picture)
         
         return pictures
+
+    def get_slug(self):
+        return BlogTranslation.objects.get(
+            blog=self,
+            lang=get_lang()
+        ).slug
+
+    def get_headline(self):
+        return BlogTranslation.objects.get(
+            blog=self,
+            lang=get_lang()
+        ).headline
+
+    def get_text(self):
+        return BlogTranslation.objects.get(
+            blog=self,
+            lang=get_lang()
+        ).text
+
+    def get_pictures(self):
+        return PictureDescription.objects.filter(
+            lang=get_lang(),
+            picture__in=Picture.objects.filter(
+                photogallery__in=self.photogalleries.all()
+            )
+        )
             
 class BlogTranslation(models.Model):
     headline = models.CharField(max_length=255)

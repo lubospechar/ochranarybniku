@@ -1,7 +1,7 @@
 {% extends 'webapp/base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %} Blog{% endblock %}
 
@@ -20,7 +20,7 @@
   <section class="blog">
       {% for article in articles %}
         <article>
-        <h1><a href="">{{ article.headline }}</a></h1>
+        <h1><a href="{% url 'blog' LANGUAGE_CODE article.blog.pk article.blog.get_slug %}">{{ article.headline }}</a></h1>
         <p><strong>{% translate "Autor" %}: </strong>{{ article.blog.author }},   <strong>{% translate "Publikováno" %}: </strong>{{ article.blog.published }}</p>
         {{ article.text|safe }}
         <div class="photos">

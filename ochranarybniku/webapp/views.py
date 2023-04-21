@@ -57,10 +57,17 @@ def photogallery(request, photogallery_pk, photogallery_slug, lang):
         'photogallery_detail': True,
     })
 
-def blog(request, lang):
+def blogs(request, lang):
     language = get_object_or_404(Language, lang=lang)
     articles = BlogTranslation.objects.filter(lang=language, blog__in=Blog.objects.filter(enable=True)).order_by('-blog__published')
     return render(request, 'webapp/blogs.html', {
         'articles': articles
     })
 
+
+def blog(request, lang, blog_pk, blog_slug):
+    language = get_object_or_404(Language, lang=lang)
+    article = get_object_or_404(Blog, pk=blog_pk)
+    return render(request, 'webapp/blog.html', {
+        'article': article
+    });
