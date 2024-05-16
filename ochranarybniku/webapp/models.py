@@ -4,6 +4,7 @@ from imagekit.processors import ResizeToFit
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.utils import translation
+from django.utils.safestring import mark_safe
 
 class Language(models.Model):
     lang =  models.CharField(max_length=2)
@@ -206,3 +207,9 @@ class BlogTranslation(models.Model):
 
         return pictures
 
+class Storage(models.Model):
+    name = models.CharField(max_length=255)
+    data = models.FileField(upload_to='data/%Y/%m/%d/')
+
+    def hypertext(self):
+        return f'<li><a href="{ self.data.url }">{ self.name }</a><li>'

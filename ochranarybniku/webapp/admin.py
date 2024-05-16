@@ -2,9 +2,13 @@ from django.contrib import admin
 from webapp.models import (
     PhotoGallery, Picture, Page, Blog,
     Language, PhotogaleryDescription, PictureDescription,
-    BlogTranslation
+    BlogTranslation, Storage
 )
 from imagekit.admin import AdminThumbnail
+
+@admin.register(Storage)
+class StorageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'hypertext')
 
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
@@ -96,3 +100,6 @@ class BlogAdmin(admin.ModelAdmin):
 # @admin.register(PictureDescription)
 # class PictureDescriptionAdmin(admin.ModelAdmin):
 #     list_filter
+
+
+
