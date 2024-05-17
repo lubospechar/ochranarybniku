@@ -212,4 +212,4 @@ class Storage(models.Model):
     data = models.FileField(upload_to='data/%Y/%m/%d/')
 
     def hypertext(self):
-        return f'<li><a href="{ self.data.url }">{ self.name }</a><li>'
+        return f'<li><a href="{ self.data.url }">{ self.name }</a></li>'

@@ -151,3 +151,9 @@ MEDIA_ROOT = config('MEDIA_ROOT')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Maximum velikost uploadovaného souboru v bytech
+FILE_UPLOAD_MAX_MEMORY_SIZE = 524288000  # 500MB
+
+
+# Tato nastavení mohou být užitečná pro velké soubory
+DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000  # 500MB
